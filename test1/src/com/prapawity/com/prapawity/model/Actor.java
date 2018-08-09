@@ -1,10 +1,10 @@
 package com.prapawity.com.prapawity.model;
 
-public class Player {
+public class Actor {
     private int x;
     private int y;
 
-    public Player(int x, int y) {
+    public Actor(int x, int y) {
         this.x = x;
         this.y = y;
     }

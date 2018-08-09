@@ -4,13 +4,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.prapawity.Setting;
 import com.prapawity.com.prapawity.controller.PlayerController;
-import com.prapawity.com.prapawity.model.Player;
+import com.prapawity.com.prapawity.model.Actor;
 import com.prapawity.testGame;
 public class GameScreen extends AbstractScreen{
 
     private PlayerController controller;
 
-    private Player player;
+    private Actor actor;
 
     private SpriteBatch batch;
 
@@ -20,8 +20,8 @@ public class GameScreen extends AbstractScreen{
         super(app);
         redStandingSouth = new Texture("res/model2.png");
         batch = new SpriteBatch();
-        player = new Player(0, 0);
-        controller = new PlayerController(player);
+        actor = new Actor(0, 0);
+        controller = new PlayerController(actor);
     }
 
     @Override
@@ -34,8 +34,8 @@ public class GameScreen extends AbstractScreen{
     public void render(float delta) {
         batch.begin();
         batch.draw(redStandingSouth,
-                player.getX()* Setting.SCALED_TITLE_SIZE,
-                player.getY()*Setting.SCALED_TITLE_SIZE,
+                actor.getX()* Setting.SCALED_TITLE_SIZE,
+                actor.getY()*Setting.SCALED_TITLE_SIZE,
                 Setting.SCALED_TITLE_SIZE,
                 Setting.SCALED_TITLE_SIZE*1.5f);
         batch.end();
