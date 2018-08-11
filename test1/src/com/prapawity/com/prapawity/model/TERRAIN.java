@@ -1,4 +1,7 @@
 package com.prapawity.com.prapawity.model;
 
-public class TERRAIN {
+public enum  TERRAIN {
+    GRASS_1,
+    GRASS_2,
+    ;
 }
