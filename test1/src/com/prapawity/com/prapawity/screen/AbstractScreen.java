@@ -1,11 +1,11 @@
 package com.prapawity.com.prapawity.screen;
 
 import com.badlogic.gdx.Screen;
-import com.prapawity.testGame;
+import com.prapawity.oopProject;
 
 public abstract class AbstractScreen implements Screen {
-    private testGame app;
-    public AbstractScreen(testGame app){
+    private oopProject app;
+    public AbstractScreen(oopProject app){
         this.app = app;
     }
     @Override

@@ -5,7 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.prapawity.com.prapawity.screen.GameScreen;
 
-public class testGame extends Game {
+public class oopProject extends Game {
     private GameScreen screen;
     @Override
     public void create() {

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Project/core/src"/>
+	<classpathentry kind="src" path="Project/desktop/src"/>
+	<classpathentry kind="src" path="Project/html/src"/>
+	<classpathentry kind="src" path="test1/src"/>
+	<classpathentry kind="lib" path="Project/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="test1/lib/gdx-backend-lwjgl-natives.jar"/>
+	<classpathentry kind="lib" path="test1/lib/gdx-backend-lwjgl.jar"/>
+	<classpathentry kind="lib" path="test1/lib/gdx-natives.jar"/>
+	<classpathentry kind="lib" path="test1/lib/gdx.jar"/>
+	<classpathentry kind="output" path="Project/core/out/production/classes"/>
+</classpath>

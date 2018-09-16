@@ -8,7 +8,7 @@ import com.prapawity.com.prapawity.model.Actor;
 import com.prapawity.com.prapawity.model.Camera;
 import com.prapawity.com.prapawity.model.TERRAIN;
 import com.prapawity.com.prapawity.model.TileMap;
-import com.prapawity.testGame;
+import com.prapawity.oopProject;
 public class GameScreen extends AbstractScreen{
 
     private PlayerController controller;
@@ -20,7 +20,7 @@ public class GameScreen extends AbstractScreen{
     private Texture grass1 ;
     private Texture grass2;
 
-    public GameScreen(testGame app) {
+    public GameScreen(oopProject app) {
         super(app);
         redStandingSouth = new Texture("res/model2.png");
         grass1 = new Texture("res/ground_green2.png");
