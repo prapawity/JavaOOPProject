@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="49aa536f-042d-4c2f-953f-058f665617c9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/prapawity/com/prapawity/screen/MyGdxTiledGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/test1/com/prapawity/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/test1/com/prapawity/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/test1/com/prapawity/com/prapawity/screen/AbstractScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/test1/com/prapawity/com/prapawity/screen/AbstractScreen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/test1/com/prapawity/com/prapawity/screen/GameScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/test1/com/prapawity/com/prapawity/screen/GameScreen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/test1/com/prapawity/testGame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/prapawity/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/prapawity/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/prapawity/com/prapawity/screen/AbstractScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/prapawity/com/prapawity/screen/AbstractScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/prapawity/com/prapawity/screen/GameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/prapawity/com/prapawity/screen/GameScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/prapawity/testGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/prapawity/oopProject.java" afterDir="false" />
-    </list>
+    <list default="true" id="49aa536f-042d-4c2f-953f-058f665617c9" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,9 +16,10 @@
     <session id="-1046499048">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="11" />
+          <entry key="project.closed" value="12" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="2" />
+          <entry key="project.open.time.108" value="1" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.15" value="1" />
@@ -39,7 +29,7 @@
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.59" value="1" />
           <entry key="project.open.time.64" value="1" />
-          <entry key="project.opened" value="12" />
+          <entry key="project.opened" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -224,7 +214,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -283,7 +273,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -356,16 +346,17 @@
       <workItem from="1535897362167" duration="1156000" />
       <workItem from="1535900350807" duration="2837000" />
       <workItem from="1536067391323" duration="484000" />
+      <workItem from="1537104891362" duration="124000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24834000" />
+    <option name="totallyTimeSpent" value="24958000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1376" height="784" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11702128" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11854103" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
