@@ -11,7 +11,7 @@ import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.mygdx.game.entities.Player;
+import com.mygdx.game.entitirs.Player;
 
 public class MyGdxGame extends ApplicationAdapter {
 	private TiledMap map;
@@ -80,5 +80,6 @@ public class MyGdxGame extends ApplicationAdapter {
 	public void dispose () {
 		// Free resources
 		manager.dispose();
+		player.getTexture().dispose();
 	}
 }
