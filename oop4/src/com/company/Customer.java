@@ -2,7 +2,7 @@ package com.company;
 
 public class Customer {
     private String firstName, lastName;
-    Account acct;
+    private Account acc = new Account();
 
     public Customer(String firstName, String lastName) {
         this.firstName = firstName;
@@ -25,11 +25,23 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public Account getAcct() {
-        return acct;
+    public Account getAcc() {
+        return acc;
     }
 
-    public void setAcct(Account acct) {
-        this.acct = acct;
+    public void setAcc(Account acc) {
+        this.acc = acc;
+    }
+
+    public static void main(String[] args) {
+        Account myAccount = new CheckingAccount(4000, 500);
+        Customer cus = new Customer("Somchai", "Somying");
+        cus.setAcc(myAccount);
+        cus.getAcc().withDraw(4300);
+        cus.getAcc().showBalance();
+        ((CheckingAccount)(cus.getAcc())).showCredit();
+        cus.getAcc().deposite(4200);
+        ((CheckingAccount)(cus.getAcc())).showCredit();
+        System.out.println(cus.firstName+" "+cus.lastName);
     }
 }

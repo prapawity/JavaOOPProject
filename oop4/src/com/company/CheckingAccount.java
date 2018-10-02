@@ -10,10 +10,16 @@ public class CheckingAccount extends Account {
 
     @Override
     public void withDraw(double withDraw) {
-        if (balance<withDraw && credit<=0)
+        if (balance<withDraw && credit<=0 && withDraw>credit)
             System.out.println("Money and credit is not  enough");
-        else
+        else {
             balance -= withDraw;
+            withDraw -= balance;
+            if (balance < 0) {
+                credit-=-withDraw;
+                balance = 0;
+            }
+        }
 
     }
     public void showCredit(){

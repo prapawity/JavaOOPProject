@@ -6,11 +6,13 @@ import com.mygdx.game.MyGdxGame;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
+		// Frame setting
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.title = "Test";
 		config.useGL30 = false;
-		config.width = 800;
-		config.height = 600;
+		config.width = 1240;
+		config.height = 800;
+        config.vSyncEnabled = true;
 		new LwjglApplication(new MyGdxGame(), config);
 	}
 }

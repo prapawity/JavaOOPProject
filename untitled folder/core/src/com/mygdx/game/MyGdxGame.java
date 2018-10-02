@@ -9,11 +9,13 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.mygdx.game.entitirs.Player;
 
 public class MyGdxGame extends ApplicationAdapter {
+	// Set Value
 	private TiledMap map;
 	private AssetManager manager;
     private Player player;
@@ -46,14 +48,18 @@ public class MyGdxGame extends ApplicationAdapter {
 		mapHeightInPixels = mapHeightInTiles * tileHeight;
 
 		// Set up the camera
-		camera = new OrthographicCamera(900.f, 900.f);
-		camera.position.x = mapWidthInPixels * .20f;
-		camera.position.y = mapHeightInPixels * .20f;
+		camera = new OrthographicCamera(900f, 900f);
+		camera.position.x = mapWidthInPixels * .50f;
+		camera.position.y = mapHeightInPixels * .35f;
 
 		// Instantiation of the render for the map object
 		renderer = new OrthogonalTiledMapRenderer(map);
-		player = new Player(new Sprite(new Texture("model2.png")));
-	}
+		// render Player
+		player = new Player(new Sprite(new Texture("model_00.png")), (TiledMapTileLayer) map.getLayers().get(0));
+		//player.setPosition(11*player.getCollissionLayer().getWidth(),(player.getCollissionLayer().getHeight()-30)*player.getCollissionLayer().getHeight());
+	    player.setPosition(500,500);
+        player.scale(1f);
+    }
 
 	@Override
 	public void render () {
@@ -67,14 +73,15 @@ public class MyGdxGame extends ApplicationAdapter {
 		renderer.getBatch().begin();
 		player.draw(renderer.getBatch());
 		renderer.getBatch().end();
+        this.renderer = new OrthogonalTiledMapRenderer(this.map, 1.7f);
 	}
-//	@Override
-//    public void resize(int width, int height){
-//	    camera.viewportWidth = width;
-//	    camera.viewportHeight = height;
-//	    camera.update();
-//
-//    }
+	@Override
+    public void resize(int width, int height){
+	    camera.viewportWidth = width;
+	    camera.viewportHeight = height;
+	    camera.update();
+
+    }
 
 	@Override
 	public void dispose () {

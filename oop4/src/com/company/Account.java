@@ -2,13 +2,16 @@ package com.company;
 
 
 public class Account {
-    protected double balance;
+    public double balance;
 
     public Account(double balance) {
         this.balance = balance;
     }
 
-    public double getBalance() {
+    public Account() {
+
+    }
+    public double getBalance(double v) {
         return balance;
     }
 
@@ -24,7 +27,7 @@ public class Account {
         else
             balance -= withDraw;
     }
-    public void showBalance(){
-        System.out.println(balance);
+    public double showBalance(){
+        return this.balance;
     }
 }
