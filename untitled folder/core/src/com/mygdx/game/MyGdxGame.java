@@ -1,6 +1,6 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
@@ -14,7 +14,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.mygdx.game.entitirs.Player;
 
-public class MyGdxGame extends ApplicationAdapter{
+public class MyGdxGame extends Game {
 	// Set Value
 	private TiledMap map;
 	private AssetManager manager;
@@ -46,7 +46,9 @@ public class MyGdxGame extends ApplicationAdapter{
 	private OrthographicCamera camera;
 	private OrthogonalTiledMapRenderer renderer;
 
+    private void createCollistionListerner(){
 
+    }
     @Override
 	public void create () {
 		// Map loading
@@ -62,21 +64,20 @@ public class MyGdxGame extends ApplicationAdapter{
 		tileHeight        = properties.get("tileheight", Integer.class);
 		mapWidthInTiles   = properties.get("width", Integer.class);
 		mapHeightInTiles  = properties.get("height", Integer.class);
-		mapWidthInPixels  = mapWidthInTiles  * tileWidth;
-		mapHeightInPixels = mapHeightInTiles * tileHeight;
+		mapWidthInPixels  = mapWidthInTiles;
+		mapHeightInPixels = mapHeightInTiles;
 
 		// Set up the camera
-		camera = new OrthographicCamera(900f, 900f);
-		camera.position.x = mapWidthInPixels * .50f;
-		camera.position.y = mapHeightInPixels * .35f;
+		camera = new OrthographicCamera(1f, 1f);
+		camera.position.x = mapWidthInPixels * 1f;
+		camera.position.y = mapHeightInPixels * 1f;
 
 		// Instantiation of the render for the map object
 		renderer = new OrthogonalTiledMapRenderer(map);
 		// render Player
-		player = new Player(new Sprite(new Texture("model_00.png")), (TiledMapTileLayer) map.getLayers().get(0));
-		player.setPosition(11*player.getCollissionLayer().getWidth(),(player.getCollissionLayer().getHeight()-30)*player.getCollissionLayer().getHeight());
+		player = new Player(new Sprite(new Texture("model_00.png")), (TiledMapTileLayer) map.getLayers().get("Tile Layer 1"));
 	    player.setPosition(1000,1000);
-        player.scale(1f);
+		//TiledMapTileLayer layer = (TiledMapTileLayer)this.map.getLayers().get("wall");
         Gdx.input.setInputProcessor(player);
 
     }
@@ -86,13 +87,6 @@ public class MyGdxGame extends ApplicationAdapter{
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		// Update the camera and render
-//        if (player.getX() < player.getOldX()) {
-//            //player = new Player(new Sprite(new Texture("model2.png")), (TiledMapTileLayer) map.getLayers().get(0));
-//            //player.setPosition(11*player.getCollissionLayer().getWidth(),(player.getCollissionLayer().getHeight()-30)*player.getCollissionLayer().getHeight());
-//            System.out.println(player.getOldX()+" "+player.getOldY());
-//            // player.setPosition(player.getOldX(),player.getOldY());
-//            player.scale(1f);
-//        }
         if(player.getX()>1580||player.getX()<620){
             if(player.getY()<390||player.getY()>1790)
                 camera.position.set(getOldCameraX(),getOldCameraY(),0);

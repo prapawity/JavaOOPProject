@@ -5,10 +5,17 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 
 public class Player extends Sprite implements InputProcessor{
+    private TiledMap map;
+    private int x, y;
+    public Player player;
+
+    private TiledMap world;
     TiledMapTileLayer collissionLayer;
+
     float oldX = getX(), oldY = getY();
     int state=0;
     String compass = "";
@@ -25,6 +32,7 @@ public class Player extends Sprite implements InputProcessor{
 		update(Gdx.graphics.getDeltaTime());
 		super.draw(batch);
 	}
+
 
 
     public TiledMapTileLayer getCollissionLayer() {
@@ -52,11 +60,10 @@ public class Player extends Sprite implements InputProcessor{
     }
 
     public void update(float delta) {
-		float tilldWidth = collissionLayer.getWidth(), tiledHight = collissionLayer.getHeight();
+		float tilldWidth = collissionLayer.getTileWidth(), tiledHight = collissionLayer.getTileHeight();
 
 		boolean collidedX;
-        boolean collidedY;
-        System.out.println("      "+state);
+        boolean collidedY,collidedXX;
         if (state>0){
             if (compass.equals("W"))
                 setY(getY()+2);
@@ -67,13 +74,20 @@ public class Player extends Sprite implements InputProcessor{
             if (compass.equals("D"))
                 setX(getX()+2);
         }
-        System.out.println(getX()/10+" "+getY()/10);
         setX(getX());
 
+        //System.out.println(collissionLayer.getCell(-1,-1).getTile().getProperties().containsKey("m"));
+		if (getX()>0&&getX()<2590) {
 
-		if (getX()>0&&getX()<2190) {
-		    //collidedX = collissionLayer.getCell((int) getX(),(int) getY()).getTile().getProperties().containsKey("top");
+
+//            collidedX = collissionLayer.getProperties().containsKey("m");
+ //           System.out.println(layer.getCell(1,1));
             //System.out.println(collidedX);
+//            if (collidedX) {
+//                //collidedXX = collissionLayer.getCell((int) (getX()/tilldWidth),(int) (getY()/tiledHight)).getTile().getProperties().containsKey("m");
+//                //System.out.println(collidedXX + " " + getX()/27.275 + " " + getY()/27.275);
+            //}
+            //else System.out.println(getX()+" "+getY());
         }
         else{
             setX(oldX);
@@ -96,14 +110,6 @@ public class Player extends Sprite implements InputProcessor{
 //        }
 
 	}
-
-
-
-
-
-
-
-
 
     @Override
     public boolean keyDown(int keycode) {
