@@ -45,18 +45,14 @@ public class MyGdxGame extends Game {
 	// Camera and render
 	private OrthographicCamera camera;
 	private OrthogonalTiledMapRenderer renderer;
-
-    private void createCollistionListerner(){
-
-    }
     @Override
 	public void create () {
 		// Map loading
 		manager = new AssetManager();
 		manager.setLoader(TiledMap.class, new TmxMapLoader());
-		manager.load("GenerateMap/untitled.tmx", TiledMap.class);
+		manager.load("Genmap/map.tmx", TiledMap.class);
 		manager.finishLoading();
-		map = manager.get("GenerateMap/untitled.tmx", TiledMap.class);
+		map = manager.get("Genmap/map.tmx", TiledMap.class);
 
 		// Read properties
 		MapProperties properties = map.getProperties();
@@ -73,10 +69,11 @@ public class MyGdxGame extends Game {
 		camera.position.y = mapHeightInPixels * 1f;
 
 		// Instantiation of the render for the map object
+		player = new Player(new Sprite(new Texture("model_00.png")), (TiledMapTileLayer) map.getLayers().get("Tile Layer 1"));
 		renderer = new OrthogonalTiledMapRenderer(map);
 		// render Player
 		player = new Player(new Sprite(new Texture("model_00.png")), (TiledMapTileLayer) map.getLayers().get("Tile Layer 1"));
-	    player.setPosition(1000,1000);
+	    player.setPosition(832,546);
 		//TiledMapTileLayer layer = (TiledMapTileLayer)this.map.getLayers().get("wall");
         Gdx.input.setInputProcessor(player);
 
@@ -114,7 +111,7 @@ public class MyGdxGame extends Game {
 		renderer.getBatch().begin();
 		player.draw(renderer.getBatch());
 		renderer.getBatch().end();
-        this.renderer = new OrthogonalTiledMapRenderer(this.map, 1.725f);
+        this.renderer = new OrthogonalTiledMapRenderer(this.map, 1f);
 	}
 	@Override
     public void resize(int width, int height){

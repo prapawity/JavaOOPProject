@@ -108,7 +108,7 @@ public class Player extends Sprite implements InputProcessor{
 //        if (collidedY){
 //            setY(oldY);
 //        }
-
+        System.out.println(getX()+" "+getY());
 	}
 
     @Override
