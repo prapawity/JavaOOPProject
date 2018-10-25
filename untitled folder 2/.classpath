@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="1/src"/>
+	<classpathentry kind="src" path="oop/core/src"/>
+	<classpathentry kind="src" path="oop/desktop/src"/>
+	<classpathentry kind="src" path="oop4/src"/>
+	<classpathentry kind="src" path="Project/core/src"/>
+	<classpathentry kind="src" path="Project/desktop/src"/>
+	<classpathentry kind="src" path="Project/html/src"/>
+	<classpathentry kind="src" path="untitled folder/core/src"/>
+	<classpathentry kind="src" path="untitled folder/desktop/src"/>
+	<classpathentry kind="src" path="untitled folder/untitled/src"/>
+	<classpathentry kind="lib" path="1/lib/gdx-backend-lwjgl-natives.jar"/>
+	<classpathentry kind="lib" path="1/lib/gdx-backend-lwjgl.jar"/>
+	<classpathentry kind="lib" path="1/lib/gdx-natives.jar"/>
+	<classpathentry kind="lib" path="1/lib/gdx.jar"/>
+	<classpathentry kind="lib" path="gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="oop/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="Project/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="lib" path="untitled folder/gradle/wrapper/gradle-wrapper.jar"/>
+	<classpathentry kind="output" path="1/out/production/test1"/>
+</classpath>

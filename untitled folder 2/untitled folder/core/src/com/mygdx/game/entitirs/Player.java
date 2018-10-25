@@ -3,199 +3,105 @@ package com.mygdx.game.entitirs;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.mygdx.game.MapBitPriority.GreenHouse;
 
 public class Player extends Sprite implements InputProcessor{
+    float posX=99;
+    float posY=99;
+    boolean state =false;
+
+    public boolean getState() {
+        return state;
+    }
+
+    private Camera camera;
     private TiledMap map;
-    private int x, y;
-    public Player player;
-
-    private TiledMap world;
-    TiledMapTileLayer collissionLayer;
-
-    float oldX = getX(), oldY = getY();
-    int state=0;
-    String compass = "";
-	public Player(Sprite sprite, TiledMapTileLayer collissionLayer) {
-		super(sprite);
-		this.collissionLayer = collissionLayer;
-	}
-    public Player(Sprite sprite){
-        super(sprite);
-        this.collissionLayer = getCollissionLayer();
-    }
-	@Override
-	public void draw(Batch batch) {
-		update(Gdx.graphics.getDeltaTime());
-		super.draw(batch);
-	}
+    private OrthogonalTiledMapRenderer renderer;
+    private GreenHouse greenHouse;
 
 
-
-    public TiledMapTileLayer getCollissionLayer() {
-        return collissionLayer;
-    }
-
-    public void setCollissionLayer(TiledMapTileLayer collissionLayer) {
-	    this.collissionLayer = collissionLayer;
+    public float getOldX() {
+        return oldX;
     }
 
     public void setOldX(float oldX) {
         this.oldX = oldX;
     }
 
-    public void setOldY(float oldY) {
-        this.oldY = oldY;
-    }
-
-    public float getOldX() {
-        return oldX;
-    }
-
     public float getOldY() {
         return oldY;
     }
 
-    public void update(float delta) {
-		float tilldWidth = collissionLayer.getTileWidth(), tiledHight = collissionLayer.getTileHeight();
+    public void setOldY(float oldY) {
+        this.oldY = oldY;
+    }
 
-		boolean collidedX;
-        boolean collidedY,collidedXX;
-        if (state>0){
-            if (compass.equals("W"))
-                setY(getY()+2);
-            if (compass.equals("A"))
-                setX(getX()-2);
-            if (compass.equals("S"))
-                setY(getY()-2);
-            if (compass.equals("D"))
-                setX(getX()+2);
-        }
-        setX(getX());
+    float oldX;
+    float oldY;
+    public float getPosX() {
+        return posX;
+    }
 
-        //System.out.println(collissionLayer.getCell(-1,-1).getTile().getProperties().containsKey("m"));
-		if (getX()>0&&getX()<2590) {
+    public void setPosX(float posX) {
+        this.posX = posX;
+    }
 
+    public float getPosY() {
+        return posY;
+    }
 
-//            collidedX = collissionLayer.getProperties().containsKey("m");
- //           System.out.println(layer.getCell(1,1));
-            //System.out.println(collidedX);
-//            if (collidedX) {
-//                //collidedXX = collissionLayer.getCell((int) (getX()/tilldWidth),(int) (getY()/tiledHight)).getTile().getProperties().containsKey("m");
-//                //System.out.println(collidedXX + " " + getX()/27.275 + " " + getY()/27.275);
-            //}
-            //else System.out.println(getX()+" "+getY());
-        }
-        else{
-            setX(oldX);
-        }
+    public void setPosY(float posY) {
+        this.posY = posY;
+    }
+    public void update() {
+        Gdx.input.setInputProcessor(this);
 
-		setY(getY());
-//		if (getY()<0){
-//		    // top
-//                collidedY = collissionLayer.getCell((int) (getX()/tiledHight), (int) (getY())).getTile().getProperties().containsKey("Tile Layer 1");
-//
-//
-//        }else if(getY()>0) {
-//		    //top
-//            collidedY = collissionLayer.getCell((int) (getX()/tilldWidth), (int) (((getY())+getHeight())/tiledHight)).getTile().getProperties().containsKey("Tile Layer 1");
-//            // mid
-//
-//        }
-//        if (collidedY){
-//            setY(oldY);
-//        }
-        System.out.println(getX()+" "+getY());
-	}
-
+    }
     @Override
     public boolean keyDown(int keycode) {
-	    this.setOldX(getX());
-	    this.setOldY(getY());
-	    switch (keycode){
-            case Input.Keys.W:
-                state +=1;
-                compass = "W";
-                setY(getY()+8);
-                break;
-            case Input.Keys.A:
-                state +=1;
-                compass = "A";
-                setX(getX()-8);
-                break;
-            case Input.Keys.D:
-                state +=1;
-                compass = "D";
-                setX(getX()+8);
-                break;
-            case Input.Keys.S:
-                state +=1;
-                compass = "S";
-                setY(getY()-8);
-                break;
-            case Input.Keys.ESCAPE:
-                System.exit(0);
-	        case Input.Keys.UP:
-                state +=1;
-                compass = "W";
-                setY(getY()+8); break;
-	        case Input.Keys.LEFT:
-                state +=1;
-                compass = "A";
-                setX(getX()-8);
-                break;
-            case Input.Keys.RIGHT:
-                state +=1;
-                compass = "D";
-                setX(getX()+8);
-                break;
-	        case Input.Keys.DOWN:
-                state +=1;
-                compass = "S";
-                setY(getY()-8);
-                break;
-	    }
-	    return true;
+        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE))
+            Gdx.app.exit();
+        return false;
+    }
+
+    @Override
+    public float getY() {
+        return super.getY();
+    }
+
+    @Override
+    public void setX(float x) {
+        super.setX(x);
+    }
+
+    @Override
+    public void setY(float y) {
+        super.setY(y);
+    }
+
+    @Override
+    public float getX() {
+        return super.getX();
     }
 
     @Override
     public boolean keyUp(int keycode) {
-        switch (keycode){
-            case Input.Keys.W:
-                state -=1;
-            case Input.Keys.D:
-                state -=1;
-            case Input.Keys.A:
-                state -=1;
-            case Input.Keys.S:
-                state -=1;
-            case Input.Keys.UP:
-                state -=1;
-            case Input.Keys.DOWN:
-                state -=1;
-            case Input.Keys.LEFT:
-                state -=1;
-            case Input.Keys.RIGHT:
-                state -=1;
-
-
-
-        }
-        return true;
+        return false;
     }
 
     @Override
     public boolean keyTyped(char character) {
-
         return false;
     }
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        return false;
+        state = true;
+        return true;
     }
 
     @Override
@@ -210,11 +116,14 @@ public class Player extends Sprite implements InputProcessor{
 
     @Override
     public boolean mouseMoved(int screenX, int screenY) {
-        return false;
+        setPosX(screenX);
+        setPosY(screenY);
+        return true;
     }
 
     @Override
     public boolean scrolled(int amount) {
         return false;
     }
+
 }
