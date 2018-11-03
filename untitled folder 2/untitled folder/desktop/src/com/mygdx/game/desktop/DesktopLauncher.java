@@ -12,8 +12,8 @@ public class DesktopLauncher {
 		config.useGL30 = false;
 		config.backgroundFPS = 60;
 		config.foregroundFPS = 60;
-		config.width = 1240;
-		config.height = 800;
+		config.width = 2560;
+		config.height = 1600;
 		//config.resizable = false;
 		config.fullscreen = false;
         config.vSyncEnabled = true;

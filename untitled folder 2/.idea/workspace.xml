@@ -2,17 +2,49 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0dcb4552-d0da-471a-97d7-70f01bb5dc33" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/untitled folder 2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/untitled folder/core/src/com/mygdx/game/MapBitPriority/GreenHouse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/untitled folder/core/src/com/mygdx/game/MapBitPriority/HUD.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/untitled folder/core/src/com/mygdx/game/MapBitPriority/HudStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/GenerateMap/Genmap/map.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/untitled folder/core/assets/GenerateMap/Genmap/map.tmx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oop4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../oop4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/GenerateMap/Genmap/Mainmap.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/untitled folder/core/assets/GenerateMap/Genmap/Mainmap.tmx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Axe/model_06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Axe/model_08.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Axe/model_09.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Axe/model_10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Hold/model_04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Hold/model_09.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Hold/model_13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Hold/model_17.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Run/model_03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Run/model_08.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Run/model_12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Run/model_16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Sickle/model_05.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Sickle/model_07.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Sickle/model_09.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Sickle/model_11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Stand/model_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Stand/model_06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Stand/model_10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Stand/model_14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Walk/model_02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Walk/model_07.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Walk/model_11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Walk/model_15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Watering/model_03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Watering/model_06.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Watering/model_08.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/Cut/Model_Watering/model_10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/Sprite/model.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/badlogic.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/mapMew/Map.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/mapMew/untitled copy.tmx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/mapMew/untitled.tmx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/mapMew/untitled.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/mapMew/visibleMap.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/model.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/model2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/model_00.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/core/assets/model_01.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/untitled folder/core/src/com/mygdx/game/MyGdxGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled folder/core/src/com/mygdx/game/MyGdxGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/untitled folder/core/src/com/mygdx/game/entitirs/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled folder/core/src/com/mygdx/game/entitirs/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/untitled folder/desktop/src/com/mygdx/game/desktop/DesktopLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/untitled folder/desktop/src/com/mygdx/game/desktop/DesktopLauncher.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,10 +56,11 @@
     <session id="1448011155">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.14" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -81,6 +114,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -138,7 +172,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -172,7 +205,7 @@
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="957" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25274727" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25579977" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
