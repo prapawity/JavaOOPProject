@@ -3,45 +3,26 @@ package com.mygdx.game.entitirs;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.mygdx.game.MapBitPriority.GreenHouse;
 
 public class Player extends Sprite implements InputProcessor{
     float posX=99;
     float posY=99;
-    boolean state =false;
+    boolean state =false,mouseClicked = false;
+    int mouseNotNormal=0;
 
     public boolean getState() {
         return state;
     }
 
-    private Camera camera;
-    private TiledMap map;
-    private OrthogonalTiledMapRenderer renderer;
-    private GreenHouse greenHouse;
-
-
-    public float getOldX() {
-        return oldX;
+    public int getMouseNotNormal() {
+        return mouseNotNormal;
     }
 
-    public void setOldX(float oldX) {
-        this.oldX = oldX;
+    public boolean getmouseClicked() {
+        return mouseClicked;
     }
 
-    public float getOldY() {
-        return oldY;
-    }
-
-    public void setOldY(float oldY) {
-        this.oldY = oldY;
-    }
-
-    float oldX;
-    float oldY;
     public float getPosX() {
         return posX;
     }
@@ -88,6 +69,10 @@ public class Player extends Sprite implements InputProcessor{
         return super.getX();
     }
 
+    public void setMouseClicked(boolean mouseClicked) {
+        this.mouseClicked = mouseClicked;
+    }
+
     @Override
     public boolean keyUp(int keycode) {
         return false;
@@ -98,9 +83,18 @@ public class Player extends Sprite implements InputProcessor{
         return false;
     }
 
+
+    public void setState(boolean state) {
+        this.state = state;
+    }
+
+    public void setMouseNotNormal(int mouseNotNormal) {
+        this.mouseNotNormal = mouseNotNormal;
+    }
+
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        state = true;
+        setMouseClicked(true);
         return true;
     }
 
