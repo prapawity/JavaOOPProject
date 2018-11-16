@@ -4,12 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.mygdx.game.MyGdxGame;
 
 public class Player extends Sprite implements InputProcessor{
     float posX=99;
     float posY=99;
     boolean state =false,mouseClicked = false;
-    int mouseNotNormal=0;
+    int mouseNotNormal=0,statusExit = 0;
+    MyGdxGame myGdxGame;
 
     public boolean getState() {
         return state;
@@ -42,10 +44,17 @@ public class Player extends Sprite implements InputProcessor{
         Gdx.input.setInputProcessor(this);
 
     }
+
+    public int getStatusExit() {
+        return statusExit;
+    }
+
     @Override
     public boolean keyDown(int keycode) {
-        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE))
-            Gdx.app.exit();
+        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)) {
+
+            statusExit = 1;
+        }
         return false;
     }
 
@@ -113,6 +122,7 @@ public class Player extends Sprite implements InputProcessor{
         setPosX(screenX);
         setPosY(screenY);
         System.out.println(getPosX()+" "+getPosY());
+
         return true;
     }
 
