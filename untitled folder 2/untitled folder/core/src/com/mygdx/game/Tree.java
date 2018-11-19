@@ -2,17 +2,8 @@ package com.mygdx.game;
 
 public class Tree {
     private String nameTree;
-    private boolean ststusWatering;
+    private boolean statusWatering;
     private int growthStatus;
-
-    public Tree(String nameTree, boolean ststusWatering, int growthStatus) {
-        this.nameTree = nameTree;
-        this.ststusWatering = ststusWatering;
-        this.growthStatus = growthStatus;
-    }
-    public Tree(){
-
-    }
 
     public String getNameTree() {
         return nameTree;
@@ -22,12 +13,12 @@ public class Tree {
         this.nameTree = nameTree;
     }
 
-    public boolean isStstusWatering() {
-        return ststusWatering;
+    public boolean isStatusWatering() {
+        return statusWatering;
     }
 
-    public void setStstusWatering(boolean ststusWatering) {
-        this.ststusWatering = ststusWatering;
+    public void setStatusWatering(boolean statusWatering) {
+        this.statusWatering = statusWatering;
     }
 
     public int getGrowthStatus() {
@@ -35,6 +26,12 @@ public class Tree {
     }
 
     public void setGrowthStatus(int growthStatus) {
+        this.growthStatus = growthStatus;
+    }
+
+    public Tree(String nameTree, boolean statusWatering, int growthStatus) {
+        this.nameTree = nameTree;
+        this.statusWatering = statusWatering;
         this.growthStatus = growthStatus;
     }
 }

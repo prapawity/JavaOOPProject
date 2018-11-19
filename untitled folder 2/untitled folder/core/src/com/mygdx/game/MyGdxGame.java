@@ -24,10 +24,10 @@ public class MyGdxGame extends Game {
     private float oldCameraX, oldCameraY;
     private HUD hud;
     private ShowImage showImage,backhome1;
-    private ShowImage greenHouse1,mouseSelect,weedTest;
+    private ShowImage greenHouse1,mouseSelect,weedTest,weedtest2,weedtest3,weedtest4;
     private Timer timer;
     private FloorRender
-    base, floorrender[][] ;
+    base, floorrender[][] ,weedrender[] [];
 
     private int positionX[] = {3429, 3529,3629,3729,3829,3929,4029},positionY[] = {7240,7149,7058,6967,6876,6785},loop = 0,mouseNumber = 1;
 
@@ -80,7 +80,11 @@ public class MyGdxGame extends Game {
 		showImage = new ShowImage(new Sprite(new Texture("Home.png")));
 
         greenHouse1 = new ShowImage(new Sprite(new Texture("farm.png")));
-        weedTest = new ShowImage(new Sprite(new Texture("model_00.png")));
+
+        weedTest = new ShowImage(new Sprite(new Texture("weedbag.png")));
+        weedtest2 = new ShowImage(new Sprite(new Texture("weedbag.png")));
+        weedtest3 = new ShowImage(new Sprite(new Texture("weedbag.png")));
+        weedtest4 = new ShowImage(new Sprite(new Texture("weedbag.png")));
 
 
 
@@ -88,25 +92,32 @@ public class MyGdxGame extends Game {
 
 
         createFloor();
+
+        System.out.println(floorMap[0].getTree().getNameTree());
         floorrender = new FloorRender[6][7];
+        weedrender = new FloorRender[6][7];
             for(int i = 0 ; i<6;i++)
                 for(int j = 0;j<7;j++) {
 
 
                     floorrender[i][j] = new FloorRender(new Sprite(new Texture(floorMap[loop].getName())));
-                    loop++;
+                    weedrender[i][j] = new FloorRender(new Sprite(new Texture(floorMap[loop].getTree().getNameTree())));
 
+                    loop++;
 
                 }
                 loop = 0;
         for(int i = 0 ; i<6;i++) {
-            for (int j = 0; j < 7; j++)
+            for (int j = 0; j < 7; j++) {
                 floorrender[i][j].scale(8);
+                weedrender[i][j].scale(4);
+            }
         }
 
         for(int i = 0 ; i<6;i++)
             for(int j = 0;j<7;j++) {
                 floorrender[i][j].setPosition(positionX[j], positionY[i]);
+                weedrender[i][j].setPosition(positionX[j], positionY[i]);
             }
 
 
@@ -121,7 +132,10 @@ public class MyGdxGame extends Game {
 
 		showImage.scale(2);
 		greenHouse1.scale(2);
-        weedTest.scale(5);
+        weedTest.scale(3.2f);
+        weedtest2.scale(3.2f);
+        weedtest3.scale(3.2f);
+        weedtest4.scale(3.2f);
 
 
 //		weed.scale(8);
@@ -151,8 +165,10 @@ public class MyGdxGame extends Game {
         renderer.render();
         renderer.getBatch().begin();
         loop = 0;
-        weedTest.setPosition(camera.position.x,camera.position.y-50);
-        weedTest.draw(renderer.getBatch());
+        weedTest.setPosition(camera.position.x+35,camera.position.y-480);
+        weedtest2.setPosition(camera.position.x+119,camera.position.y-480);
+        weedtest3.setPosition(camera.position.x+200,camera.position.y-480);
+        weedtest4.setPosition(camera.position.x+285,camera.position.y-480);
         if(screenState==0) {
 
 
@@ -322,6 +338,7 @@ public class MyGdxGame extends Game {
             for(int i = 0 ; i<6;i++)
                 for(int j = 0;j<7;j++) {
                     floorrender[i][j].setTexture(new Texture(floorMap[loop].getName()));
+                    weedrender[i][j].setTexture(new Texture(floorMap[loop].getTree().getNameTree()));
                     loop++;
                 }
             hudShowing();
@@ -332,6 +349,7 @@ public class MyGdxGame extends Game {
             for(int i = 0 ; i<6;i++)
                 for(int j = 0;j<7;j++) {
                     floorrender[i][j].setTexture(new Texture(floorMap2[loop].getName()));
+                    weedrender[i][j].setTexture(new Texture(floorMap[loop].getTree().getNameTree()));
                     loop++;
                 }
             hudShowing();
@@ -343,6 +361,7 @@ public class MyGdxGame extends Game {
             for(int i = 0 ; i<6;i++)
                 for(int j = 0;j<7;j++) {
                     floorrender[i][j].setTexture(new Texture(floorMap3[loop].getName()));
+                    weedrender[i][j].setTexture(new Texture(floorMap[loop].getTree().getNameTree()));
                     loop++;
                 }
             hudShowing();
@@ -353,6 +372,7 @@ public class MyGdxGame extends Game {
             for(int i = 0 ; i<6;i++)
                 for(int j = 0;j<7;j++) {
                     floorrender[i][j].setTexture(new Texture(floorMap4[loop].getName()));
+                    weedrender[i][j].setTexture(new Texture(floorMap[loop].getTree().getNameTree()));
                     loop++;
                 }
             hudShowing();
@@ -361,15 +381,16 @@ public class MyGdxGame extends Game {
         }
         base.draw(renderer.getBatch());
         for (int i = 0; i < 6; i++)
-            for (int j = 0; j < 7; j++)
+            for (int j = 0; j < 7; j++) {
                 floorrender[i][j].draw(renderer.getBatch());
+                weedrender[i][j].draw(renderer.getBatch());
+            }
         if(player.getStatusExit()==1){
             timer.delay(10000);
             dispose();
             Gdx.app.exit();
 
         }
-
         backhome1.draw(renderer.getBatch());
         mouseSelect.draw(renderer.getBatch());
         renderer.getBatch().end();
@@ -378,6 +399,12 @@ public class MyGdxGame extends Game {
 
 
         this.hud.render();
+        renderer.getBatch().begin();
+        weedTest.draw(renderer.getBatch());
+        weedtest2.draw(renderer.getBatch());
+        weedtest3.draw(renderer.getBatch());
+        weedtest4.draw(renderer.getBatch());
+        renderer.getBatch().end();
         this.renderer = new OrthogonalTiledMapRenderer(this.map, 1.2f);
     }
 
@@ -467,6 +494,12 @@ public class MyGdxGame extends Game {
                 Gdx.graphics.setCursor(cursor);
                 mouseNumber = 6;
             }break;
+            case 7:{
+                pm = new Pixmap(Gdx.files.internal("mouseweedbag1.png"));
+                cursor = Gdx.graphics.newCursor(new Pixmap(Gdx.files.internal("mouseweedbag1.png")), 0, 0);
+                Gdx.graphics.setCursor(cursor);
+                mouseNumber = 7;
+            }break;
         }
 
 
@@ -538,7 +571,7 @@ public class MyGdxGame extends Game {
             else if (player.getmouseClicked() == true && player.getMouseNotNormal() == 0) {
                 player.setMouseClicked(false);
                 player.setMouseNotNormal(1);
-                mousChange(3);
+                mousChange(7);
             } else if (player.getmouseClicked() == true && player.getMouseNotNormal() == 1) {
                 player.setMouseClicked(false);
                 player.setMouseNotNormal(0);
@@ -550,7 +583,7 @@ public class MyGdxGame extends Game {
             else if (player.getmouseClicked() == true && player.getMouseNotNormal() == 0) {
                 player.setMouseClicked(false);
                 player.setMouseNotNormal(1);
-                mousChange(3);
+                mousChange(7);
             } else if (player.getmouseClicked() == true && player.getMouseNotNormal() == 1) {
                 player.setMouseClicked(false);
                 player.setMouseNotNormal(0);
@@ -562,7 +595,7 @@ public class MyGdxGame extends Game {
             else if (player.getmouseClicked() == true && player.getMouseNotNormal() == 0) {
                 player.setMouseClicked(false);
                 player.setMouseNotNormal(1);
-                mousChange(3);
+                mousChange(7);
             } else if (player.getmouseClicked() == true && player.getMouseNotNormal() == 1) {
                 player.setMouseClicked(false);
                 player.setMouseNotNormal(0);
@@ -574,7 +607,7 @@ public class MyGdxGame extends Game {
             else if (player.getmouseClicked() == true && player.getMouseNotNormal() == 0) {
                 player.setMouseClicked(false);
                 player.setMouseNotNormal(1);
-                mousChange(3);
+                mousChange(7);
             } else if (player.getmouseClicked() == true && player.getMouseNotNormal() == 1) {
                 player.setMouseClicked(false);
                 player.setMouseNotNormal(0);
@@ -610,6 +643,11 @@ public class MyGdxGame extends Game {
                                 floorMaps[0].setName("dickingwet.png");
                                 floorMaps[0].setStatus(3);
                             }
+                        }
+                        else if(mouseNumber==7){
+                            floorMaps[0].getTree().setNameTree("weed.png");
+                            floorMaps[0].getTree().setGrowthStatus(0);
+
                         }
                     }
                     else if(606<=player.getPosX() && player.getPosX()<=690 && player.getPosY()>=335 && player.getPosY()<=421){
@@ -1535,16 +1573,20 @@ public class MyGdxGame extends Game {
     }
     public void createFloor(){
         for (int i = 0 ; i<42;i++){
-            floorMap[i] = new FloorStatus("normalfloor.png",0);
+            Tree trees = new Tree("null.png",false,0);
+            floorMap[i] = new FloorStatus("normalfloor.png",0,trees);
         }
         for (int i = 0 ; i<42;i++){
-            floorMap2[i] = new FloorStatus("normalfloor.png",0);
+            Tree trees = new Tree("null.png",false,0);
+            floorMap2[i] = new FloorStatus("normalfloor.png",0,trees);
         }
         for (int i = 0 ; i<42;i++){
-            floorMap3[i] = new FloorStatus("normalfloor.png",0);
+            Tree trees = new Tree("null.png",false,0);
+            floorMap3[i] = new FloorStatus("normalfloor.png",0,trees);
         }
         for (int i = 0 ; i<42;i++){
-            floorMap4[i] = new FloorStatus("normalfloor.png",0);
+            Tree trees = new Tree("null.png",false,0);
+            floorMap4[i] = new FloorStatus("normalfloor.png",0,trees);
         }
     }
 }
