@@ -24,7 +24,7 @@ public class MyGdxGame extends Game {
     private float oldCameraX, oldCameraY;
     private HUD hud;
     private ShowImage showImage,backhome1;
-    private ShowImage greenHouse1,mouseSelect;
+    private ShowImage greenHouse1,mouseSelect,weedTest;
     private Timer timer;
     private FloorRender
     base, floorrender[][] ;
@@ -80,6 +80,10 @@ public class MyGdxGame extends Game {
 		showImage = new ShowImage(new Sprite(new Texture("Home.png")));
 
         greenHouse1 = new ShowImage(new Sprite(new Texture("farm.png")));
+        weedTest = new ShowImage(new Sprite(new Texture("model_00.png")));
+
+
+
         base = new FloorRender(new Sprite(new Texture("base.png")));
 
 
@@ -117,7 +121,7 @@ public class MyGdxGame extends Game {
 
 		showImage.scale(2);
 		greenHouse1.scale(2);
-
+        weedTest.scale(5);
 
 
 //		weed.scale(8);
@@ -147,6 +151,8 @@ public class MyGdxGame extends Game {
         renderer.render();
         renderer.getBatch().begin();
         loop = 0;
+        weedTest.setPosition(camera.position.x,camera.position.y-50);
+        weedTest.draw(renderer.getBatch());
         if(screenState==0) {
 
 
