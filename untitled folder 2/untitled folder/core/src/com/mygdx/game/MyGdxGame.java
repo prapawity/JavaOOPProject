@@ -9,6 +9,7 @@ import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.MapBitPriority.HUD;
 import com.mygdx.game.entitirs.Player;
 import com.mygdx.game.entitirs.ShowImage;
@@ -22,8 +23,9 @@ public class MyGdxGame extends Game {
 	private AssetManager manager;
     private float oldCameraX, oldCameraY;
     private HUD hud;
-    private ShowImage showImage,backhome1,backhome2,backhome3,backhome4;
+    private ShowImage showImage,backhome1;
     private ShowImage greenHouse1,mouseSelect;
+    private Timer timer;
     private FloorRender
     base, floorrender[][] ;
 
@@ -46,6 +48,7 @@ public class MyGdxGame extends Game {
     @Override
 	public void create () {
 		// Map loading
+        timer = new Timer();
 
 
 
@@ -127,8 +130,6 @@ public class MyGdxGame extends Game {
         mouseSelect.scale(10);
 
 		showImage.setPosition(215,7620); // House1
-        greenHouse1.setPosition(235,7250); // greenHouse1
-        greenHouse1.setPosition(1233,7450); //greenHouse2
 		//farm 836,7290
 		// greenHouse1 3722,7059
 
@@ -146,7 +147,6 @@ public class MyGdxGame extends Game {
         renderer.render();
         renderer.getBatch().begin();
         loop = 0;
-
         if(screenState==0) {
 
 
@@ -166,7 +166,7 @@ public class MyGdxGame extends Game {
 
             //GreenHouse First
             if (camera.position.x == 836 && camera.position.y==7290) {
-                if (player.getPosX() < 265 && player.getPosX() >= 245 && player.getPosY() >= 590 && player.getPosY() <= 610) {
+                if (player.getPosX() <= 265 && player.getPosX() >= 245 && player.getPosY() >= 590 && player.getPosY() <= 610) {
                     greenHouse1.setPosition(235,7240); // greenHouse1
                     if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                         mousChange(2);
@@ -200,6 +200,114 @@ public class MyGdxGame extends Game {
                         player.setMouseNotNormal(0);
                     }
                 }
+            }
+            else if(camera.position.x == 1463 && camera.position.y==7290){
+                if(player.getPosX()>=621 &&player.getPosX()<= 641 && player.getPosY()>=405 && player.getPosY()<=438){
+                    greenHouse1.setPosition(1233,7412); //greenHouse2
+                    if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
+                        mousChange(2);
+                    greenHouse1.draw(renderer.getBatch());
+                    if (player.getmouseClicked()) {
+                        camera.position.set(3722, 7100, 0);
+                        screenState = 3;
+                        player.setMouseClicked(false);
+                        player.setMouseNotNormal(0);
+                    }
+                }
+                else if(player.getPosX()>=1214 && player.getPosX()<= 1237 && player.getPosY() >= 403 && player.getPosY() <= 437 ){
+                    greenHouse1.setPosition(1828,7412); //greenHouse2
+                    if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
+                        mousChange(2);
+                    greenHouse1.draw(renderer.getBatch());
+                    if (player.getmouseClicked()) {
+                        camera.position.set(3722, 7100, 0);
+                        screenState = 4;
+                        player.setMouseClicked(false);
+                        player.setMouseNotNormal(0);
+                    }
+                }
+
+            }
+            else if(camera.position.x == 836 && camera.position.y==7059){
+                if (player.getPosX() <= 271 && player.getPosX() >= 248 && player.getPosY() >= 345 && player.getPosY() <= 379) {
+                    greenHouse1.setPosition(235,7240); // greenHouse1
+                    if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
+                        mousChange(2);
+                    greenHouse1.draw(renderer.getBatch());
+                    if (player.getmouseClicked()) {
+                        camera.position.set(3722, 7100, 0);
+                        screenState = 1;
+                        player.setMouseClicked(false);
+                        player.setMouseNotNormal(0);
+                    }
+                }
+                else if(player.getPosX()>=747 && player.getPosX()<= 770 && player.getPosY()>=729 &&player.getPosY()<=762){
+                    greenHouse1.setPosition(735,6852); // greenHouse1
+                    if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
+                        mousChange(2);
+                    greenHouse1.draw(renderer.getBatch());
+                    if (player.getmouseClicked()) {
+                        camera.position.set(3722, 7100, 0);
+                        screenState = 2;
+                        player.setMouseClicked(false);
+                        player.setMouseNotNormal(0);
+                    }
+
+                }
+                else if(player.getPosX()>=119 &&player.getPosX()<= 140 && player.getPosY()>=960 && player.getPosY()<=993){
+                    greenHouse1.setPosition(735,6852); // greenHouse1
+                    if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
+                        mousChange(2);
+                    greenHouse1.draw(renderer.getBatch());
+                    if (player.getmouseClicked()) {
+                        camera.position.set(3722, 7100, 0);
+                        screenState = 2;
+                        player.setMouseClicked(false);
+                        player.setMouseNotNormal(0);
+                    }
+
+                }
+
+            }
+            else if(camera.position.x == 1463 && camera.position.y==7059){
+                if(player.getPosX()>=617 && player.getPosX()<= 641 && player.getPosY() >= 174 && player.getPosY() <= 206 ){
+                    greenHouse1.setPosition(1233,7412); //greenHouse2
+                    if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
+                        mousChange(2);
+                    greenHouse1.draw(renderer.getBatch());
+                    if (player.getmouseClicked()) {
+                        camera.position.set(3722, 7100, 0);
+                        screenState = 3;
+                        player.setMouseClicked(false);
+                        player.setMouseNotNormal(0);
+                    }
+                }
+                else if(player.getPosX()>=1214 && player.getPosX()<= 1237 && player.getPosY() >= 174 && player.getPosY() <= 206 ){
+                    greenHouse1.setPosition(1828,7412); //greenHouse2
+                    if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
+                        mousChange(2);
+                    greenHouse1.draw(renderer.getBatch());
+                    if (player.getmouseClicked()) {
+                        camera.position.set(3722, 7100, 0);
+                        screenState = 4;
+                        player.setMouseClicked(false);
+                        player.setMouseNotNormal(0);
+                    }
+                }
+                else if(player.getPosX()>=119 &&player.getPosX()<= 143 && player.getPosY()>=730 && player.getPosY()<=759){
+                    greenHouse1.setPosition(735,6852); // greenHouse1
+                    if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
+                        mousChange(2);
+                    greenHouse1.draw(renderer.getBatch());
+                    if (player.getmouseClicked()) {
+                        camera.position.set(3722, 7100, 0);
+                        screenState = 2;
+                        player.setMouseClicked(false);
+                        player.setMouseNotNormal(0);
+                    }
+
+                }
+
             }
 
 
@@ -249,7 +357,12 @@ public class MyGdxGame extends Game {
         for (int i = 0; i < 6; i++)
             for (int j = 0; j < 7; j++)
                 floorrender[i][j].draw(renderer.getBatch());
+        if(player.getStatusExit()==1){
+            timer.delay(10000);
+            dispose();
+            Gdx.app.exit();
 
+        }
 
         backhome1.draw(renderer.getBatch());
         mouseSelect.draw(renderer.getBatch());
@@ -260,10 +373,6 @@ public class MyGdxGame extends Game {
 
         this.hud.render();
         this.renderer = new OrthogonalTiledMapRenderer(this.map, 1.2f);
-        if(player.getStatusExit()==1){
-            dispose();
-            Gdx.app.exit();
-        }
     }
 
 
@@ -289,10 +398,10 @@ public class MyGdxGame extends Game {
 
 	@Override
 	public void dispose () {
-		// Free resources
+        // Free resources
         map.dispose();
-		manager.dispose();
-	}
+        manager.dispose();
+    }
 
 
 
