@@ -349,7 +349,7 @@ public class MyGdxGame extends Game {
             for(int i = 0 ; i<6;i++)
                 for(int j = 0;j<7;j++) {
                     floorrender[i][j].setTexture(new Texture(floorMap2[loop].getName()));
-                    weedrender[i][j].setTexture(new Texture(floorMap[loop].getTree().getNameTree()));
+                    weedrender[i][j].setTexture(new Texture(floorMap2[loop].getTree().getNameTree()));
                     loop++;
                 }
             hudShowing();
@@ -361,7 +361,7 @@ public class MyGdxGame extends Game {
             for(int i = 0 ; i<6;i++)
                 for(int j = 0;j<7;j++) {
                     floorrender[i][j].setTexture(new Texture(floorMap3[loop].getName()));
-                    weedrender[i][j].setTexture(new Texture(floorMap[loop].getTree().getNameTree()));
+                    weedrender[i][j].setTexture(new Texture(floorMap3[loop].getTree().getNameTree()));
                     loop++;
                 }
             hudShowing();
@@ -372,7 +372,7 @@ public class MyGdxGame extends Game {
             for(int i = 0 ; i<6;i++)
                 for(int j = 0;j<7;j++) {
                     floorrender[i][j].setTexture(new Texture(floorMap4[loop].getName()));
-                    weedrender[i][j].setTexture(new Texture(floorMap[loop].getTree().getNameTree()));
+                    weedrender[i][j].setTexture(new Texture(floorMap4[loop].getTree().getNameTree()));
                     loop++;
                 }
             hudShowing();
@@ -671,6 +671,11 @@ public class MyGdxGame extends Game {
                                 floorMaps[1].setStatus(3);
                             }
                         }
+                        else if(mouseNumber==7){
+                            floorMaps[1].getTree().setNameTree("weed.png");
+                            floorMaps[1].getTree().setGrowthStatus(0);
+
+                        }
                     }
                     else if(706<=player.getPosX() && player.getPosX()<=790 && player.getPosY()>=335 && player.getPosY()<=421){
                         if (mouseNumber==3) {
@@ -692,6 +697,11 @@ public class MyGdxGame extends Game {
                                 floorMaps[2].setName("dickingwet.png");
                                 floorMaps[2].setStatus(3);
                             }
+                        }
+                        else if(mouseNumber==7){
+                            floorMaps[2].getTree().setNameTree("weed.png");
+                            floorMaps[2].getTree().setGrowthStatus(0);
+
                         }
                     }
                     else if(806<=player.getPosX() && player.getPosX()<=890 && player.getPosY()>=335 && player.getPosY()<=421){
@@ -715,6 +725,12 @@ public class MyGdxGame extends Game {
                                 floorMaps[3].setStatus(3);
                             }
                         }
+                        else if(mouseNumber==7){
+                            floorMaps[3].getTree().setNameTree("weed.png");
+                            floorMaps[3].getTree().setGrowthStatus(0);
+
+                        }
+
                     }
                     else if(906<=player.getPosX() && player.getPosX()<=990 && player.getPosY()>=335 && player.getPosY()<=421){
                         if (mouseNumber==3) {
@@ -736,6 +752,11 @@ public class MyGdxGame extends Game {
                                 floorMaps[4].setName("dickingwet.png");
                                 floorMaps[4].setStatus(3);
                             }
+                        }
+                        else if(mouseNumber==7){
+                            floorMaps[4].getTree().setNameTree("weed.png");
+                            floorMaps[4].getTree().setGrowthStatus(0);
+
                         }
                     }
                     else if(1006<=player.getPosX() && player.getPosX()<=1090 && player.getPosY()>=335 && player.getPosY()<=421){
@@ -759,6 +780,11 @@ public class MyGdxGame extends Game {
                                 floorMaps[5].setStatus(3);
                             }
                         }
+                        else if(mouseNumber==7){
+                            floorMaps[5].getTree().setNameTree("weed.png");
+                            floorMaps[5].getTree().setGrowthStatus(0);
+
+                        }
                     }
                     else if(1106<=player.getPosX() && player.getPosX()<=1190 && player.getPosY()>=335 && player.getPosY()<=421){
                         if (mouseNumber==3) {
@@ -780,6 +806,11 @@ public class MyGdxGame extends Game {
                                 floorMaps[6].setName("dickingwet.png");
                                 floorMaps[6].setStatus(3);
                             }
+                        }
+                        else if(mouseNumber==7){
+                            floorMaps[6].getTree().setNameTree("weed.png");
+                            floorMaps[6].getTree().setGrowthStatus(0);
+
                         }
                     }
                     else if(506<=player.getPosX() && player.getPosX()<=590 && player.getPosY()>=404 && player.getPosY()<=515){
@@ -803,6 +834,11 @@ public class MyGdxGame extends Game {
                                 floorMaps[7].setStatus(3);
                             }
                         }
+                        else if(mouseNumber==7){
+                            floorMaps[7].getTree().setNameTree("weed.png");
+                            floorMaps[7].getTree().setGrowthStatus(0);
+
+                        }
                     }
                     else if(606<=player.getPosX() && player.getPosX()<=690 && player.getPosY()>=404 && player.getPosY()<=515){
                         if (mouseNumber==3) {
@@ -824,6 +860,11 @@ public class MyGdxGame extends Game {
                                 floorMaps[8].setName("dickingwet.png");
                                 floorMaps[8].setStatus(3);
                             }
+                        }
+                        else if(mouseNumber==7){
+                            floorMaps[8].getTree().setNameTree("weed.png");
+                            floorMaps[8].getTree().setGrowthStatus(0);
+
                         }
                     }
                     else if(706<=player.getPosX() && player.getPosX()<=790 && player.getPosY()>=404 && player.getPosY()<=515){
@@ -847,6 +888,11 @@ public class MyGdxGame extends Game {
                                 floorMaps[9].setStatus(3);
                             }
                         }
+                        else if(mouseNumber==7){
+                            floorMaps[9].getTree().setNameTree("weed.png");
+                            floorMaps[9].getTree().setGrowthStatus(0);
+
+                        }
                     }else if(806<=player.getPosX() && player.getPosX()<=890 && player.getPosY()>=404 && player.getPosY()<=515){
                         if (mouseNumber==3) {
                             if(floorMaps[10].getStatus()==0) {
@@ -867,6 +913,11 @@ public class MyGdxGame extends Game {
                                 floorMaps[10].setName("dickingwet.png");
                                 floorMaps[10].setStatus(3);
                             }
+                        }
+                        else if(mouseNumber==7){
+                            floorMaps[10].getTree().setNameTree("weed.png");
+                            floorMaps[10].getTree().setGrowthStatus(0);
+
                         }
                     }else if(906<=player.getPosX() && player.getPosX()<=990 && player.getPosY()>=404 && player.getPosY()<=515){
                         if (mouseNumber==3) {
@@ -889,6 +940,11 @@ public class MyGdxGame extends Game {
                                 floorMaps[11].setStatus(3);
                             }
                         }
+                        else if(mouseNumber==7){
+                            floorMaps[11].getTree().setNameTree("weed.png");
+                            floorMaps[11].getTree().setGrowthStatus(0);
+
+                        }
                     }else if(1006<=player.getPosX() && player.getPosX()<=1090 && player.getPosY()>=404 && player.getPosY()<=515){
                         if (mouseNumber==3) {
                             if(floorMaps[12].getStatus()==0) {
@@ -909,7 +965,12 @@ public class MyGdxGame extends Game {
                                 floorMaps[12].setName("dickingwet.png");
                                 floorMaps[12].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[12].getTree().setNameTree("weed.png");
+                            floorMaps[12].getTree().setGrowthStatus(0);
+
                         }
+
                     }else if(1106<=player.getPosX() && player.getPosX()<=1190 && player.getPosY()>=404 && player.getPosY()<=515){
                         if (mouseNumber==3) {
                             if(floorMaps[13].getStatus()==0) {
@@ -930,8 +991,13 @@ public class MyGdxGame extends Game {
                                 floorMaps[13].setName("dickingwet.png");
                                 floorMaps[13].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[13].getTree().setNameTree("weed.png");
+                            floorMaps[13].getTree().setGrowthStatus(0);
+
                         }
                     }
+
                     else if(506<=player.getPosX() && player.getPosX()<=590 && player.getPosY()>=517 && player.getPosY()<=605){
                         if (mouseNumber==3) {
                             if(floorMaps[14].getStatus()==0) {
@@ -952,8 +1018,13 @@ public class MyGdxGame extends Game {
                                 floorMaps[14].setName("dickingwet.png");
                                 floorMaps[14].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[14].getTree().setNameTree("weed.png");
+                            floorMaps[14].getTree().setGrowthStatus(0);
+
                         }
                     }
+
                     else if(606<=player.getPosX() && player.getPosX()<=690 && player.getPosY()>=517 && player.getPosY()<=605){
                         if (mouseNumber==3) {
                             if(floorMaps[15].getStatus()==0) {
@@ -974,8 +1045,13 @@ public class MyGdxGame extends Game {
                                 floorMaps[15].setName("dickingwet.png");
                                 floorMaps[15].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[15].getTree().setNameTree("weed.png");
+                            floorMaps[15].getTree().setGrowthStatus(0);
+
                         }
                     }
+
                     else if(706<=player.getPosX() && player.getPosX()<=790 && player.getPosY()>=517 && player.getPosY()<=605){
                         if (mouseNumber==3) {
                             if(floorMaps[16].getStatus()==0) {
@@ -996,8 +1072,13 @@ public class MyGdxGame extends Game {
                                 floorMaps[16].setName("dickingwet.png");
                                 floorMaps[16].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[16].getTree().setNameTree("weed.png");
+                            floorMaps[16].getTree().setGrowthStatus(0);
+
                         }
                     }
+
                     else if(806<=player.getPosX() && player.getPosX()<=890 && player.getPosY()>=517 && player.getPosY()<=605){
                         if (mouseNumber==3) {
                             if(floorMaps[17].getStatus()==0) {
@@ -1018,8 +1099,13 @@ public class MyGdxGame extends Game {
                                 floorMaps[17].setName("dickingwet.png");
                                 floorMaps[17].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[17].getTree().setNameTree("weed.png");
+                            floorMaps[17].getTree().setGrowthStatus(0);
+
                         }
                     }
+
                     else if(906<=player.getPosX() && player.getPosX()<=990 && player.getPosY()>=517 && player.getPosY()<=605){
                         if (mouseNumber==3) {
                             if(floorMaps[18].getStatus()==0) {
@@ -1040,8 +1126,13 @@ public class MyGdxGame extends Game {
                                 floorMaps[18].setName("dickingwet.png");
                                 floorMaps[18].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[18].getTree().setNameTree("weed.png");
+                            floorMaps[18].getTree().setGrowthStatus(0);
+
                         }
                     }
+
                     else if(1006<=player.getPosX() && player.getPosX()<=1090 && player.getPosY()>=517 && player.getPosY()<=605){
                         if (mouseNumber==3) {
                             if(floorMaps[19].getStatus()==0) {
@@ -1062,8 +1153,13 @@ public class MyGdxGame extends Game {
                                 floorMaps[19].setName("dickingwet.png");
                                 floorMaps[19].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[19].getTree().setNameTree("weed.png");
+                            floorMaps[19].getTree().setGrowthStatus(0);
+
                         }
                     }
+
                     else if(1106<=player.getPosX() && player.getPosX()<=1190 && player.getPosY()>=517 && player.getPosY()<=605){
                         if (mouseNumber==3) {
                             if(floorMaps[20].getStatus()==0) {
@@ -1084,8 +1180,13 @@ public class MyGdxGame extends Game {
                                 floorMaps[20].setName("dickingwet.png");
                                 floorMaps[20].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[20].getTree().setNameTree("weed.png");
+                            floorMaps[20].getTree().setGrowthStatus(0);
+
                         }
                     }
+
                     else if(506<=player.getPosX() && player.getPosX()<=590 && player.getPosY()>=607 && player.getPosY()<=695){
                         if (mouseNumber==3) {
                             if(floorMaps[21].getStatus()==0) {
@@ -1106,8 +1207,13 @@ public class MyGdxGame extends Game {
                                 floorMaps[21].setName("dickingwet.png");
                                 floorMaps[21].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[21].getTree().setNameTree("weed.png");
+                            floorMaps[21].getTree().setGrowthStatus(0);
+
                         }
                     }
+
                     else if(606<=player.getPosX() && player.getPosX()<=690 && player.getPosY()>=607 && player.getPosY()<=695){
                         if (mouseNumber==3) {
                             if(floorMaps[22].getStatus()==0) {
@@ -1128,8 +1234,13 @@ public class MyGdxGame extends Game {
                                 floorMaps[22].setName("dickingwet.png");
                                 floorMaps[22].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[22].getTree().setNameTree("weed.png");
+                            floorMaps[22].getTree().setGrowthStatus(0);
+
                         }
                     }
+
                     else if(706<=player.getPosX() && player.getPosX()<=790 && player.getPosY()>=607 && player.getPosY()<=695){
                         if (mouseNumber==3) {
                             if(floorMaps[23].getStatus()==0) {
@@ -1150,7 +1261,12 @@ public class MyGdxGame extends Game {
                                 floorMaps[23].setName("dickingwet.png");
                                 floorMaps[23].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[23].getTree().setNameTree("weed.png");
+                            floorMaps[23].getTree().setGrowthStatus(0);
                         }
+
+
                     }
                     else if(806<=player.getPosX() && player.getPosX()<=890 && player.getPosY()>=607 && player.getPosY()<=695){
                         if (mouseNumber==3) {
@@ -1172,8 +1288,13 @@ public class MyGdxGame extends Game {
                                 floorMaps[24].setName("dickingwet.png");
                                 floorMaps[24].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[24].getTree().setNameTree("weed.png");
+                            floorMaps[24].getTree().setGrowthStatus(0);
+
                         }
                     }
+
                     else if(906<=player.getPosX() && player.getPosX()<=990 && player.getPosY()>=607 && player.getPosY()<=695){
                         if (mouseNumber==3) {
                             if(floorMaps[25].getStatus()==0) {
@@ -1194,6 +1315,10 @@ public class MyGdxGame extends Game {
                                 floorMaps[25].setName("dickingwet.png");
                                 floorMaps[25].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[25].getTree().setNameTree("weed.png");
+                            floorMaps[25].getTree().setGrowthStatus(0);
+
                         }
                     }
                     else if(1006<=player.getPosX() && player.getPosX()<=1090 && player.getPosY()>=607 && player.getPosY()<=695){
@@ -1216,6 +1341,10 @@ public class MyGdxGame extends Game {
                                 floorMaps[26].setName("dickingwet.png");
                                 floorMaps[26].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[26].getTree().setNameTree("weed.png");
+                            floorMaps[26].getTree().setGrowthStatus(0);
+
                         }
                     }
                     else if(1106<=player.getPosX() && player.getPosX()<=1190 && player.getPosY()>=607 && player.getPosY()<=695){
@@ -1238,6 +1367,10 @@ public class MyGdxGame extends Game {
                                 floorMaps[27].setName("dickingwet.png");
                                 floorMaps[27].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[27].getTree().setNameTree("weed.png");
+                            floorMaps[27].getTree().setGrowthStatus(0);
+
                         }
                     }
                     else if(506<=player.getPosX() && player.getPosX()<=590 && player.getPosY()>=697 && player.getPosY()<=785){
@@ -1260,6 +1393,10 @@ public class MyGdxGame extends Game {
                                 floorMaps[28].setName("dickingwet.png");
                                 floorMaps[28].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[28].getTree().setNameTree("weed.png");
+                            floorMaps[28].getTree().setGrowthStatus(0);
+
                         }
                     }
                     else if(606<=player.getPosX() && player.getPosX()<=690 && player.getPosY()>=697 && player.getPosY()<=785){
@@ -1282,6 +1419,10 @@ public class MyGdxGame extends Game {
                                 floorMaps[29].setName("dickingwet.png");
                                 floorMaps[29].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[29].getTree().setNameTree("weed.png");
+                            floorMaps[29].getTree().setGrowthStatus(0);
+
                         }
                     }
                     else if(706<=player.getPosX() && player.getPosX()<=790 && player.getPosY()>=697 && player.getPosY()<=785){
@@ -1304,6 +1445,10 @@ public class MyGdxGame extends Game {
                                 floorMaps[30].setName("dickingwet.png");
                                 floorMaps[30].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[30].getTree().setNameTree("weed.png");
+                            floorMaps[30].getTree().setGrowthStatus(0);
+
                         }
                     }
                     else if(806<=player.getPosX() && player.getPosX()<=890 && player.getPosY()>=697 && player.getPosY()<=785){
@@ -1326,6 +1471,10 @@ public class MyGdxGame extends Game {
                                 floorMaps[31].setName("dickingwet.png");
                                 floorMaps[31].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[31].getTree().setNameTree("weed.png");
+                            floorMaps[31].getTree().setGrowthStatus(0);
+
                         }
                     }
                     else if(906<=player.getPosX() && player.getPosX()<=990 && player.getPosY()>=697 && player.getPosY()<=785){
@@ -1348,6 +1497,10 @@ public class MyGdxGame extends Game {
                                 floorMaps[32].setName("dickingwet.png");
                                 floorMaps[32].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[32].getTree().setNameTree("weed.png");
+                            floorMaps[32].getTree().setGrowthStatus(0);
+
                         }
                     }
                     else if(1006<=player.getPosX() && player.getPosX()<=1090 && player.getPosY()>=697 && player.getPosY()<=785){
@@ -1370,6 +1523,10 @@ public class MyGdxGame extends Game {
                                 floorMaps[33].setName("dickingwet.png");
                                 floorMaps[33].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[33].getTree().setNameTree("weed.png");
+                            floorMaps[33].getTree().setGrowthStatus(0);
+
                         }
                     }
                     else if(1106<=player.getPosX() && player.getPosX()<=1190 && player.getPosY()>=697 && player.getPosY()<=785){
@@ -1392,6 +1549,10 @@ public class MyGdxGame extends Game {
                                 floorMaps[34].setName("dickingwet.png");
                                 floorMaps[34].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[34].getTree().setNameTree("weed.png");
+                            floorMaps[34].getTree().setGrowthStatus(0);
+
                         }
                     }
                     else if(506<=player.getPosX() && player.getPosX()<=590 && player.getPosY()>=787 && player.getPosY()<=880){
@@ -1414,6 +1575,10 @@ public class MyGdxGame extends Game {
                                 floorMaps[35].setName("dickingwet.png");
                                 floorMaps[35].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[35].getTree().setNameTree("weed.png");
+                            floorMaps[35].getTree().setGrowthStatus(0);
+
                         }
                     }
                     else if(606<=player.getPosX() && player.getPosX()<=690 && player.getPosY()>=787 && player.getPosY()<=880){
@@ -1436,6 +1601,10 @@ public class MyGdxGame extends Game {
                                 floorMaps[36].setName("dickingwet.png");
                                 floorMaps[36].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[36].getTree().setNameTree("weed.png");
+                            floorMaps[36].getTree().setGrowthStatus(0);
+
                         }
                     }
                     else if(706<=player.getPosX() && player.getPosX()<=790 && player.getPosY()>=787 && player.getPosY()<=880){
@@ -1458,6 +1627,10 @@ public class MyGdxGame extends Game {
                                 floorMaps[37].setName("dickingwet.png");
                                 floorMaps[37].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[37].getTree().setNameTree("weed.png");
+                            floorMaps[37].getTree().setGrowthStatus(0);
+
                         }
                     }
                     else if(806<=player.getPosX() && player.getPosX()<=890 && player.getPosY()>=787 && player.getPosY()<=880){
@@ -1480,6 +1653,10 @@ public class MyGdxGame extends Game {
                                 floorMaps[38].setName("dickingwet.png");
                                 floorMaps[38].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[38].getTree().setNameTree("weed.png");
+                            floorMaps[38].getTree().setGrowthStatus(0);
+
                         }
                     }
                     else if(906<=player.getPosX() && player.getPosX()<=990 && player.getPosY()>=787 && player.getPosY()<=880){
@@ -1502,6 +1679,10 @@ public class MyGdxGame extends Game {
                                 floorMaps[39].setName("dickingwet.png");
                                 floorMaps[39].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[39].getTree().setNameTree("weed.png");
+                            floorMaps[39].getTree().setGrowthStatus(0);
+
                         }
                     }
                     else if(1006<=player.getPosX() && player.getPosX()<=1090 && player.getPosY()>=787 && player.getPosY()<=880){
@@ -1524,6 +1705,10 @@ public class MyGdxGame extends Game {
                                 floorMaps[40].setName("dickingwet.png");
                                 floorMaps[40].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[40].getTree().setNameTree("weed.png");
+                            floorMaps[40].getTree().setGrowthStatus(0);
+
                         }
                     }
                     else if(1106<=player.getPosX() && player.getPosX()<=1190 && player.getPosY()>=787 && player.getPosY()<=880){
@@ -1546,6 +1731,10 @@ public class MyGdxGame extends Game {
                                 floorMaps[41].setName("dickingwet.png");
                                 floorMaps[41].setStatus(3);
                             }
+                        }else if(mouseNumber==7){
+                            floorMaps[41].getTree().setNameTree("weed.png");
+                            floorMaps[41].getTree().setGrowthStatus(0);
+
                         }
                     }
 
