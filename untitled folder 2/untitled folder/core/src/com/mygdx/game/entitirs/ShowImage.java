@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class ShowImage extends Sprite {
     public ShowImage(Sprite sprite){
+
         super(sprite);
     }
 
@@ -12,5 +13,6 @@ public class ShowImage extends Sprite {
     public void draw(Batch batch) {
         super.draw(batch);
     }
+
 
 }

@@ -10,13 +10,11 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.title = "IT VAlley";
 		config.useGL30 = false;
-		config.backgroundFPS = 60;
-		config.foregroundFPS = 60;
-		config.width = 2560;
-		config.height = 1600;
-		//config.resizable = false;
+		config.width = 1280;
+		config.height = 720;
+		config.allowSoftwareMode = true;
 		config.fullscreen = false;
-        config.vSyncEnabled = true;
+		config.resizable = false;
 		new LwjglApplication(new MyGdxGame(), config);
 	}
 }

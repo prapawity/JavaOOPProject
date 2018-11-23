@@ -4,14 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.mygdx.game.MyGdxGame;
+import com.badlogic.gdx.maps.Map;
 
 public class Player extends Sprite implements InputProcessor{
     float posX=99;
     float posY=99;
     boolean state =false,mouseClicked = false;
     int mouseNotNormal=0,statusExit = 0;
-    MyGdxGame myGdxGame;
+    Map map;
 
     public boolean getState() {
         return state;
@@ -121,8 +121,7 @@ public class Player extends Sprite implements InputProcessor{
     public boolean mouseMoved(int screenX, int screenY) {
         setPosX(screenX);
         setPosY(screenY);
-        System.out.println(getPosX()+" "+getPosY());
-
+        System.out.println(screenX+" "+screenY);
         return true;
     }
 

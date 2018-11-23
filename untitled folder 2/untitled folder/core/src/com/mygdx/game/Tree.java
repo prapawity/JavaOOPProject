@@ -5,6 +5,16 @@ public class Tree {
     private boolean statusWatering;
     private int growthStatus;
 
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    private int day;
+
     public String getNameTree() {
         return nameTree;
     }
