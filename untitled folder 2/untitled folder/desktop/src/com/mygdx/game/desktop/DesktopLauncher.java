@@ -8,7 +8,7 @@ public class DesktopLauncher {
 	public static void main (String[] arg) {
 		// Frame setting
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.title = "IT VAlley";
+		config.title = "Home Garden";
 		config.useGL30 = false;
 		config.width = 1280;
 		config.height = 720;

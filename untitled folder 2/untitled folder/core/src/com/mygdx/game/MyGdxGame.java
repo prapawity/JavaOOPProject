@@ -3,14 +3,14 @@ package com.mygdx.game;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.MapBitPriority.HUD;
 import com.mygdx.game.entitirs.Player;
 import com.mygdx.game.entitirs.ShowImage;
@@ -19,7 +19,7 @@ public class MyGdxGame extends Game {
 	// Set Value
     private Pixmap pm,pm1,pm2,pm3,pm4,pm5,pm6,pm7;
     private FarmAcivities farmAcivity;
-    private CameraMove cameraMove;
+    private CameraMove cameraMove = new CameraMove();
     private boolean showBuyWindowOpen;
     private Cursor cursor,cursor1,cursor2,cursor3,cursor4,cursor5,cursor6,cursor7;
 	private TiledMap map;
@@ -27,14 +27,17 @@ public class MyGdxGame extends Game {
 	private AssetManager manager;
     private float oldCameraX, oldCameraY;
     private HUD hud;
-    private ShowImage showImage,backhome1,gotoMarket,buyWindow,overlay;
+    private ShowImage showImage,backhome1,gotoMarket,buyWindow,overlay,WhiteScreen,logo,Openpic,newGame,loadGame,exitGame,blackScreen;
     private ShowImage greenHouse1,mouseSelect,weedTest,weedtest2,weedtest3,weedtest4, weedList[];
-    private Timer timer;
-    MapObjects mapObject;
+    float opacity,opcacitylogo;
+    private Music openSound;
+    private String logoPng[];
+    private Sound sound;
+    long id;
+
     private FloorRender
     base, floorrender[][] ,weedrender[] [];
-
-    private int positionX[] = {3153, 3258,3363,3468,3573,3678,3783},positionY[] = {6627,6527,6427,6327,6227,6127},loop = 0,mouseNumber = 1,day=0;
+    private int positionX[] = {3153, 3258,3363,3468,3573,3678,3783},positionY[] = {6627,6527,6427,6327,6227,6127},loop = 0,mouseNumber = 1,day=0,logostate=0;
 
     FloorStatus floorMap[] = new FloorStatus[30];
     FloorStatus floorMap2[] = new FloorStatus[30];
@@ -44,17 +47,18 @@ public class MyGdxGame extends Game {
     // Map properties
 	private int tileWidth, tileHeight,
 			mapWidthInTiles, mapHeightInTiles,
-			mapWidthInPixels, mapHeightInPixels,store,load = 0;
+			mapWidthInPixels, mapHeightInPixels,store;
 
 	// Camera and render
 	private OrthographicCamera camera;
 	private OrthogonalTiledMapRenderer renderer;
-	private int screenState=0;
+	private int screenState=-1,time;
+
+
     @Override
 	public void create () {
-        if(load==0){
             // Map loading
-            timer = new Timer();
+
             player = new Player();
             manager = new AssetManager();
             manager.setLoader(TiledMap.class, new TmxMapLoader());
@@ -69,6 +73,11 @@ public class MyGdxGame extends Game {
             mapHeightInTiles = properties.get("height", Integer.class);
             mapWidthInPixels = mapWidthInTiles;
             mapHeightInPixels = mapHeightInTiles;
+            camera = new OrthographicCamera(3f, 3f);
+            camera.position.x = 10000f;
+            camera.position.y = 10000f;
+            // Instantiation of the render for the map object
+            renderer = new OrthogonalTiledMapRenderer(map);
 
 
             createMouse();
@@ -77,11 +86,6 @@ public class MyGdxGame extends Game {
 
             hud = new HUD();
             // Set up the camera
-            camera = new OrthographicCamera(3f, 3f);
-            camera.position.x = 642f;
-            camera.position.y = 6820f;
-            // Instantiation of the render for the map object
-            renderer = new OrthogonalTiledMapRenderer(map);
             // render Player
             showImage = new ShowImage(new Sprite(new Texture("Home.png")));
 
@@ -97,7 +101,7 @@ public class MyGdxGame extends Game {
             weedtest2 = new ShowImage(new Sprite(new Texture("null.png")));
             weedtest3 = new ShowImage(new Sprite(new Texture("null.png")));
             weedtest4 = new ShowImage(new Sprite(new Texture("null.png")));
-            buyWindow.scale(2.2f);
+            buyWindow.scale(1.4f);
             base = new FloorRender(new Sprite(new Texture("base.png")));
             createFloor();
 
@@ -143,14 +147,16 @@ public class MyGdxGame extends Game {
 
             gotoMarket.scale(0.1f);
 
-            gotoMarket.setPosition(840, 7620);
+            gotoMarket.setPosition(780, 6970);
 
 
             showImage.scale(2);
             greenHouse1.scale(2);
             for (int i = 0; i < weedList.length; i++)
                 weedList[i].scale(3.2f);
-
+            changeSound(0);
+            openSound.setLooping(true);
+            openSound.setVolume(0.5f);
 
 //		weed.scale(8);
 //		weed.setPosition(3429,7149);
@@ -169,8 +175,34 @@ public class MyGdxGame extends Game {
             pm = new Pixmap(Gdx.files.internal("mouse.png"));
             cursor = Gdx.graphics.newCursor(new Pixmap(Gdx.files.internal("mouse.png")), 0, 0);
             Gdx.graphics.setCursor(cursor);
-            load++;
-        }
+
+
+            WhiteScreen = new ShowImage(new Sprite(new Texture("WhiteScreen.png")));
+            WhiteScreen.setPosition(camera.position.x-600,camera.position.y-370);
+            WhiteScreen.scale(2);
+
+            blackScreen = new ShowImage(new Sprite(new Texture("blackScreen.png")));
+            blackScreen.setPosition(camera.position.x-600,camera.position.y-370);
+            blackScreen.scale(10);
+            Openpic = new ShowImage(new Sprite(new Texture("OpenPic.png")));
+            Openpic.setPosition(camera.position.x-640,camera.position.y-358);
+
+            logoPng = new String[3];
+            logoPng[0] = "logoit1.png";
+            logoPng[1] = "logokmitl1.png";
+            logoPng[2] = "logoIlove.png";
+            logo = new ShowImage(new Sprite(new Texture(logoPng[0])));
+            logo.setPosition(camera.position.x-250,camera.position.y-220);
+
+            newGame = new ShowImage(new Sprite(new Texture("OpenPic/new1.png")));
+            loadGame = new ShowImage(new Sprite(new Texture("OpenPic/load1.png")));
+            exitGame = new ShowImage(new Sprite(new Texture("OpenPic/exit1.png")));
+            newGame.setPosition(camera.position.x-330,camera.position.y-260);
+            loadGame.setPosition(camera.position.x-30,camera.position.y-260);
+            exitGame.setPosition(camera.position.x+260,camera.position.y-260);
+            newGame.scale(2.5f);
+            loadGame.scale(2.5f);
+            exitGame.scale(2.5f);
 
     }
 
@@ -189,17 +221,12 @@ public class MyGdxGame extends Game {
         weedtest2.setPosition(camera.position.x+119,camera.position.y-480);
         weedtest3.setPosition(camera.position.x+200,camera.position.y-480);
         weedtest4.setPosition(camera.position.x+285,camera.position.y-480);
-
+        openSound.play();
+        System.out.println("        "+Gdx.graphics.getDeltaTime());
+        //System.out.println(camera.position);
         switch (screenState){
-            case 0:{
-                for(int i = 0 ; i<5;i++)
-                    for(int j = 0;j<6;j++) {
-                        floorrender[i][j].getTexture().dispose();
-                        weedrender[i][j].getTexture().dispose();
-                    }
-                zeroScreen();
-                break;
-            }
+            case -1:OpenScreen();break;
+            case 0:zeroScreen();break;
             case 1:firstScreen(floorMap);break;
             case 2:firstScreen(floorMap2);break;
             case 3:firstScreen(floorMap3);break;
@@ -209,23 +236,19 @@ public class MyGdxGame extends Game {
         backhome1.draw(renderer.getBatch());
         mouseSelect.draw(renderer.getBatch());
         renderer.getBatch().end();
-        this.hud.render();
+        if(screenState!=-1) this.hud.render();
         renderer.getBatch().begin();
         weedTest.draw(renderer.getBatch());
         weedtest2.draw(renderer.getBatch());
         weedtest3.draw(renderer.getBatch());
         weedtest4.draw(renderer.getBatch());
+
         renderer.getBatch().end();
         this.renderer = new OrthogonalTiledMapRenderer(this.map, 1.1f);
         if(player.getStatusExit()==1){
             dispose();
-
-
-
         }
     }
-
-
 
 
 
@@ -249,8 +272,16 @@ public class MyGdxGame extends Game {
 	@Override
 	public void dispose () {
         // Free resources
-        manager.dispose();
         map.dispose();
+        manager.dispose();
+        openSound.dispose();
+        Openpic.getTexture().dispose();
+        logo.getTexture().dispose();
+        newGame.getTexture().dispose();
+        loadGame.getTexture().dispose();
+        exitGame.getTexture().dispose();
+        WhiteScreen.getTexture().dispose();
+        blackScreen.getTexture().dispose();
         Gdx.app.exit();
 
     }
@@ -438,14 +469,19 @@ public class MyGdxGame extends Game {
     public void farmActivities(FloorStatus[] floorMaps){
         if(player.getMouseNotNormal()==1) farmAcivity = new FarmAcivities(floorMaps,player,mouseNumber);
         else{
-            if(player.getPosX() >= 35 && player.getPosX()<=160 && player.getPosY() >=879  &&player.getPosY() <= 1005){
+            if(player.getPosX() >= 28 && player.getPosX()<=105 && player.getPosY() >=595  &&player.getPosY() <= 677){
                 mousChange(2);
                 if (player.getmouseClicked()) {
-                    camera.position.set(836, 7290, 0);
-
+                    camera.position.set(642, 6820, 0);
                     screenState = 0;
                     player.setMouseClicked(false);
                     player.setMouseNotNormal(0);
+                    for(int i = 0 ; i<5;i++)
+                        for(int j = 0;j<6;j++) {
+                            floorrender[i][j].getTexture().dispose();
+                            weedrender[i][j].getTexture().dispose();
+                            loop++;
+                        }
                 }
             }
             else {
@@ -502,9 +538,7 @@ public class MyGdxGame extends Game {
     }
 
     public void zeroScreen() {
-
-
-            cameraMove = new CameraMove(camera,player,0);
+            cameraMove.CameraMove(camera,player,0);
 
 
             hudShowing();
@@ -512,7 +546,19 @@ public class MyGdxGame extends Game {
             //GreenHouse First
             if (camera.position.x == 642 && camera.position.y == 6820) {
                 if (player.getPosX() <= 410 && player.getPosX() >= 189 && player.getPosY() >= 92 && player.getPosY() <= 245) {
-                    greenHouse1.setPosition(197, 6970); // greenHouse1
+                    showImage.setPosition(197,6970);
+                    if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
+                        mousChange(2);
+                    showImage.draw(renderer.getBatch());
+                    if (player.getmouseClicked()) {
+
+
+                        player.setMouseClicked(false);
+                        player.setMouseNotNormal(0);
+                    }
+
+                } else if (player.getPosX() >= 157 && player.getPosX() <= 431 && player.getPosY() >= 381 && player.getPosY() <= 576) {
+                    greenHouse1.setPosition(215,6637);
                     if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                         mousChange(2);
                     greenHouse1.draw(renderer.getBatch());
@@ -522,18 +568,8 @@ public class MyGdxGame extends Game {
                         player.setMouseClicked(false);
                         player.setMouseNotNormal(0);
                     }
-
-                } else if (player.getPosX() >= 212 && player.getPosX() <= 460 && player.getPosY() >= 83 && player.getPosY() <= 268) {
-                    if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
-                        mousChange(2);
-                    showImage.draw(renderer.getBatch());
-                    if (player.getmouseClicked()) {
-
-                        player.setMouseClicked(false);
-                        player.setMouseNotNormal(0);
-                    }
-                } else if (player.getPosX() < 1478 && player.getPosX() >= 1176 && player.getPosY() >= 227 && player.getPosY() <= 440) {
-                    greenHouse1.setPosition(1233, 7412); //greenHouse2
+                } else if (player.getPosX() < 1250 && player.getPosX() >= 1073 && player.getPosY() >= 219 && player.getPosY() <= 405) {
+                    greenHouse1.setPosition(1130, 6796); //greenHouse2
                     if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                         mousChange(2);
                     greenHouse1.draw(renderer.getBatch());
@@ -543,20 +579,20 @@ public class MyGdxGame extends Game {
                         player.setMouseClicked(false);
                         player.setMouseNotNormal(0);
                     }
-                } else if (player.getPosX() > 731 && player.getPosX() <= 1116 && player.getPosY() >= 0 && player.getPosY() <= 105) {
+                } else if (player.getPosX() > 665 && player.getPosX() <= 1019 && player.getPosY() >= 0 && player.getPosY() <= 112) {
                     if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                         mousChange(2);
                     gotoMarket.draw(renderer.getBatch());
                     if (player.getmouseClicked()) {
-                        camera.position.set(1130, 5541, 0);
+                        camera.position.set(1055, 5160, 0);
                         screenState = 5;
                         player.setMouseClicked(false);
                         player.setMouseNotNormal(0);
                     }
                 }
                 else player.setMouseClicked(false);
-            } else if (camera.position.x == 1463 && camera.position.y == 7290) {
-                if (player.getPosX() <= 850 && player.getPosX() >= 550 && player.getPosY() >= 227 && player.getPosY() <= 439) {
+            } else if (camera.position.x == 1470 && camera.position.y == 6820) {
+                if (player.getPosX() <= 516 && player.getPosX() >= 245 && player.getPosY() >= 221 && player.getPosY() <= 416) {
                     greenHouse1.setPosition(1233, 7412); //greenHouse2
                     if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                         mousChange(2);
@@ -567,7 +603,7 @@ public class MyGdxGame extends Game {
                         player.setMouseClicked(false);
                         player.setMouseNotNormal(0);
                     }
-                } else if (player.getPosX() >= 1146 && player.getPosX() <= 1446 && player.getPosY() >= 226 && player.getPosY() <= 439) {
+                } else if (player.getPosX() >= 786 && player.getPosX() <= 1065 && player.getPosY() >= 225 && player.getPosY() <= 417) {
                     greenHouse1.setPosition(1828, 7412); //greenHouse2
                     if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                         mousChange(2);
@@ -591,9 +627,9 @@ public class MyGdxGame extends Game {
                     }
                 }else player.setMouseClicked(false);
 
-            } else if (camera.position.x == 836 && camera.position.y == 7059) {
-                if (player.getPosX() <= 478 && player.getPosX() >= 178 && player.getPosY() >= 167 && player.getPosY() <= 379) {
-                    greenHouse1.setPosition(235, 7240); // greenHouse1
+            } else if (camera.position.x == 642 && camera.position.y == 6349) {
+                if (player.getPosX() <= 434 && player.getPosX() >= 153 && player.getPosY() >= 25 && player.getPosY() <= 105) {
+                    greenHouse1.setPosition(215,6637);
                     if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                         mousChange(2);
                     greenHouse1.draw(renderer.getBatch());
@@ -603,8 +639,8 @@ public class MyGdxGame extends Game {
                         player.setMouseClicked(false);
                         player.setMouseNotNormal(0);
                     }
-                } else if (player.getPosX() >= 677 && player.getPosX() <= 973 && player.getPosY() >= 546 && player.getPosY() <= 762) {
-                    greenHouse1.setPosition(735, 6852); // greenHouse1
+                } else if (player.getPosX() >= 614 && player.getPosX() <= 887 && player.getPosY() >= 264 && player.getPosY() <= 455) {
+                    greenHouse1.setPosition(672, 6285); // greenHouse1
                     if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                         mousChange(2);
                     greenHouse1.draw(renderer.getBatch());
@@ -615,72 +651,19 @@ public class MyGdxGame extends Game {
                         player.setMouseNotNormal(0);
                     }
 
-                } else if (player.getPosX() >= 1178 && player.getPosX() <= 1478 && player.getPosY() >= 0 && player.getPosY() <= 206) {
-                    greenHouse1.setPosition(1233, 7412); //greenHouse2
-                    if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
-                        mousChange(2);
-                    greenHouse1.draw(renderer.getBatch());
-                    if (player.getmouseClicked()) {
-                        camera.position.set(3722, 7100, 0);
-                        screenState = 3;
-                        player.setMouseClicked(false);
-                        player.setMouseNotNormal(0);
-                    }
-
-                }
-                else player.setMouseClicked(false);
-
-            } else if (camera.position.x == 1463 && camera.position.y == 7059) {
-                if (player.getPosX() >= 617 && player.getPosX() <= 641 && player.getPosY() >= 174 && player.getPosY() <= 206) {
-                    greenHouse1.setPosition(1233, 7412); //greenHouse2
-                    if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
-                        mousChange(2);
-                    greenHouse1.draw(renderer.getBatch());
-                    if (player.getmouseClicked()) {
-                        camera.position.set(3722, 7100, 0);
-                        screenState = 3;
-                        player.setMouseClicked(false);
-                        player.setMouseNotNormal(0);
-                    } else mousChange(1);
-                } else if (player.getPosX() >= 1214 && player.getPosX() <= 1237 && player.getPosY() >= 174 && player.getPosY() <= 206) {
-                    greenHouse1.setPosition(1828, 7412); //greenHouse2
-                    if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
-                        mousChange(2);
-                    greenHouse1.draw(renderer.getBatch());
-                    if (player.getmouseClicked()) {
-                        camera.position.set(3722, 7100, 0);
-                        screenState = 4;
-                        player.setMouseClicked(false);
-                        player.setMouseNotNormal(0);
-                    } else mousChange(1);
-                } else if (player.getPosX() >= 119 && player.getPosX() <= 143 && player.getPosY() >= 730 && player.getPosY() <= 759) {
-                    greenHouse1.setPosition(735, 6852); // greenHouse1
-                    if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
-                        mousChange(2);
-                    greenHouse1.draw(renderer.getBatch());
-                    if (player.getmouseClicked()) {
-                        camera.position.set(3722, 7100, 0);
-                        screenState = 2;
-                        player.setMouseClicked(false);
-                        player.setMouseNotNormal(0);
-                    }
-
-
-                }
-                else player.setMouseClicked(false);
+                } else player.setMouseClicked(false);
 
             }else player.setMouseClicked(false);
 
     }
 
     public void firstScreen(FloorStatus floorMapz[]){
-        showImage.getTexture().dispose();
-        gotoMarket.getTexture().dispose();
-        greenHouse1.getTexture().dispose();
 
         for(int i = 0 ; i<5;i++)
             for(int j = 0;j<6;j++) {
+                floorrender[i][j].getTexture().dispose();
                 floorrender[i][j].setTexture(new Texture(floorMapz[loop].getName()));
+                weedrender[i][j].getTexture().dispose();
                 weedrender[i][j].setTexture(new Texture(floorMapz[loop].getTree().getNameTree()));
                 loop++;
             }
@@ -698,10 +681,7 @@ public class MyGdxGame extends Game {
 
         if(showBuyWindowOpen == false) {
 
-            cameraMove = new CameraMove(camera,player,1);
-
-
-            if(player.getPosX()>=249 && player.getPosX() <= 285 && player.getPosY()>=269 &&player.getPosY() <= 306){
+            if(player.getPosX()>=37 && player.getPosX() <= 194 && player.getPosY()>=30 &&player.getPosY() <= 219){
                 if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                     mousChange(2);
                 if (player.getmouseClicked()) {
@@ -710,7 +690,7 @@ public class MyGdxGame extends Game {
                     player.setMouseClicked(false);
                     player.setMouseNotNormal(0);
                 }
-            }else if(player.getPosX()>=202 && player.getPosX() <= 440 && player.getPosY()>=503 &&player.getPosY() <= 692){
+            }else if(player.getPosX()>=501 && player.getPosX() <= 669 && player.getPosY()>=34 &&player.getPosY() <= 218){
                 if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                     mousChange(2);
                 if (player.getmouseClicked()) {
@@ -721,11 +701,42 @@ public class MyGdxGame extends Game {
                     player.setMouseNotNormal(0);
                 }
             }
-            else if(player.getPosX() >= 718 &&  player.getPosX()<= 888 && player.getPosY() >= 786 && player.getPosY()<= 950){
+            else if(player.getPosX()>=992 && player.getPosX() <= 1111 && player.getPosY()>=47 &&player.getPosY() <= 202){
                 if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                     mousChange(2);
                 if (player.getmouseClicked()) {
-                    camera.position.set(836, 7290, 0);
+                    showBuyWindowOpen = true;
+                    mousChange(1);
+                    store = 3;
+                    player.setMouseClicked(false);
+                    player.setMouseNotNormal(0);
+                }
+            } else if(player.getPosX()>=39 && player.getPosX() <= 252 && player.getPosY()>=419 &&player.getPosY() <= 590){
+                if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
+                    mousChange(2);
+                if (player.getmouseClicked()) {
+                    showBuyWindowOpen = true;
+                    mousChange(1);
+                    store = 4;
+                    player.setMouseClicked(false);
+                    player.setMouseNotNormal(0);
+                }
+            }else if(player.getPosX()>=956 && player.getPosX() <= 1163 && player.getPosY()>=428 &&player.getPosY() <= 590){
+                if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
+                    mousChange(2);
+                if (player.getmouseClicked()) {
+                    showBuyWindowOpen = true;
+                    mousChange(1);
+                    store = 5;
+                    player.setMouseClicked(false);
+                    player.setMouseNotNormal(0);
+                }
+            }
+            else if(player.getPosX() >= 510 &&  player.getPosX()<= 686 && player.getPosY() >= 540 && player.getPosY()<= 618){
+                if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
+                    mousChange(2);
+                if (player.getmouseClicked()) {
+                    camera.position.set(642,6820,0);
                     screenState = 0;
                     player.setMouseClicked(false);
                     player.setMouseNotNormal(0);
@@ -733,8 +744,11 @@ public class MyGdxGame extends Game {
             }else mousChange(1);
         }
         else {
-            showBuyWindow(store);
+            showBuyWindow(store);mousChange(1);
+            System.out.println(store);
         }
+
+
     }
     public void createMouse(){
             pm = new Pixmap(Gdx.files.internal("mouse.png"));
@@ -768,5 +782,143 @@ public class MyGdxGame extends Game {
 
 
     }
+
+
+
+    public void OpenScreen(){
+
+        WhiteScreen.setAlpha(opacity);
+        WhiteScreen.draw(renderer.getBatch());
+        logo.setAlpha(opcacitylogo);
+        switch (logostate) {
+            case 0: {
+                if (opacity < 0.99f)
+                    opacity += 0.01f;
+                else logostate++;
+                break;
+            }
+            case 1:{
+                if(opcacitylogo< 0.99f)
+                    opcacitylogo+=0.01f;
+                else logostate++;
+                break;
+            }
+            case 2:{
+                if(opcacitylogo> 0.01f)
+                    opcacitylogo-=0.01f;
+                else{
+                    opcacitylogo = 0;
+                    logostate++;
+                    logo.setTexture(new Texture(logoPng[1]));
+                }
+                logo.draw(renderer.getBatch());
+                break;
+            }
+            case 3:{
+                if(opcacitylogo< 0.99f)
+                    opcacitylogo+=0.01f;
+                else logostate++;
+                break;
+            }
+            case 4:{
+                if(opcacitylogo> 0.01f)
+                    opcacitylogo-=0.01f;
+                else{
+                    opcacitylogo = 0;
+                    logostate++;
+                    logo.setTexture(new Texture(logoPng[2]));
+                }
+                break;
+            }
+            case 5:{
+                if(opcacitylogo< 0.99f)
+                    opcacitylogo+=0.01f;
+                else logostate++;
+                break;
+            }
+            case 6:{
+                if(opcacitylogo> 0.01f)
+                    opcacitylogo-=0.01f;
+                else{
+                    WhiteScreen.getTexture().dispose();
+                    opcacitylogo = 0;
+                    logostate++;
+                }
+                break;
+            }
+            case 7: {
+                Openpic.draw(renderer.getBatch());
+                if (player.getPosX()>=217 &&player.getPosX()<= 466&&player.getPosY()>=494&&player.getPosY()<=686) {
+                    newGame.setTexture(new Texture("OpenPic/new2.png"));
+                    if (player.getmouseClicked()) {
+                        logostate++;
+                        player.setMouseClicked(false);
+                        player.setMouseNotNormal(0);
+                    }
+                }
+                else if(player.getPosX()>=520 &&player.getPosX()<= 772&&player.getPosY()>=495&&player.getPosY()<=686){
+                    loadGame.setTexture(new Texture("OpenPic/load2.png"));
+
+                }
+                else if(player.getPosX()>=808 &&player.getPosX()<= 1059&&player.getPosY()>=494&&player.getPosY()<=686){
+                    exitGame.setTexture(new Texture("OpenPic/exit2.png"));
+                    if (player.getmouseClicked()) {
+                        dispose();
+                    }
+                }else {
+                    newGame.getTexture().dispose();
+                    loadGame.getTexture().dispose();
+                    exitGame.getTexture().dispose();
+                    newGame.setTexture(new Texture("OpenPic/new1.png"));
+                    loadGame.setTexture(new Texture("OpenPic/load1.png"));
+                    exitGame.setTexture(new Texture("OpenPic/exit1.png"));
+                }
+                mousChange(1);
+                player.setMouseNotNormal(0);
+                player.setMouseClicked(false);
+                newGame.draw(renderer.getBatch());
+                loadGame.draw(renderer.getBatch());
+                exitGame.draw(renderer.getBatch());
+
+                break;
+            }
+            case 8: {
+                Openpic.getTexture().dispose();
+                logo.getTexture().dispose();
+                newGame.getTexture().dispose();
+                loadGame.getTexture().dispose();
+                exitGame.getTexture().dispose();
+                camera.position.set(642,6820,0);
+                screenState++;
+                openSound.stop();
+                changeSound(1);
+
+                break;
+            }
+        }
+        logo.draw(renderer.getBatch());
+    }
+
+    public void changeSound(int type){
+        switch (type){
+            case 0:openSound = Gdx.audio.newMusic(Gdx.files.internal("CloudCountry.mp3"));break;
+            case 1:openSound = Gdx.audio.newMusic(Gdx.files.internal("BaseMusic.mp3"));break;
+
+        }
+    }
+    public void ChangeMaping() {
+        if (time <= 5) {
+            sound = Gdx.audio.newSound(Gdx.files.internal("SoundEffect/OpenDoor.mp3"));
+            blackScreen.draw(renderer.getBatch());
+        }
+        else if(time<=10 && time>5){
+            sound = Gdx.audio.newSound(Gdx.files.internal("SoundEffect/Walk.mp3"));
+            blackScreen.draw(renderer.getBatch());
+        }
+        sound.play();
+        time+=Gdx.graphics.getRawDeltaTime();
+    }
+
+
 }
 // (506, 335) (506, 421) (590, 335) (590, 421)

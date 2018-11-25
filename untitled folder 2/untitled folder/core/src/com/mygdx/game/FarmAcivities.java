@@ -170,7 +170,7 @@ public class FarmAcivities {
 
                     }
                 }
-                else if(1106<=player.getPosX() && player.getPosX()<=1190 && player.getPosY()>=335 && player.getPosY()<=421){
+                else if(332<=player.getPosX() && player.getPosX()<=414 && player.getPosY()>=173 && player.getPosY()<=258){
                     if (mouseNumber==3) {
                         if(floorMaps[6].getStatus()==0) {
                             floorMaps[6].setName("dicking.png");
@@ -197,7 +197,7 @@ public class FarmAcivities {
 
                     }
                 }
-                else if(506<=player.getPosX() && player.getPosX()<=590 && player.getPosY()>=404 && player.getPosY()<=515){
+                else if(437<=player.getPosX() && player.getPosX()<=518 && player.getPosY()>=173 && player.getPosY()<=258){
                     if (mouseNumber==3) {
                         if(floorMaps[7].getStatus()==0) {
                             floorMaps[7].setName("dicking.png");
@@ -224,7 +224,7 @@ public class FarmAcivities {
 
                     }
                 }
-                else if(606<=player.getPosX() && player.getPosX()<=690 && player.getPosY()>=404 && player.getPosY()<=515){
+                else if(546<=player.getPosX() && player.getPosX()<=622 && player.getPosY()>=173 && player.getPosY()<=258){
                     if (mouseNumber==3) {
                         if(floorMaps[8].getStatus()==0) {
                             floorMaps[8].setName("dicking.png");
@@ -251,7 +251,7 @@ public class FarmAcivities {
 
                     }
                 }
-                else if(706<=player.getPosX() && player.getPosX()<=790 && player.getPosY()>=404 && player.getPosY()<=515){
+                else if(647<=player.getPosX() && player.getPosX()<=728 && player.getPosY()>=173 && player.getPosY()<=258){
                     if (mouseNumber==3) {
                         if(floorMaps[9].getStatus()==0) {
                             floorMaps[9].setName("dicking.png");
@@ -277,7 +277,7 @@ public class FarmAcivities {
                         floorMaps[9].getTree().setGrowthStatus(0);
 
                     }
-                }else if(806<=player.getPosX() && player.getPosX()<=890 && player.getPosY()>=404 && player.getPosY()<=515){
+                }else if(751<=player.getPosX() && player.getPosX()<=834 && player.getPosY()>=173 && player.getPosY()<=258){
                     if (mouseNumber==3) {
                         if(floorMaps[10].getStatus()==0) {
                             floorMaps[10].setName("dicking.png");
@@ -303,7 +303,7 @@ public class FarmAcivities {
                         floorMaps[10].getTree().setGrowthStatus(0);
 
                     }
-                }else if(906<=player.getPosX() && player.getPosX()<=990 && player.getPosY()>=404 && player.getPosY()<=515){
+                }else if(857<=player.getPosX() && player.getPosX()<=938 && player.getPosY()>=173 && player.getPosY()<=258){
                     if (mouseNumber==3) {
                         if(floorMaps[11].getStatus()==0) {
                             floorMaps[11].setName("dicking.png");
@@ -329,7 +329,7 @@ public class FarmAcivities {
                         floorMaps[11].getTree().setGrowthStatus(0);
 
                     }
-                }else if(1006<=player.getPosX() && player.getPosX()<=1090 && player.getPosY()>=404 && player.getPosY()<=515){
+                }else if(332<=player.getPosX() && player.getPosX()<=414 && player.getPosY()>=273 && player.getPosY()<=358){
                     if (mouseNumber==3) {
                         if(floorMaps[12].getStatus()==0) {
                             floorMaps[12].setName("dicking.png");
@@ -355,7 +355,7 @@ public class FarmAcivities {
 
                     }
 
-                }else if(1106<=player.getPosX() && player.getPosX()<=1190 && player.getPosY()>=404 && player.getPosY()<=515){
+                }else if(437<=player.getPosX() && player.getPosX()<=518 && player.getPosY()>=273 && player.getPosY()<=358){
                     if (mouseNumber==3) {
                         if(floorMaps[13].getStatus()==0) {
                             floorMaps[13].setName("dicking.png");
@@ -382,7 +382,7 @@ public class FarmAcivities {
                     }
                 }
 
-                else if(506<=player.getPosX() && player.getPosX()<=590 && player.getPosY()>=517 && player.getPosY()<=605){
+                else if(546<=player.getPosX() && player.getPosX()<=622 && player.getPosY()>=273 && player.getPosY()<=358){
                     if (mouseNumber==3) {
                         if(floorMaps[14].getStatus()==0) {
                             floorMaps[14].setName("dicking.png");
@@ -409,7 +409,7 @@ public class FarmAcivities {
                     }
                 }
 
-                else if(606<=player.getPosX() && player.getPosX()<=690 && player.getPosY()>=517 && player.getPosY()<=605){
+                else if(647<=player.getPosX() && player.getPosX()<=728 && player.getPosY()>=273 && player.getPosY()<=358){
                     if (mouseNumber==3) {
                         if(floorMaps[15].getStatus()==0) {
                             floorMaps[15].setName("dicking.png");
@@ -436,7 +436,7 @@ public class FarmAcivities {
                     }
                 }
 
-                else if(706<=player.getPosX() && player.getPosX()<=790 && player.getPosY()>=517 && player.getPosY()<=605){
+                else if(751<=player.getPosX() && player.getPosX()<=834 && player.getPosY()>=273 && player.getPosY()<=358){
                     if (mouseNumber==3) {
                         if(floorMaps[16].getStatus()==0) {
                             floorMaps[16].setName("dicking.png");
@@ -463,7 +463,7 @@ public class FarmAcivities {
                     }
                 }
 
-                else if(806<=player.getPosX() && player.getPosX()<=890 && player.getPosY()>=517 && player.getPosY()<=605){
+                else if(857<=player.getPosX() && player.getPosX()<=938 && player.getPosY()>=273 && player.getPosY()<=358){
                     if (mouseNumber==3) {
                         if(floorMaps[17].getStatus()==0) {
                             floorMaps[17].setName("dicking.png");
@@ -490,7 +490,7 @@ public class FarmAcivities {
                     }
                 }
 
-                else if(906<=player.getPosX() && player.getPosX()<=990 && player.getPosY()>=517 && player.getPosY()<=605){
+                else if(332<=player.getPosX() && player.getPosX()<=414 && player.getPosY()>=373 && player.getPosY()<=458){
                     if (mouseNumber==3) {
                         if(floorMaps[18].getStatus()==0) {
                             floorMaps[18].setName("dicking.png");
@@ -517,7 +517,7 @@ public class FarmAcivities {
                     }
                 }
 
-                else if(1006<=player.getPosX() && player.getPosX()<=1090 && player.getPosY()>=517 && player.getPosY()<=605){
+                else if(437<=player.getPosX() && player.getPosX()<=518 && player.getPosY()>=373 && player.getPosY()<=458){
                     if (mouseNumber==3) {
                         if(floorMaps[19].getStatus()==0) {
                             floorMaps[19].setName("dicking.png");
@@ -544,7 +544,7 @@ public class FarmAcivities {
                     }
                 }
 
-                else if(1106<=player.getPosX() && player.getPosX()<=1190 && player.getPosY()>=517 && player.getPosY()<=605){
+                else if(546<=player.getPosX() && player.getPosX()<=622 && player.getPosY()>=373 && player.getPosY()<=458){
                     if (mouseNumber==3) {
                         if(floorMaps[20].getStatus()==0) {
                             floorMaps[20].setName("dicking.png");
@@ -571,7 +571,7 @@ public class FarmAcivities {
                     }
                 }
 
-                else if(506<=player.getPosX() && player.getPosX()<=590 && player.getPosY()>=607 && player.getPosY()<=695){
+                else if(647<=player.getPosX() && player.getPosX()<=728 && player.getPosY()>=373 && player.getPosY()<=458){
                     if (mouseNumber==3) {
                         if(floorMaps[21].getStatus()==0) {
                             floorMaps[21].setName("dicking.png");
@@ -598,7 +598,7 @@ public class FarmAcivities {
                     }
                 }
 
-                else if(606<=player.getPosX() && player.getPosX()<=690 && player.getPosY()>=607 && player.getPosY()<=695){
+                else if(751<=player.getPosX() && player.getPosX()<=834 && player.getPosY()>=373 && player.getPosY()<=458){
                     if (mouseNumber==3) {
                         if(floorMaps[22].getStatus()==0) {
                             floorMaps[22].setName("dicking.png");
@@ -625,7 +625,7 @@ public class FarmAcivities {
                     }
                 }
 
-                else if(706<=player.getPosX() && player.getPosX()<=790 && player.getPosY()>=607 && player.getPosY()<=695){
+                else if(857<=player.getPosX() && player.getPosX()<=938 && player.getPosY()>=373 && player.getPosY()<=458){
                     if (mouseNumber==3) {
                         if(floorMaps[23].getStatus()==0) {
                             floorMaps[23].setName("dicking.png");
@@ -652,7 +652,7 @@ public class FarmAcivities {
 
 
                 }
-                else if(806<=player.getPosX() && player.getPosX()<=890 && player.getPosY()>=607 && player.getPosY()<=695){
+                else if(332<=player.getPosX() && player.getPosX()<=414 && player.getPosY()>=473 && player.getPosY()<=558){
                     if (mouseNumber==3) {
                         if(floorMaps[24].getStatus()==0) {
                             floorMaps[24].setName("dicking.png");
@@ -679,7 +679,7 @@ public class FarmAcivities {
                     }
                 }
 
-                else if(906<=player.getPosX() && player.getPosX()<=990 && player.getPosY()>=607 && player.getPosY()<=695){
+                else if(437<=player.getPosX() && player.getPosX()<=518 && player.getPosY()>=473 && player.getPosY()<=558){
                     if (mouseNumber==3) {
                         if(floorMaps[25].getStatus()==0) {
                             floorMaps[25].setName("dicking.png");
@@ -705,7 +705,7 @@ public class FarmAcivities {
 
                     }
                 }
-                else if(1006<=player.getPosX() && player.getPosX()<=1090 && player.getPosY()>=607 && player.getPosY()<=695){
+                else if(546<=player.getPosX() && player.getPosX()<=622 && player.getPosY()>=473 && player.getPosY()<=558){
                     if (mouseNumber==3) {
                         if(floorMaps[26].getStatus()==0) {
                             floorMaps[26].setName("dicking.png");
@@ -731,7 +731,7 @@ public class FarmAcivities {
 
                     }
                 }
-                else if(1106<=player.getPosX() && player.getPosX()<=1190 && player.getPosY()>=607 && player.getPosY()<=695){
+                else if(647<=player.getPosX() && player.getPosX()<=728 && player.getPosY()>=473 && player.getPosY()<=558){
                     if (mouseNumber==3) {
                         if(floorMaps[27].getStatus()==0) {
                             floorMaps[27].setName("dicking.png");
@@ -757,7 +757,7 @@ public class FarmAcivities {
 
                     }
                 }
-                else if(506<=player.getPosX() && player.getPosX()<=590 && player.getPosY()>=697 && player.getPosY()<=785){
+                else if(751<=player.getPosX() && player.getPosX()<=834 && player.getPosY()>=473 && player.getPosY()<=558){
                     if (mouseNumber==3) {
                         if(floorMaps[28].getStatus()==0) {
                             floorMaps[28].setName("dicking.png");
@@ -783,7 +783,7 @@ public class FarmAcivities {
 
                     }
                 }
-                else if(606<=player.getPosX() && player.getPosX()<=690 && player.getPosY()>=697 && player.getPosY()<=785){
+                else if(857<=player.getPosX() && player.getPosX()<=938 && player.getPosY()>=473 && player.getPosY()<=558){
                     if (mouseNumber==3) {
                         if(floorMaps[29].getStatus()==0) {
                             floorMaps[29].setName("dicking.png");

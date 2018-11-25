@@ -121,7 +121,7 @@ public class Player extends Sprite implements InputProcessor{
     public boolean mouseMoved(int screenX, int screenY) {
         setPosX(screenX);
         setPosY(screenY);
-        System.out.println(screenX+" "+screenY);
+        //System.out.println(screenX+" "+screenY);
         return true;
     }
 
