@@ -4,7 +4,6 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.*;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.MapProperties;
@@ -28,11 +27,11 @@ public class MyGdxGame extends Game {
     private float oldCameraX, oldCameraY;
     private HUD hud;
     private ShowImage showImage,backhome1,gotoMarket,buyWindow,overlay,WhiteScreen,logo,Openpic,newGame,loadGame,exitGame,blackScreen;
-    private ShowImage greenHouse1,mouseSelect,weedTest,weedtest2,weedtest3,weedtest4, weedList[];
+    private ShowImage greenHouse1,mouseSelect,weedTest,weedtest2,weedtest3,weedtest4, weedList[],pos1,pos2,pos3,moneyLogo,hudMoney;
     float opacity,opcacitylogo;
     private Music openSound;
     private String logoPng[];
-    private Sound sound;
+    private WalkingChangeMap walkingChangeMap;
     long id;
 
     private FloorRender
@@ -52,7 +51,7 @@ public class MyGdxGame extends Game {
 	// Camera and render
 	private OrthographicCamera camera;
 	private OrthogonalTiledMapRenderer renderer;
-	private int screenState=-1,time;
+	private int screenState=-1,time,money;
 
 
     @Override
@@ -204,6 +203,19 @@ public class MyGdxGame extends Game {
             loadGame.scale(2.5f);
             exitGame.scale(2.5f);
 
+            pos1 = new ShowImage(new Sprite(new Texture("number/num0.png")));
+
+            pos1.scale(1f);
+            pos2 = new ShowImage(new Sprite(new Texture("number/num0.png")));
+
+            pos2.scale(1f);
+            pos3 = new ShowImage(new Sprite(new Texture("number/num0.png")));
+
+            pos3.scale(1f);
+            hudMoney = new ShowImage(new Sprite(new Texture("number/hudMoneyShowing.png")));
+            hudMoney.scale(2);
+
+
     }
 
 	@Override
@@ -216,13 +228,13 @@ public class MyGdxGame extends Game {
         renderer.render();
         renderer.getBatch().begin();
 
+
         loop = 0;
         weedTest.setPosition(camera.position.x+35,camera.position.y-480);
         weedtest2.setPosition(camera.position.x+119,camera.position.y-480);
         weedtest3.setPosition(camera.position.x+200,camera.position.y-480);
         weedtest4.setPosition(camera.position.x+285,camera.position.y-480);
         openSound.play();
-        System.out.println("        "+Gdx.graphics.getDeltaTime());
         //System.out.println(camera.position);
         switch (screenState){
             case -1:OpenScreen();break;
@@ -281,7 +293,11 @@ public class MyGdxGame extends Game {
         loadGame.getTexture().dispose();
         exitGame.getTexture().dispose();
         WhiteScreen.getTexture().dispose();
-        blackScreen.getTexture().dispose();
+        blackScreen.getTexture().dispose();;
+        pos1.getTexture().dispose();
+        pos2.getTexture().dispose();
+        pos3.getTexture().dispose();
+        hudMoney.getTexture().dispose();
         Gdx.app.exit();
 
     }
@@ -341,6 +357,7 @@ public class MyGdxGame extends Game {
 
 
     public void hudShowing(){
+        showHudMoney();
 
         if (player.getPosX() >= 384 && player.getPosX() <= 443 && player.getPosY() >= 649 && player.getPosY() <= 701) {
             if (player.getMouseNotNormal() == 0 && !player.getmouseClicked())
@@ -540,7 +557,6 @@ public class MyGdxGame extends Game {
     public void zeroScreen() {
             cameraMove.CameraMove(camera,player,0);
 
-
             hudShowing();
 
             //GreenHouse First
@@ -574,7 +590,7 @@ public class MyGdxGame extends Game {
                         mousChange(2);
                     greenHouse1.draw(renderer.getBatch());
                     if (player.getmouseClicked()) {
-                        camera.position.set(3722, 7100, 0);
+                        camera.position.set(3420, 6390, 0);
                         screenState = 3;
                         player.setMouseClicked(false);
                         player.setMouseNotNormal(0);
@@ -598,7 +614,7 @@ public class MyGdxGame extends Game {
                         mousChange(2);
                     greenHouse1.draw(renderer.getBatch());
                     if (player.getmouseClicked()) {
-                        camera.position.set(3722, 7100, 0);
+                        camera.position.set(3420, 6390, 0);
                         screenState = 3;
                         player.setMouseClicked(false);
                         player.setMouseNotNormal(0);
@@ -609,7 +625,7 @@ public class MyGdxGame extends Game {
                         mousChange(2);
                     greenHouse1.draw(renderer.getBatch());
                     if (player.getmouseClicked()) {
-                        camera.position.set(3722, 7100, 0);
+                        camera.position.set(3420, 6390, 0);
                         screenState = 4;
                         player.setMouseClicked(false);
                         player.setMouseNotNormal(0);
@@ -620,7 +636,7 @@ public class MyGdxGame extends Game {
                         mousChange(2);
                     greenHouse1.draw(renderer.getBatch());
                     if (player.getmouseClicked()) {
-                        camera.position.set(3722, 7100, 0);
+                        camera.position.set(3420, 6390, 0);
                         screenState = 2;
                         player.setMouseClicked(false);
                         player.setMouseNotNormal(0);
@@ -645,7 +661,7 @@ public class MyGdxGame extends Game {
                         mousChange(2);
                     greenHouse1.draw(renderer.getBatch());
                     if (player.getmouseClicked()) {
-                        camera.position.set(3722, 7100, 0);
+                        camera.position.set(3420, 6390, 0);
                         screenState = 2;
                         player.setMouseClicked(false);
                         player.setMouseNotNormal(0);
@@ -745,7 +761,6 @@ public class MyGdxGame extends Game {
         }
         else {
             showBuyWindow(store);mousChange(1);
-            System.out.println(store);
         }
 
 
@@ -906,18 +921,18 @@ public class MyGdxGame extends Game {
 
         }
     }
-    public void ChangeMaping() {
-        if (time <= 5) {
-            sound = Gdx.audio.newSound(Gdx.files.internal("SoundEffect/OpenDoor.mp3"));
-            blackScreen.draw(renderer.getBatch());
-        }
-        else if(time<=10 && time>5){
-            sound = Gdx.audio.newSound(Gdx.files.internal("SoundEffect/Walk.mp3"));
-            blackScreen.draw(renderer.getBatch());
-        }
-        sound.play();
-        time+=Gdx.graphics.getRawDeltaTime();
+
+    public void showHudMoney(){
+        hudMoney.setPosition(camera.position.x-555,camera.position.y+265);
+        pos1.setPosition(camera.position.x-600,camera.position.y+320);
+        pos2.setPosition(camera.position.x-550,camera.position.y+320);
+        pos3.setPosition(camera.position.x-500,camera.position.y+320);
+        hudMoney.draw(renderer.getBatch());
+        pos1.draw(renderer.getBatch());
+        pos2.draw(renderer.getBatch());
+        pos3.draw(renderer.getBatch());
     }
+
 
 
 }
