@@ -5,6 +5,7 @@ import com.mygdx.game.entitirs.Player;
 public class FarmAcivities {
 
     public FarmAcivities(FloorStatus[] floorMaps, Player player,int mouseNumber){
+        System.out.println(mouseNumber);
 
             if (player.getmouseClicked() == true) {
                 if(332<=player.getPosX() && player.getPosX()<=415 && player.getPosY()>=72 && player.getPosY()<=160){
