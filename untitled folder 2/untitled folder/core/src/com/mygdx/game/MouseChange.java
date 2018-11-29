@@ -5,8 +5,8 @@ import com.badlogic.gdx.graphics.Cursor;
 import com.badlogic.gdx.graphics.Pixmap;
 
 public class MouseChange {
-    private Pixmap pm,pm1,pm2,pm3,pm4,pm5,pm6,pm7,pm32;
-    private Cursor cursor,cursor1,cursor2,cursor3,cursor4,cursor5,cursor6,cursor7,cursor32;
+    private Pixmap pm,pm1,pm2,pm3,pm4,pm5,pm6,pm7,pm32,pm72;
+    private Cursor cursor,cursor1,cursor2,cursor3,cursor4,cursor5,cursor6,cursor7,cursor32,cursor72;
     public void create(){
         pm = new Pixmap(Gdx.files.internal("mouse.png"));
         cursor = Gdx.graphics.newCursor(new Pixmap(Gdx.files.internal("mouse.png")),0,0);
@@ -37,7 +37,15 @@ public class MouseChange {
 
         pm7 = new Pixmap(Gdx.files.internal("mouseweedbag1.png"));
         cursor7 = Gdx.graphics.newCursor(new Pixmap(Gdx.files.internal("mouseweedbag1.png")), 0, 0);
+
+        pm72 = new Pixmap(Gdx.files.internal("mouseBagDown.png"));
+        cursor72 = Gdx.graphics.newCursor(new Pixmap(Gdx.files.internal("mouseBagDown.png")), 0, 0);
+
+
+
         Gdx.graphics.setCursor(cursor);
+
+
 
     }
 
@@ -83,6 +91,17 @@ public class MouseChange {
                 cursor = cursor32;
                 Gdx.graphics.setCursor(cursor);
                 break;
+            }
+            case 9:{
+                pm = pm72;
+                cursor = cursor72;
+                Gdx.graphics.setCursor(cursor);
+                break;
+            }
+            case 10:{
+                pm = pm7;
+                cursor = cursor7;
+                Gdx.graphics.setCursor(cursor);
             }
         }
         mouseNumber = type;

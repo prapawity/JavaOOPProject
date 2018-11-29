@@ -30,7 +30,7 @@ public class LoadingScreen {
         overlay.getTexture().dispose();
         overlay.setTexture(new Texture("blackScreen.png"));
         overlay.setAlpha(opacity);
-        if(i<=500){
+        if(i<=150){
             if(i%20==0)switch (state){
                 case 0:{
                     player.getTexture().dispose();
@@ -86,6 +86,10 @@ public class LoadingScreen {
                 opacity-=0.02f;
 
             }else {
+                dot.setPosition(camera.position.x+440,camera.position.y-330);
+                dot2.setPosition(camera.position.x+440,camera.position.y-330);
+                dot3.setPosition(camera.position.x+440,camera.position.y-330);
+                dot4.setPosition(camera.position.x+440,camera.position.y-330);
                 i = 0;
                 dispose();
                 state = 0;

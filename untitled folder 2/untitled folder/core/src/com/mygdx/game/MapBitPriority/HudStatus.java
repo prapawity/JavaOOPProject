@@ -21,7 +21,7 @@ public class HudStatus {
         this.batch = new SpriteBatch();
         this._stage = new Stage();
         this.mySprite = new Sprite(new Texture("HUD.png"));
-        this.mySprite2 = new Sprite(new Texture("weed.png"));
+        this.mySprite2 = new Sprite(new Texture("null.png"));
         Image image = new Image(new SpriteDrawable(this.mySprite));
         Image image2 = new Image(new SpriteDrawable(this.mySprite2));
         this.table.add(image).width((float)(Gdx.graphics.getWidth()/2.5)).height((float)(Gdx.graphics.getHeight()/12)).bottom().center().row();

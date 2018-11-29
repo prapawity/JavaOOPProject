@@ -7,13 +7,16 @@ import com.mygdx.game.entitirs.Player;
 public class FarmAcivities {
      Sound sound = Gdx.audio.newSound(Gdx.files.internal("SoundEffect/Dicking.mp3"));
      Sound sound2 = Gdx.audio.newSound(Gdx.files.internal("SoundEffect/watering.mp3"));
+     Sound sound3 = Gdx.audio.newSound(Gdx.files.internal("SoundEffect/sand.mp3"));
+     long id;
 
     public void FarmAcivities(FloorStatus[] floorMaps, Player player, int mouseNumber, MouseChange mouseChange){
         mouseChange.render(mouseNumber,mouseNumber);
             if (player.getmouseClicked() == true) {
                 if (mouseNumber==3){
                     mouseChange.render(8,mouseNumber);
-                    sound.play();
+                }else if(mouseNumber==7 || mouseNumber==10){
+                    mouseChange.render(9,mouseNumber);
                 }
                 changeEffect(mouseNumber);
                 if(332<=player.getPosX() && player.getPosX()<=415 && player.getPosY()>=72 && player.getPosY()<=160){
@@ -37,10 +40,14 @@ public class FarmAcivities {
                             floorMaps[0].setStatus(3);
                         }
                     }
-                    else if(mouseNumber==7){
+                    else if(mouseNumber==7 && floorMaps[0].getTree().getNameTree().equals("null.png")){
                         floorMaps[0].getTree().setNameTree("tree/1/1.png");
                         floorMaps[0].getTree().setGrowthStatus(0);
 
+                    }
+                    else if(mouseNumber==10 && floorMaps[0].getTree().getNameTree().equals("null.png")){
+                        floorMaps[0].getTree().setNameTree("tree/2/1.png");
+                        floorMaps[0].getTree().setGrowthStatus(0);
                     }
                 }
                 else if(437<=player.getPosX() && player.getPosX()<=518 && player.getPosY()>=72 && player.getPosY()<=160){
@@ -64,10 +71,13 @@ public class FarmAcivities {
                             floorMaps[1].setStatus(3);
                         }
                     }
-                    else if(mouseNumber==7){
+                    else if(mouseNumber==7 && floorMaps[1].getTree().getNameTree().equals("null.png")){
                         floorMaps[1].getTree().setNameTree("tree/1/3.png");
                         floorMaps[1].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[1].getTree().getNameTree().equals("null.png")){
+                        floorMaps[1].getTree().setNameTree("tree/2/3.png");
+                        floorMaps[1].getTree().setGrowthStatus(0);
                     }
                 }
                 else if(546<=player.getPosX() && player.getPosX()<=622 && player.getPosY()>=72 && player.getPosY()<=160){
@@ -91,10 +101,13 @@ public class FarmAcivities {
                             floorMaps[2].setStatus(3);
                         }
                     }
-                    else if(mouseNumber==7){
+                    else if(mouseNumber==7 && floorMaps[2].getTree().getNameTree().equals("null.png")){
                         floorMaps[2].getTree().setNameTree("tree/1/4.png");
                         floorMaps[2].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[2].getTree().getNameTree().equals("null.png")){
+                        floorMaps[2].getTree().setNameTree("tree/2/4.png");
+                        floorMaps[2].getTree().setGrowthStatus(0);
                     }
                 }
                 else if(647<=player.getPosX() && player.getPosX()<=728 && player.getPosY()>=72 && player.getPosY()<=160){
@@ -118,10 +131,13 @@ public class FarmAcivities {
                             floorMaps[3].setStatus(3);
                         }
                     }
-                    else if(mouseNumber==7){
+                    else if(mouseNumber==7 && floorMaps[3].getTree().getNameTree().equals("null.png")){
                         floorMaps[3].getTree().setNameTree("tree/1/5.png");
                         floorMaps[3].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[3].getTree().getNameTree().equals("null.png")){
+                        floorMaps[3].getTree().setNameTree("tree/2/5.png");
+                        floorMaps[3].getTree().setGrowthStatus(0);
                     }
 
                 }
@@ -146,10 +162,13 @@ public class FarmAcivities {
                             floorMaps[4].setStatus(3);
                         }
                     }
-                    else if(mouseNumber==7){
+                    else if(mouseNumber==7 && floorMaps[4].getTree().getNameTree().equals("null.png")){
                         floorMaps[4].getTree().setNameTree("tree/1/6.png");
                         floorMaps[4].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[4].getTree().getNameTree().equals("null.png")){
+                        floorMaps[4].getTree().setNameTree("tree/2/6.png");
+                        floorMaps[4].getTree().setGrowthStatus(0);
                     }
                 }
                 else if(857<=player.getPosX() && player.getPosX()<=938 && player.getPosY()>=72 && player.getPosY()<=160){
@@ -173,10 +192,13 @@ public class FarmAcivities {
                             floorMaps[5].setStatus(3);
                         }
                     }
-                    else if(mouseNumber==7){
-                        floorMaps[5].getTree().setNameTree("tree/1/7.png");
+                    else if(mouseNumber==7 && floorMaps[5].getTree().getNameTree().equals("null.png")){
+                        floorMaps[5].getTree().setNameTree("tree/1/1.png");
                         floorMaps[5].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[5].getTree().getNameTree().equals("null.png")){
+                        floorMaps[5].getTree().setNameTree("tree/2/1.png");
+                        floorMaps[5].getTree().setGrowthStatus(0);
                     }
                 }
                 else if(332<=player.getPosX() && player.getPosX()<=414 && player.getPosY()>=173 && player.getPosY()<=258){
@@ -200,10 +222,13 @@ public class FarmAcivities {
                             floorMaps[6].setStatus(3);
                         }
                     }
-                    else if(mouseNumber==7){
-                        floorMaps[6].getTree().setNameTree("weed.png");
+                    else if(mouseNumber==7 && floorMaps[6].getTree().getNameTree().equals("null.png")){
+                        floorMaps[6].getTree().setNameTree("tree/1/1.png");
                         floorMaps[6].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[6].getTree().getNameTree().equals("null.png")){
+                        floorMaps[6].getTree().setNameTree("tree/2/1.png");
+                        floorMaps[6].getTree().setGrowthStatus(0);
                     }
                 }
                 else if(437<=player.getPosX() && player.getPosX()<=518 && player.getPosY()>=173 && player.getPosY()<=258){
@@ -227,10 +252,13 @@ public class FarmAcivities {
                             floorMaps[7].setStatus(3);
                         }
                     }
-                    else if(mouseNumber==7){
-                        floorMaps[7].getTree().setNameTree("weed.png");
+                    else if(mouseNumber==7 && floorMaps[7].getTree().getNameTree().equals("null.png")){
+                        floorMaps[7].getTree().setNameTree("tree/1/1.png");
                         floorMaps[7].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[7].getTree().getNameTree().equals("null.png")){
+                        floorMaps[7].getTree().setNameTree("tree/2/1.png");
+                        floorMaps[7].getTree().setGrowthStatus(0);
                     }
                 }
                 else if(546<=player.getPosX() && player.getPosX()<=622 && player.getPosY()>=173 && player.getPosY()<=258){
@@ -254,10 +282,13 @@ public class FarmAcivities {
                             floorMaps[8].setStatus(3);
                         }
                     }
-                    else if(mouseNumber==7){
-                        floorMaps[8].getTree().setNameTree("weed.png");
+                    else if(mouseNumber==7 && floorMaps[8].getTree().getNameTree().equals("null.png")){
+                        floorMaps[8].getTree().setNameTree("tree/1/1.png");
                         floorMaps[8].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[8].getTree().getNameTree().equals("null.png")){
+                        floorMaps[8].getTree().setNameTree("tree/2/1.png");
+                        floorMaps[8].getTree().setGrowthStatus(0);
                     }
                 }
                 else if(647<=player.getPosX() && player.getPosX()<=728 && player.getPosY()>=173 && player.getPosY()<=258){
@@ -281,10 +312,13 @@ public class FarmAcivities {
                             floorMaps[9].setStatus(3);
                         }
                     }
-                    else if(mouseNumber==7){
-                        floorMaps[9].getTree().setNameTree("weed.png");
+                    else if(mouseNumber==7 && floorMaps[9].getTree().getNameTree().equals("null.png")){
+                        floorMaps[9].getTree().setNameTree("tree/1/1.png");
                         floorMaps[9].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[9].getTree().getNameTree().equals("null.png")){
+                        floorMaps[9].getTree().setNameTree("tree/2/1.png");
+                        floorMaps[9].getTree().setGrowthStatus(0);
                     }
                 }else if(751<=player.getPosX() && player.getPosX()<=834 && player.getPosY()>=173 && player.getPosY()<=258){
                     if (mouseNumber==3) {
@@ -307,10 +341,13 @@ public class FarmAcivities {
                             floorMaps[10].setStatus(3);
                         }
                     }
-                    else if(mouseNumber==7){
-                        floorMaps[10].getTree().setNameTree("weed.png");
-                        floorMaps[10].getTree().setGrowthStatus(0);
+                    else if(mouseNumber==7 && floorMaps[10].getTree().getNameTree().equals("null.png")){
+                        floorMaps[10].getTree().setNameTree("tree/1/1.png");
+                        floorMaps[1].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[10].getTree().getNameTree().equals("null.png")){
+                        floorMaps[10].getTree().setNameTree("tree/2/1.png");
+                        floorMaps[10].getTree().setGrowthStatus(0);
                     }
                 }else if(857<=player.getPosX() && player.getPosX()<=938 && player.getPosY()>=173 && player.getPosY()<=258){
                     if (mouseNumber==3) {
@@ -333,10 +370,13 @@ public class FarmAcivities {
                             floorMaps[11].setStatus(3);
                         }
                     }
-                    else if(mouseNumber==7){
-                        floorMaps[11].getTree().setNameTree("weed.png");
+                    else if(mouseNumber==7 && floorMaps[11].getTree().getNameTree().equals("null.png")){
+                        floorMaps[11].getTree().setNameTree("tree/1/1.png");
                         floorMaps[11].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[11].getTree().getNameTree().equals("null.png")){
+                        floorMaps[11].getTree().setNameTree("tree/2/1.png");
+                        floorMaps[11].getTree().setGrowthStatus(0);
                     }
                 }else if(332<=player.getPosX() && player.getPosX()<=414 && player.getPosY()>=273 && player.getPosY()<=358){
                     if (mouseNumber==3) {
@@ -358,10 +398,13 @@ public class FarmAcivities {
                             floorMaps[12].setName("dickingwet.png");
                             floorMaps[12].setStatus(3);
                         }
-                    }else if(mouseNumber==7){
-                        floorMaps[12].getTree().setNameTree("weed.png");
+                    }else if(mouseNumber==7 && floorMaps[12].getTree().getNameTree().equals("null.png")){
+                        floorMaps[12].getTree().setNameTree("tree/1/1.png");
                         floorMaps[12].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[12].getTree().getNameTree().equals("null.png")){
+                        floorMaps[12].getTree().setNameTree("tree/2/1.png");
+                        floorMaps[12].getTree().setGrowthStatus(0);
                     }
 
                 }else if(437<=player.getPosX() && player.getPosX()<=518 && player.getPosY()>=273 && player.getPosY()<=358){
@@ -384,10 +427,13 @@ public class FarmAcivities {
                             floorMaps[13].setName("dickingwet.png");
                             floorMaps[13].setStatus(3);
                         }
-                    }else if(mouseNumber==7){
-                        floorMaps[13].getTree().setNameTree("weed.png");
+                    }else if(mouseNumber==7 && floorMaps[13].getTree().getNameTree().equals("null.png")){
+                        floorMaps[13].getTree().setNameTree("tree/1/1.png");
                         floorMaps[13].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[13].getTree().getNameTree().equals("null.png")){
+                        floorMaps[13].getTree().setNameTree("tree/2/1.png");
+                        floorMaps[13].getTree().setGrowthStatus(0);
                     }
                 }
 
@@ -411,10 +457,13 @@ public class FarmAcivities {
                             floorMaps[14].setName("dickingwet.png");
                             floorMaps[14].setStatus(3);
                         }
-                    }else if(mouseNumber==7){
-                        floorMaps[14].getTree().setNameTree("weed.png");
+                    }else if(mouseNumber==7 && floorMaps[14].getTree().getNameTree().equals("null.png")){
+                        floorMaps[14].getTree().setNameTree("tree/1/1.png");
                         floorMaps[14].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[14].getTree().getNameTree().equals("null.png")){
+                        floorMaps[14].getTree().setNameTree("tree/2/1.png");
+                        floorMaps[14].getTree().setGrowthStatus(0);
                     }
                 }
 
@@ -438,10 +487,13 @@ public class FarmAcivities {
                             floorMaps[15].setName("dickingwet.png");
                             floorMaps[15].setStatus(3);
                         }
-                    }else if(mouseNumber==7){
-                        floorMaps[15].getTree().setNameTree("weed.png");
+                    }else if(mouseNumber==7 && floorMaps[15].getTree().getNameTree().equals("null.png")){
+                        floorMaps[15].getTree().setNameTree("tree/1/1.png");
                         floorMaps[15].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[15].getTree().getNameTree().equals("null.png")){
+                        floorMaps[15].getTree().setNameTree("tree/2/1.png");
+                        floorMaps[15].getTree().setGrowthStatus(0);
                     }
                 }
 
@@ -465,10 +517,13 @@ public class FarmAcivities {
                             floorMaps[16].setName("dickingwet.png");
                             floorMaps[16].setStatus(3);
                         }
-                    }else if(mouseNumber==7){
-                        floorMaps[16].getTree().setNameTree("weed.png");
+                    }else if(mouseNumber==7 && floorMaps[16].getTree().getNameTree().equals("null.png")){
+                        floorMaps[16].getTree().setNameTree("tree/1/1.png");
                         floorMaps[16].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[16].getTree().getNameTree().equals("null.png")){
+                        floorMaps[16].getTree().setNameTree("tree/2/1.png");
+                        floorMaps[16].getTree().setGrowthStatus(0);
                     }
                 }
 
@@ -492,10 +547,13 @@ public class FarmAcivities {
                             floorMaps[17].setName("dickingwet.png");
                             floorMaps[17].setStatus(3);
                         }
-                    }else if(mouseNumber==7){
-                        floorMaps[17].getTree().setNameTree("weed.png");
+                    }else if(mouseNumber==7 && floorMaps[17].getTree().getNameTree().equals("null.png")){
+                        floorMaps[17].getTree().setNameTree("tree/1/1.png");
                         floorMaps[17].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[17].getTree().getNameTree().equals("null.png")){
+                        floorMaps[17].getTree().setNameTree("tree/2/1.png");
+                        floorMaps[17].getTree().setGrowthStatus(0);
                     }
                 }
 
@@ -519,10 +577,13 @@ public class FarmAcivities {
                             floorMaps[18].setName("dickingwet.png");
                             floorMaps[18].setStatus(3);
                         }
-                    }else if(mouseNumber==7){
-                        floorMaps[18].getTree().setNameTree("weed.png");
+                    }else if(mouseNumber==7 && floorMaps[18].getTree().getNameTree().equals("null.png")){
+                        floorMaps[18].getTree().setNameTree("tree/1/1.png");
                         floorMaps[18].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[18].getTree().getNameTree().equals("null.png")){
+                        floorMaps[18].getTree().setNameTree("tree/2/1.png");
+                        floorMaps[18].getTree().setGrowthStatus(0);
                     }
                 }
 
@@ -546,10 +607,13 @@ public class FarmAcivities {
                             floorMaps[19].setName("dickingwet.png");
                             floorMaps[19].setStatus(3);
                         }
-                    }else if(mouseNumber==7){
-                        floorMaps[19].getTree().setNameTree("weed.png");
+                    }else if(mouseNumber==7 && floorMaps[19].getTree().getNameTree().equals("null.png")){
+                        floorMaps[19].getTree().setNameTree("tree/1/1.png");
                         floorMaps[19].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[19].getTree().getNameTree().equals("null.png")){
+                        floorMaps[19].getTree().setNameTree("tree/2/1.png");
+                        floorMaps[19].getTree().setGrowthStatus(0);
                     }
                 }
 
@@ -573,10 +637,13 @@ public class FarmAcivities {
                             floorMaps[20].setName("dickingwet.png");
                             floorMaps[20].setStatus(3);
                         }
-                    }else if(mouseNumber==7){
-                        floorMaps[20].getTree().setNameTree("weed.png");
+                    }else if(mouseNumber==7 && floorMaps[20].getTree().getNameTree().equals("null.png")){
+                        floorMaps[20].getTree().setNameTree("tree/1/1.png");
                         floorMaps[20].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[20].getTree().getNameTree().equals("null.png")){
+                        floorMaps[20].getTree().setNameTree("tree/2/1.png");
+                        floorMaps[20].getTree().setGrowthStatus(0);
                     }
                 }
 
@@ -600,10 +667,13 @@ public class FarmAcivities {
                             floorMaps[21].setName("dickingwet.png");
                             floorMaps[21].setStatus(3);
                         }
-                    }else if(mouseNumber==7){
-                        floorMaps[21].getTree().setNameTree("weed.png");
+                    }else if(mouseNumber==7 && floorMaps[21].getTree().getNameTree().equals("null.png")){
+                        floorMaps[21].getTree().setNameTree("tree/1/1.png");
                         floorMaps[21].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[21].getTree().getNameTree().equals("null.png")){
+                        floorMaps[21].getTree().setNameTree("tree/2/1.png");
+                        floorMaps[21].getTree().setGrowthStatus(0);
                     }
                 }
 
@@ -627,10 +697,13 @@ public class FarmAcivities {
                             floorMaps[22].setName("dickingwet.png");
                             floorMaps[22].setStatus(3);
                         }
-                    }else if(mouseNumber==7){
-                        floorMaps[22].getTree().setNameTree("weed.png");
+                    }else if(mouseNumber==7 && floorMaps[22].getTree().getNameTree().equals("null.png")){
+                        floorMaps[22].getTree().setNameTree("tree/1/1.png");
                         floorMaps[22].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[22].getTree().getNameTree().equals("null.png")){
+                        floorMaps[22].getTree().setNameTree("tree/2/1.png");
+                        floorMaps[22].getTree().setGrowthStatus(0);
                     }
                 }
 
@@ -654,8 +727,12 @@ public class FarmAcivities {
                             floorMaps[23].setName("dickingwet.png");
                             floorMaps[23].setStatus(3);
                         }
-                    }else if(mouseNumber==7){
-                        floorMaps[23].getTree().setNameTree("weed.png");
+                    }else if(mouseNumber==7 && floorMaps[23].getTree().getNameTree().equals("null.png")){
+                        floorMaps[23].getTree().setNameTree("tree/1/1.png");
+                        floorMaps[23].getTree().setGrowthStatus(0);
+
+                    }else if(mouseNumber==10 && floorMaps[23].getTree().getNameTree().equals("null.png")){
+                        floorMaps[23].getTree().setNameTree("tree/2/1.png");
                         floorMaps[23].getTree().setGrowthStatus(0);
                     }
 
@@ -681,10 +758,13 @@ public class FarmAcivities {
                             floorMaps[24].setName("dickingwet.png");
                             floorMaps[24].setStatus(3);
                         }
-                    }else if(mouseNumber==7){
-                        floorMaps[24].getTree().setNameTree("weed.png");
+                    }else if(mouseNumber==7 && floorMaps[24].getTree().getNameTree().equals("null.png")){
+                        floorMaps[24].getTree().setNameTree("tree/1/1.png");
                         floorMaps[24].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[24].getTree().getNameTree().equals("null.png")){
+                        floorMaps[24].getTree().setNameTree("tree/2/1.png");
+                        floorMaps[24].getTree().setGrowthStatus(0);
                     }
                 }
 
@@ -708,10 +788,13 @@ public class FarmAcivities {
                             floorMaps[25].setName("dickingwet.png");
                             floorMaps[25].setStatus(3);
                         }
-                    }else if(mouseNumber==7){
-                        floorMaps[25].getTree().setNameTree("weed.png");
+                    }else if(mouseNumber==7 && floorMaps[25].getTree().getNameTree().equals("null.png")){
+                        floorMaps[25].getTree().setNameTree("tree/1/1.png");
                         floorMaps[25].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[25].getTree().getNameTree().equals("null.png")){
+                        floorMaps[25].getTree().setNameTree("tree/2/1.png");
+                        floorMaps[25].getTree().setGrowthStatus(0);
                     }
                 }
                 else if(546<=player.getPosX() && player.getPosX()<=622 && player.getPosY()>=473 && player.getPosY()<=558){
@@ -734,10 +817,13 @@ public class FarmAcivities {
                             floorMaps[26].setName("dickingwet.png");
                             floorMaps[26].setStatus(3);
                         }
-                    }else if(mouseNumber==7){
-                        floorMaps[26].getTree().setNameTree("weed.png");
+                    }else if(mouseNumber==7 && floorMaps[26].getTree().getNameTree().equals("null.png")){
+                        floorMaps[26].getTree().setNameTree("tree/1/1.png");
                         floorMaps[26].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[26].getTree().getNameTree().equals("null.png")){
+                        floorMaps[26].getTree().setNameTree("tree/2/1.png");
+                        floorMaps[26].getTree().setGrowthStatus(0);
                     }
                 }
                 else if(647<=player.getPosX() && player.getPosX()<=728 && player.getPosY()>=473 && player.getPosY()<=558){
@@ -760,10 +846,13 @@ public class FarmAcivities {
                             floorMaps[27].setName("dickingwet.png");
                             floorMaps[27].setStatus(3);
                         }
-                    }else if(mouseNumber==7){
-                        floorMaps[27].getTree().setNameTree("weed.png");
+                    }else if(mouseNumber==7 && floorMaps[27].getTree().getNameTree().equals("null.png")){
+                        floorMaps[27].getTree().setNameTree("tree/1/1.png");
                         floorMaps[27].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[27].getTree().getNameTree().equals("null.png")){
+                        floorMaps[27].getTree().setNameTree("tree/2/1.png");
+                        floorMaps[27].getTree().setGrowthStatus(0);
                     }
                 }
                 else if(751<=player.getPosX() && player.getPosX()<=834 && player.getPosY()>=473 && player.getPosY()<=558){
@@ -786,10 +875,13 @@ public class FarmAcivities {
                             floorMaps[28].setName("dickingwet.png");
                             floorMaps[28].setStatus(3);
                         }
-                    }else if(mouseNumber==7){
-                        floorMaps[28].getTree().setNameTree("weed.png");
+                    }else if(mouseNumber==7 && floorMaps[28].getTree().getNameTree().equals("null.png")){
+                        floorMaps[28].getTree().setNameTree("tree/1/1.png");
                         floorMaps[28].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[28].getTree().getNameTree().equals("null.png")){
+                        floorMaps[28].getTree().setNameTree("tree/2/1.png");
+                        floorMaps[28].getTree().setGrowthStatus(0);
                     }
                 }
                 else if(857<=player.getPosX() && player.getPosX()<=938 && player.getPosY()>=473 && player.getPosY()<=558){
@@ -812,10 +904,13 @@ public class FarmAcivities {
                             floorMaps[29].setName("dickingwet.png");
                             floorMaps[29].setStatus(3);
                         }
-                    }else if(mouseNumber==7){
-                        floorMaps[29].getTree().setNameTree("weed.png");
+                    }else if(mouseNumber==7 && floorMaps[29].getTree().getNameTree().equals("null.png")){
+                        floorMaps[29].getTree().setNameTree("tree/1/1.png");
                         floorMaps[29].getTree().setGrowthStatus(0);
 
+                    }else if(mouseNumber==10 && floorMaps[29].getTree().getNameTree().equals("null.png")){
+                        floorMaps[29].getTree().setNameTree("tree/2/1.png");
+                        floorMaps[29].getTree().setGrowthStatus(0);
                     }
                 }
 
@@ -825,15 +920,25 @@ public class FarmAcivities {
 
         }
         private void changeEffect(int mouse){
+        if (mouse==10) mouse=7;
         switch (mouse){
             case 3:{
+                sound3.stop();
                 sound2.stop();
                 sound.play();
                 break;
             }
             case 6:{
+                sound3.stop();
                 sound2.play();
                 sound.stop();
+                break;
+            }
+            case 7:{
+                sound.stop();
+                sound2.stop();
+                sound3.setVolume(id,2f);
+                sound3.play();
                 break;
             }
 

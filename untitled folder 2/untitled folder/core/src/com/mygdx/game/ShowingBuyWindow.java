@@ -32,6 +32,7 @@ public class ShowingBuyWindow {
             backButton.getTexture().dispose();
             backButton.setTexture(new Texture("OpenPic/backNon.png"));
         }
+        overlay.getTexture().dispose();
         overlay.setTexture(new Texture("overlay.png"));
         overlay.setPosition(camera.position.x,camera.position.y);
         backButton.setPosition(camera.position.x-550,camera.position.y-320);

@@ -8,7 +8,6 @@ public class ChangeSound {
     public void create(){
         changeSound(0);
         openSound.setLooping(true);
-        openSound.setVolume(0.5f);
     }
 
     public void changeSound(int type){
@@ -17,6 +16,7 @@ public class ChangeSound {
             case 1:openSound = Gdx.audio.newMusic(Gdx.files.internal("BaseMusic.mp3"));break;
             case 2:openSound = Gdx.audio.newMusic(Gdx.files.internal("PelicianTown.mp3"));break;
             case 3:openSound = Gdx.audio.newMusic(Gdx.files.internal("FunFest.mp3"));break;
+            case 4:openSound = Gdx.audio.newMusic(Gdx.files.internal("SoundEffect/nightsound.mp3"));break;
 
         }
     }
