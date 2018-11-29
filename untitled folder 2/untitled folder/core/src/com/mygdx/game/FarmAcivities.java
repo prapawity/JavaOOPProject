@@ -1,13 +1,21 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.mygdx.game.entitirs.Player;
 
 public class FarmAcivities {
+     Sound sound = Gdx.audio.newSound(Gdx.files.internal("SoundEffect/Dicking.mp3"));
+     Sound sound2 = Gdx.audio.newSound(Gdx.files.internal("SoundEffect/watering.mp3"));
 
-    public FarmAcivities(FloorStatus[] floorMaps, Player player,int mouseNumber){
-        System.out.println(mouseNumber);
-
+    public void FarmAcivities(FloorStatus[] floorMaps, Player player, int mouseNumber, MouseChange mouseChange){
+        mouseChange.render(mouseNumber,mouseNumber);
             if (player.getmouseClicked() == true) {
+                if (mouseNumber==3){
+                    mouseChange.render(8,mouseNumber);
+                    sound.play();
+                }
+                changeEffect(mouseNumber);
                 if(332<=player.getPosX() && player.getPosX()<=415 && player.getPosY()>=72 && player.getPosY()<=160){
                     if (mouseNumber==3) {
                         if(floorMaps[0].getStatus()==0) {
@@ -814,6 +822,22 @@ public class FarmAcivities {
                 player.setMouseClicked(false);
             }
 
+
+        }
+        private void changeEffect(int mouse){
+        switch (mouse){
+            case 3:{
+                sound2.stop();
+                sound.play();
+                break;
+            }
+            case 6:{
+                sound2.play();
+                sound.stop();
+                break;
+            }
+
+        }
 
         }
 

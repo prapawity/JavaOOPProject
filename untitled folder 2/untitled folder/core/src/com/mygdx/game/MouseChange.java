@@ -5,8 +5,8 @@ import com.badlogic.gdx.graphics.Cursor;
 import com.badlogic.gdx.graphics.Pixmap;
 
 public class MouseChange {
-    private Pixmap pm,pm1,pm2,pm3,pm4,pm5,pm6,pm7;
-    private Cursor cursor,cursor1,cursor2,cursor3,cursor4,cursor5,cursor6,cursor7;
+    private Pixmap pm,pm1,pm2,pm3,pm4,pm5,pm6,pm7,pm32;
+    private Cursor cursor,cursor1,cursor2,cursor3,cursor4,cursor5,cursor6,cursor7,cursor32;
     public void create(){
         pm = new Pixmap(Gdx.files.internal("mouse.png"));
         cursor = Gdx.graphics.newCursor(new Pixmap(Gdx.files.internal("mouse.png")),0,0);
@@ -19,6 +19,8 @@ public class MouseChange {
 
         pm3 = new Pixmap(Gdx.files.internal("shovel.png"));
         cursor3 = Gdx.graphics.newCursor(new Pixmap(Gdx.files.internal("shovel.png")), 0, 0);
+        pm32 = new Pixmap(Gdx.files.internal("shovelDown.png"));
+        cursor32 = Gdx.graphics.newCursor(new Pixmap(Gdx.files.internal("shovelDown.png")), 0, 0);
 
 
         pm4 = new Pixmap(Gdx.files.internal("picaxe.png"));
@@ -76,20 +78,16 @@ public class MouseChange {
                 cursor = cursor7;
                 Gdx.graphics.setCursor(cursor);
             }break;
+            case 8: {
+                pm = pm32;
+                cursor = cursor32;
+                Gdx.graphics.setCursor(cursor);
+                break;
+            }
         }
         mouseNumber = type;
         return mouseNumber;
 
 
-    }
-    public void dispose(){
-        pm.dispose();
-        pm1.dispose();
-        pm2.dispose();
-        pm3.dispose();
-        pm4.dispose();
-        pm5.dispose();
-        pm6.dispose();
-        pm7.dispose();
     }
 }

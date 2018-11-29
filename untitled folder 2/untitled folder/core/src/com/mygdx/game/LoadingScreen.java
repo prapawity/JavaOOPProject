@@ -8,7 +8,7 @@ import com.mygdx.game.entitirs.ShowImage;
 
 public class LoadingScreen {
     private ShowImage overlay,player,dot,dot2,dot3,dot4;
-    int screen,i = 0,state = 0;
+    int screen =0,i = 0,state = 0;
     float opacity =1;
     public void create(){
         overlay = new ShowImage(new Sprite(new Texture("blackScreen.png")));
@@ -26,11 +26,17 @@ public class LoadingScreen {
 
     }
     public int render(OrthogonalTiledMapRenderer renderer, Camera camera){
-        screen = -1;
+        screen = 0;
+        overlay.getTexture().dispose();
+        overlay.setTexture(new Texture("blackScreen.png"));
+        overlay.setAlpha(opacity);
         if(i<=500){
             if(i%20==0)switch (state){
                 case 0:{
+                    player.getTexture().dispose();
                     player.setTexture(new Texture("sprite/stayRight1.png"));
+                    dot.getTexture().dispose();
+                    dot.setTexture(new Texture("loading.png"));
                     dot.setPosition(camera.position.x+440,camera.position.y-330);
                     dot2.setPosition(camera.position.x+440,camera.position.y-330);
                     dot3.setPosition(camera.position.x+440,camera.position.y-330);
@@ -40,18 +46,24 @@ public class LoadingScreen {
                 }
                 case 1:{
                     player.setTexture(new Texture("sprite/walkRight1.png"));
+                    dot2.getTexture().dispose();
+                    dot2.setTexture(new Texture("loading.png"));
                     dot2.setPosition(camera.position.x+490,camera.position.y-330);
                     state++;
                     break;
                 }
                 case 2: {
                     player.setTexture(new Texture("sprite/stayRight2.png"));
+                    dot3.getTexture().dispose();
+                    dot3.setTexture(new Texture("loading.png"));
                     dot3.setPosition(camera.position.x+540,camera.position.y-330);
                     state++;
                     break;
                 }
                 case 3:{
                     player.setTexture(new Texture("sprite/walkRight2.png"));
+                    dot4.getTexture().dispose();
+                    dot4.setTexture(new Texture("loading.png"));
                     dot4.setPosition(camera.position.x+590,camera.position.y-330);
                     state=0;
                     break;
@@ -66,18 +78,18 @@ public class LoadingScreen {
             dot2.draw(renderer.getBatch());
             dot3.draw(renderer.getBatch());
             dot4.draw(renderer.getBatch());
-            System.out.println(i);
         }
         else {
             if(opacity>0.01f){
                 overlay.setAlpha(opacity);
                 overlay.draw(renderer.getBatch());
-                opacity-=0.01f;
+                opacity-=0.02f;
 
             }else {
                 i = 0;
                 dispose();
                 state = 0;
+                opacity=1;
                 screen++;
             }
         }

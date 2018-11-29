@@ -3,8 +3,9 @@ package com.mygdx.game;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.graphics.*;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -26,18 +27,19 @@ public class MyGdxGame extends Game {
     private ShowImage showImage,backhome1,gotoMarket,WhiteScreen,logo,Openpic,newGame,loadGame,exitGame,blackScreen;
     private ShowImage greenHouse1,mouseSelect,weedTest,weedtest2,weedtest3,weedtest4, weedList[];
     float opacity,opcacitylogo;
-    private Music openSound;
     private String logoPng[];
-    private WalkingChangeMap walkingChangeMap;
     private ShowingHudMoney showingHudMoney;
     private ShowingBuyWindow showBuyWindow;
     private MouseChange mouseChange;
     private LoadingScreen loadingScreen;
+    private BagRender bagRender;
+    private ChangeSound changeSound;
+    private FarmAcivities farmAcivities;
     long id;
 
     private FloorRender
     base, floorrender[][] ,weedrender[] [];
-    private int positionX[] = {3153, 3258,3363,3468,3573,3678,3783},positionY[] = {6627,6527,6427,6327,6227,6127},loop = 0,mouseNumber = 1,day=0,logostate=0;
+    private int positionX[] = {3153, 3258,3363,3468,3573,3678,3783},positionY[] = {6627,6527,6427,6327,6227,6127},loop = 0,mouseNumber = 1,day=1,logostate=0;
 
     FloorStatus floorMap[] = new FloorStatus[30];
     FloorStatus floorMap2[] = new FloorStatus[30];
@@ -52,7 +54,7 @@ public class MyGdxGame extends Game {
 	// Camera and render
 	private OrthographicCamera camera;
 	private OrthogonalTiledMapRenderer renderer;
-	private int screenState=-2,time,money;
+	private int screenState=-2,time,money = 100;
 
 
     @Override
@@ -144,9 +146,6 @@ public class MyGdxGame extends Game {
             greenHouse1.scale(2);
             for (int i = 0; i < weedList.length; i++)
                 weedList[i].scale(3.2f);
-            changeSound(0);
-            openSound.setLooping(true);
-            openSound.setVolume(0.5f);
 
 //		weed.scale(8);
 //		weed.setPosition(3429,7149);
@@ -199,6 +198,10 @@ public class MyGdxGame extends Game {
             showBuyWindow.create();
             loadingScreen = new LoadingScreen();
             loadingScreen.create();
+            bagRender = new BagRender();
+            changeSound = new ChangeSound();
+            changeSound.create();
+            farmAcivity = new FarmAcivities();
 
 
 
@@ -215,32 +218,30 @@ public class MyGdxGame extends Game {
         renderer.getBatch().begin();
 
         loop = 0;
-        weedTest.setPosition(camera.position.x+35,camera.position.y-480);
-        weedtest2.setPosition(camera.position.x+119,camera.position.y-480);
-        weedtest3.setPosition(camera.position.x+200,camera.position.y-480);
-        weedtest4.setPosition(camera.position.x+285,camera.position.y-480);
-        openSound.play();
+
+        changeSound.openSound.play();
         //System.out.println(camera.position);
+        //System.out.println(screenState);
         switch (screenState){
-            case -2:OpenScreen();break;
-            case -1:screenState = loadingScreen.render(renderer,camera);break;
-            case 0:zeroScreen();break;
-            case 1:firstScreen(floorMap);break;
-            case 2:firstScreen(floorMap2);break;
-            case 3:firstScreen(floorMap3);break;
-            case 4:firstScreen(floorMap4);break;
-            case 5:screenState = loadingScreen.render(renderer,camera);break;
-            case 6:fiveScreen();break;
+            case -2: OpenScreen();break;
+            case -1: screenState += loadingScreen.render(renderer,camera);break;
+            case 0: zeroScreen();break;
+            case 1: screenState += loadingScreen.render(renderer,camera);break;
+            case 2: firstScreen(floorMap);break;
+            case 3: screenState += loadingScreen.render(renderer,camera);break;
+            case 4: firstScreen(floorMap2);break;
+            case 5: screenState += loadingScreen.render(renderer,camera);break;
+            case 6: firstScreen(floorMap3);break;
+            case 7: screenState += loadingScreen.render(renderer,camera);break;
+            case 8: firstScreen(floorMap4);break;
+            case 9: screenState += loadingScreen.render(renderer,camera);break;
+            case 10:fiveScreen();break;
         }
-        backhome1.draw(renderer.getBatch());
         mouseSelect.draw(renderer.getBatch());
         renderer.getBatch().end();
-        if(screenState>=0) this.hud.render();
+        if(screenState%2==0 & screenState>=0) this.hud.render();
         renderer.getBatch().begin();
-        weedTest.draw(renderer.getBatch());
-        weedtest2.draw(renderer.getBatch());
-        weedtest3.draw(renderer.getBatch());
-        weedtest4.draw(renderer.getBatch());
+        bagRender.render(weedList,renderer,camera);
 
         renderer.getBatch().end();
         this.renderer = new OrthogonalTiledMapRenderer(this.map, 1.1f);
@@ -273,7 +274,7 @@ public class MyGdxGame extends Game {
         // Free resources
         map.dispose();
         manager.dispose();
-        openSound.dispose();
+        changeSound.openSound.dispose();
         Openpic.getTexture().dispose();
         logo.getTexture().dispose();
         newGame.getTexture().dispose();
@@ -283,6 +284,9 @@ public class MyGdxGame extends Game {
         blackScreen.getTexture().dispose();;
         showingHudMoney.dispose();
         showBuyWindow.dispose();
+        loadingScreen.dispose();
+        farmAcivity.sound.dispose();
+        farmAcivity.sound2.dispose();
         Gdx.app.exit();
 
     }
@@ -295,7 +299,7 @@ public class MyGdxGame extends Game {
 
 
     public void hudShowing(){
-        showingHudMoney.showHudMoney(renderer,camera);
+        showingHudMoney.showHudMoney(renderer,camera,money,day);
 
         if (player.getPosX() >= 384 && player.getPosX() <= 443 && player.getPosY() >= 649 && player.getPosY() <= 701) {
             if (player.getMouseNotNormal() == 0 && !player.getmouseClicked())
@@ -422,13 +426,15 @@ public class MyGdxGame extends Game {
     }
 
     public void farmActivities(FloorStatus[] floorMaps){
-        if(player.getMouseNotNormal()==1) farmAcivity = new FarmAcivities(floorMaps,player,mouseNumber);
+        if(player.getMouseNotNormal()==1) farmAcivity.FarmAcivities(floorMaps,player,mouseNumber,mouseChange);
         else{
             if(player.getPosX() >= 28 && player.getPosX()<=105 && player.getPosY() >=595  &&player.getPosY() <= 677){
                 mouseNumber = mouseChange.render(2,mouseNumber);
                 if (player.getmouseClicked()) {
+                    changeSound.openSound.dispose();
+                    changeSound.changeSound(1);
                     camera.position.set(642, 6820, 0);
-                    screenState = 0;
+                    screenState = -1;
                     player.setMouseClicked(false);
                     player.setMouseNotNormal(0);
                     for(int i = 0 ; i<5;i++)
@@ -494,6 +500,8 @@ public class MyGdxGame extends Game {
                         mouseNumber = mouseChange.render(2,mouseNumber);
                     greenHouse1.draw(renderer.getBatch());
                     if (player.getmouseClicked()) {
+                        changeSound.openSound.dispose();
+                        changeSound.changeSound(3);
                         camera.position.set(3420, 6390, 0);
                         screenState = 1;
                         player.setMouseClicked(false);
@@ -505,6 +513,8 @@ public class MyGdxGame extends Game {
                         mouseNumber = mouseChange.render(2,mouseNumber);
                     greenHouse1.draw(renderer.getBatch());
                     if (player.getmouseClicked()) {
+                        changeSound.openSound.dispose();
+                        changeSound.changeSound(3);
                         camera.position.set(3420, 6390, 0);
                         screenState = 3;
                         player.setMouseClicked(false);
@@ -516,7 +526,9 @@ public class MyGdxGame extends Game {
                     gotoMarket.draw(renderer.getBatch());
                     if (player.getmouseClicked()) {
                         camera.position.set(1055, 5160, 0);
-                        screenState = 5;
+                        screenState = 9;
+                        changeSound.openSound.dispose();
+                        changeSound.changeSound(2);
                         player.setMouseClicked(false);
                         player.setMouseNotNormal(0);
                     }
@@ -524,35 +536,37 @@ public class MyGdxGame extends Game {
                 else player.setMouseClicked(false);
             } else if (camera.position.x == 1470 && camera.position.y == 6820) {
                 if (player.getPosX() <= 516 && player.getPosX() >= 245 && player.getPosY() >= 221 && player.getPosY() <= 416) {
-                    greenHouse1.setPosition(1233, 7412); //greenHouse2
+                    greenHouse1.setPosition(1130, 6796);
                     if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                         mouseNumber = mouseChange.render(2,mouseNumber);
                     greenHouse1.draw(renderer.getBatch());
                     if (player.getmouseClicked()) {
+                        changeSound.openSound.dispose();
+                        changeSound.changeSound(3);
                         camera.position.set(3420, 6390, 0);
                         screenState = 3;
                         player.setMouseClicked(false);
                         player.setMouseNotNormal(0);
                     }
                 } else if (player.getPosX() >= 786 && player.getPosX() <= 1065 && player.getPosY() >= 225 && player.getPosY() <= 417) {
-                    greenHouse1.setPosition(1828, 7412); //greenHouse2
+                    greenHouse1.setPosition(1676, 6796);
                     if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                         mouseNumber = mouseChange.render(2,mouseNumber);
                     greenHouse1.draw(renderer.getBatch());
                     if (player.getmouseClicked()) {
                         camera.position.set(3420, 6390, 0);
-                        screenState = 4;
+                        screenState = 7;
                         player.setMouseClicked(false);
                         player.setMouseNotNormal(0);
                     }
                 } else if (player.getPosX() >= 50 && player.getPosX() <= 349 && player.getPosY() >= 782 && player.getPosY() <= 996) {
-                    greenHouse1.setPosition(735, 6852);
+                    greenHouse1.setPosition(672, 6285); // greenHouse1
                     if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                         mouseNumber = mouseChange.render(2,mouseNumber);
                     greenHouse1.draw(renderer.getBatch());
                     if (player.getmouseClicked()) {
                         camera.position.set(3420, 6390, 0);
-                        screenState = 2;
+                        screenState = 5;
                         player.setMouseClicked(false);
                         player.setMouseNotNormal(0);
                     }
@@ -577,7 +591,7 @@ public class MyGdxGame extends Game {
                     greenHouse1.draw(renderer.getBatch());
                     if (player.getmouseClicked()) {
                         camera.position.set(3420, 6390, 0);
-                        screenState = 2;
+                        screenState = 5;
                         player.setMouseClicked(false);
                         player.setMouseNotNormal(0);
                     }
@@ -589,6 +603,8 @@ public class MyGdxGame extends Game {
     }
 
     public void firstScreen(FloorStatus floorMapz[]){
+        backhome1.draw(renderer.getBatch());
+        changeSound.openSound.setVolume(0.5f);
 
         for(int i = 0 ; i<5;i++)
             for(int j = 0;j<6;j++) {
@@ -668,14 +684,16 @@ public class MyGdxGame extends Game {
                     mouseNumber = mouseChange.render(2,mouseNumber);
                 if (player.getmouseClicked()) {
                     camera.position.set(642,6820,0);
-                    screenState = 0;
+                    screenState = -1;
+                    changeSound.openSound.dispose();
+                    changeSound.changeSound(1);
                     player.setMouseClicked(false);
                     player.setMouseNotNormal(0);
                 }
             }else mouseNumber = mouseChange.render(1,mouseNumber);
         }
         else {
-            showBuyWindow.showBuyWindow(store,renderer,camera);mouseNumber = mouseChange.render(1,mouseNumber);
+            showBuyWindowOpen = showBuyWindow.showBuyWindow(store,renderer,camera,player);mouseNumber = mouseChange.render(1,mouseNumber);
         }
 
 
@@ -788,8 +806,8 @@ public class MyGdxGame extends Game {
                 exitGame.getTexture().dispose();
                 camera.position.set(642,6820,0);
                 screenState++;
-                openSound.stop();
-                changeSound(1);
+                changeSound.openSound.dispose();
+                changeSound.changeSound(1);
 
                 break;
             }
@@ -797,13 +815,6 @@ public class MyGdxGame extends Game {
         logo.draw(renderer.getBatch());
     }
 
-    public void changeSound(int type){
-        switch (type){
-            case 0:openSound = Gdx.audio.newMusic(Gdx.files.internal("CloudCountry.mp3"));break;
-            case 1:openSound = Gdx.audio.newMusic(Gdx.files.internal("BaseMusic.mp3"));break;
-
-        }
-    }
 
 
 
