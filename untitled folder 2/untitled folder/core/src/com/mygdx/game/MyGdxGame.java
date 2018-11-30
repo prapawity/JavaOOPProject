@@ -428,6 +428,8 @@ public class MyGdxGame extends Game {
                 mouseNumber = mouseChange.render(1,mouseNumber);
         }
 
+        System.out.println(mouseNumber+" mouse");
+
 
     }
 
@@ -440,7 +442,7 @@ public class MyGdxGame extends Game {
     }
 
     public void farmActivities(FloorStatus[] floorMaps){
-        if(player.getMouseNotNormal()==1) farmAcivity.FarmAcivities(floorMaps,player,mouseNumber,mouseChange);
+        if(player.getMouseNotNormal()==1) money = farmAcivity.FarmAcivities(floorMaps,player,mouseNumber,mouseChange,money);
         else{
             if(player.getPosX() >= 28 && player.getPosX()<=105 && player.getPosY() >=595  &&player.getPosY() <= 677){
                 mouseNumber = mouseChange.render(2,mouseNumber);
@@ -739,8 +741,8 @@ public class MyGdxGame extends Game {
         }
         else {
             showBuyWindowOpen = showBuyWindow.showBuyWindow(store,renderer,camera,player);mouseNumber = mouseChange.render(1,mouseNumber);
+            hudShowing();
         }
-
 
     }
 

@@ -10,7 +10,7 @@ public class FarmAcivities {
      Sound sound3 = Gdx.audio.newSound(Gdx.files.internal("SoundEffect/sand.mp3"));
      long id;
 
-    public void FarmAcivities(FloorStatus[] floorMaps, Player player, int mouseNumber, MouseChange mouseChange){
+    public int FarmAcivities(FloorStatus[] floorMaps, Player player, int mouseNumber, MouseChange mouseChange,int money){
         mouseChange.render(mouseNumber,mouseNumber);
             if (player.getmouseClicked() == true) {
                 if (mouseNumber==3){
@@ -151,6 +151,7 @@ public class FarmAcivities {
                             floorMaps[4].setName("dickingwet.png");
                             floorMaps[4].setStatus(4);
                         }
+                        if(floorMaps[4].getTree().getNameTree().equals("null.png")==false)floorMaps[4].getTree().setNameTree("null.png");
                     }
                     else if(mouseNumber==6){
                         if(floorMaps[4].getStatus()==0){
@@ -160,6 +161,11 @@ public class FarmAcivities {
                         else if(floorMaps[4].getStatus()==1){
                             floorMaps[4].setName("dickingwet.png");
                             floorMaps[4].setStatus(3);
+                        }
+                    }else if(mouseNumber==4){
+                        if(floorMaps[4].getTree().getNameTree().equals("tree/1/6.png") || floorMaps[4].getTree().getNameTree().equals("tree/2/6.png")) {
+                            floorMaps[4].getTree().setNameTree("deadtree.png");
+                            money+=20;
                         }
                     }
                     else if(mouseNumber==7 && floorMaps[4].getTree().getNameTree().equals("null.png")){
@@ -916,6 +922,7 @@ public class FarmAcivities {
 
                 player.setMouseClicked(false);
             }
+            return money;
 
 
         }
