@@ -38,7 +38,6 @@ public class ShowingHudMoney {
     }
     public void showHudMoney(OrthogonalTiledMapRenderer renderer, Camera camera,int money,int numday){
         moneyString = Integer.toString(money);
-        System.out.println(moneyString.length());
         switching(numday,numDay);
         for (int i =moneyString.length();i>0;i--)
             if(moneyString.length() == i) switching(Character.getNumericValue(moneyString.charAt(i-1)),pos8);

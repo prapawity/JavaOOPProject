@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class ShowImage extends Sprite {
+
     public ShowImage(Sprite sprite){
 
         super(sprite);

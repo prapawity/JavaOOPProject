@@ -92,8 +92,8 @@ public class MyGdxGame extends Game {
 
             greenHouse1 = new ShowImage(new Sprite(new Texture("farm.png")));
 
-            weedTest = new ShowImage(new Sprite(new Texture("weedbag.png")));
-            weedtest2 = new ShowImage(new Sprite(new Texture("weedbag2.png")));
+            weedTest = new ShowImage(new Sprite(new Texture("null.png")));
+            weedtest2 = new ShowImage(new Sprite(new Texture("null.png")));
             weedtest3 = new ShowImage(new Sprite(new Texture("null.png")));
             weedtest4 = new ShowImage(new Sprite(new Texture("null.png")));
             base = new FloorRender(new Sprite(new Texture("base.png")));
@@ -224,10 +224,7 @@ public class MyGdxGame extends Game {
         renderer.getBatch().begin();
 
         loop = 0;
-
         changeSound.openSound.play();
-        //System.out.println(camera.position);
-        //System.out.println(screenState);
         switch (screenState){
             case -3: nextDay();break;
             case -2: OpenScreen();break;
@@ -428,7 +425,6 @@ public class MyGdxGame extends Game {
                 mouseNumber = mouseChange.render(1,mouseNumber);
         }
 
-        System.out.println(mouseNumber+" mouse");
 
 
     }
@@ -737,7 +733,10 @@ public class MyGdxGame extends Game {
                     player.setMouseClicked(false);
                     player.setMouseNotNormal(0);
                 }
-            }else mouseNumber = mouseChange.render(1,mouseNumber);
+            }else {
+                mouseNumber = mouseChange.render(1,mouseNumber);
+                player.setMouseClicked(false);
+            }
         }
         else {
             showBuyWindowOpen = showBuyWindow.showBuyWindow(store,renderer,camera,player);mouseNumber = mouseChange.render(1,mouseNumber);

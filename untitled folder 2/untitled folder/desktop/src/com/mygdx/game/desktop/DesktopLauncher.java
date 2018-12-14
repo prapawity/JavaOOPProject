@@ -1,5 +1,6 @@
 package com.mygdx.game.desktop;
 
+import com.badlogic.gdx.Files;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.mygdx.game.MyGdxGame;
@@ -17,6 +18,7 @@ public class DesktopLauncher {
 		config.allowSoftwareMode = true;
 		config.fullscreen = false;
 		config.resizable = false;
+		config.addIcon("OpenPic.png", Files.FileType.Internal);
 		new LwjglApplication(new MyGdxGame(), config);
 	}
 }
