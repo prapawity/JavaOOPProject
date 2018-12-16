@@ -98,11 +98,6 @@ public class MouseChange {
                 Gdx.graphics.setCursor(cursor);
                 break;
             }
-            case 10:{
-                pm = pm7;
-                cursor = cursor7;
-                Gdx.graphics.setCursor(cursor);
-            }
         }
         mouseNumber = type;
         return mouseNumber;
