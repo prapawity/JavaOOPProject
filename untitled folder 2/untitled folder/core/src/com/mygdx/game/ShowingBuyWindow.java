@@ -19,7 +19,7 @@ public class ShowingBuyWindow {
         backButton.scale(1.5f);
      }
 
-    public boolean showBuyWindow(int store, OrthogonalTiledMapRenderer renderer, Camera camera, Player player){
+    public boolean showBuyWindow(OrthogonalTiledMapRenderer renderer, Camera camera, Player player){
         if(player.getPosX()>= 45 &&player.getPosX()<=220&&player.getPosY()>= 634&&player.getPosY()<=670){
             backButton.getTexture().dispose();
             backButton.setTexture(new Texture("OpenPic/backClick.png"));
@@ -40,22 +40,6 @@ public class ShowingBuyWindow {
         buyWindow.setPosition(camera.position.x-250,camera.position.y-90);
         buyWindow.draw(renderer.getBatch());
         backButton.draw(renderer.getBatch());
-        switch (store){
-            case 1:{
-
-            }
-            case 2:{
-
-            }
-            case 3:{
-
-            }case 4:{
-
-            }
-            case 5:{
-
-            }
-        }
         return true;
 
     }

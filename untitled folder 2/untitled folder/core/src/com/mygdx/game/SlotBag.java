@@ -1,7 +1,7 @@
 package com.mygdx.game;
 
 public class SlotBag {
-    String name = "null.png";
+    String name = "null2.png";
     int coun = 0;
 
     public String getName() {
@@ -17,6 +17,6 @@ public class SlotBag {
     }
 
     public void setCoun(int coun) {
-        this.coun = coun;
+        this.coun += coun;
     }
 }

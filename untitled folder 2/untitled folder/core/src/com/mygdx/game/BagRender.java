@@ -10,10 +10,12 @@ public class BagRender {
         weedList[1].setPosition(camera.position.x+90,camera.position.y-327);
         weedList[2].setPosition(camera.position.x+200,camera.position.y-327);
         weedList[3].setPosition(camera.position.x+285,camera.position.y-327);
+        weedList[4].setPosition(camera.position.x+280,camera.position.y-332);
         weedList[0].draw(renderer.getBatch());
         weedList[1].draw(renderer.getBatch());
         weedList[2].draw(renderer.getBatch());
         weedList[3].draw(renderer.getBatch());
+        weedList[4].draw(renderer.getBatch());
 
     }
 }

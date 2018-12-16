@@ -93,11 +93,11 @@ public class ShowingHudMoney {
             case 2: posN.setTexture(new Texture("number/num2.png")); break;
             case 3: posN.setTexture(new Texture("number/num3.png")); break;
             case 4: posN.setTexture(new Texture("number/num4.png")); break;
-            case 5: posN.setTexture(new Texture("number/num0.png")); break;
-            case 6: posN.setTexture(new Texture("number/num0.png")); break;
-            case 7: posN.setTexture(new Texture("number/num0.png")); break;
-            case 8: posN.setTexture(new Texture("number/num0.png")); break;
-            case 9: posN.setTexture(new Texture("number/num0.png")); break;
+            case 5: posN.setTexture(new Texture("number/num5.png")); break;
+            case 6: posN.setTexture(new Texture("number/num6.png")); break;
+            case 7: posN.setTexture(new Texture("number/num7.png")); break;
+            case 8: posN.setTexture(new Texture("number/num8.png")); break;
+            case 9: posN.setTexture(new Texture("number/num9.png")); break;
 
         }
     }

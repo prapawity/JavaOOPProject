@@ -27,7 +27,7 @@ public class MyGdxGame extends Game {
 	private AssetManager manager;
     private HUD hud;
     private ShowImage showImage,backhome1,gotoMarket,WhiteScreen,logo,Openpic,newGame,loadGame,exitGame,blackScreen;
-    private ShowImage greenHouse1,mouseSelect,weedTest,weedtest2,weedtest3,weedtest4, weedList[],move,windowBuy;
+    private ShowImage greenHouse1,mouseSelect,weedTest,weedtest2,weedtest3,weedtest4,weedtest5, weedList[],move,windowBuy;
     float opacity,opcacitylogo;
     private String logoPng[];
     private ShowingHudMoney showingHudMoney;
@@ -94,23 +94,25 @@ public class MyGdxGame extends Game {
             gotoMarket = new ShowImage(new Sprite(new Texture("arrow.png")));
 
             greenHouse1 = new ShowImage(new Sprite(new Texture("farm.png")));
-            for (int i =0;i<4;i++)slotBag.add(new SlotBag());
+            for (int i =0;i<4;i++) slotBag.add(new SlotBag());
 
             weedTest = new ShowImage(new Sprite(new Texture(slotBag.get(0).getName())));
             weedtest2 = new ShowImage(new Sprite(new Texture(slotBag.get(1).getName())));
             weedtest3 = new ShowImage(new Sprite(new Texture(slotBag.get(2).getName())));
             weedtest4 = new ShowImage(new Sprite(new Texture(slotBag.get(3).getName())));
+            weedtest5 = new ShowImage(new Sprite(new Texture("howtopop/2.png")));
             base = new FloorRender(new Sprite(new Texture("base.png")));
             createFloor();
 
             floorrender = new FloorRender[5][6];
             weedrender = new FloorRender[5][6];
 
-            weedList = new ShowImage[4];
+            weedList = new ShowImage[5];
             weedList[0] = weedTest;
             weedList[1] = weedtest2;
             weedList[2] = weedtest3;
             weedList[3] = weedtest4;
+            weedList[4] = weedtest5;
             for (int i = 0; i < 5; i++)
                 for (int j = 0; j < 6; j++) {
 
@@ -143,15 +145,13 @@ public class MyGdxGame extends Game {
             backhome1.setPosition(2820, 6080);
             backhome1.scale(1f);
 
-            gotoMarket.scale(0.1f);
-
-            gotoMarket.setPosition(780, 6970);
 
 
             showImage.scale(2);
             greenHouse1.scale(2);
-            for (int i = 0; i < weedList.length; i++)
+            for (int i = 0; i < weedList.length-1; i++)
                 weedList[i].scale(2f);
+            weedList[4].scale(1.3f);
 
 //		weed.scale(8);
 //		weed.setPosition(3429,7149);
@@ -256,7 +256,6 @@ public class MyGdxGame extends Game {
             if(statusHowto <= 3) {
                 howTo.render(renderer, camera,statusHowto);
             }
-            else howTo.dispose();
             move.draw(renderer.getBatch());
             renderer.getBatch().end();
         }
@@ -305,6 +304,7 @@ public class MyGdxGame extends Game {
         farmAcivity.sound2.dispose();
         farmAcivity.sound3.dispose();
         savingNextDay.dispose();
+        howTo.dispose();
         Gdx.app.exit();
 
     }
@@ -318,7 +318,10 @@ public class MyGdxGame extends Game {
 
     public void hudShowing(){
         bagRender.render(weedList,renderer,camera);
-        showingHudMoney.showHudMoney(renderer,camera,money,day);
+        if(screenState==10) {
+            if(showBuyWindowOpen == true) showingHudMoney.showHudMoney(renderer,camera,money,day);
+        }
+        else showingHudMoney.showHudMoney(renderer,camera,money,day);
         if (player.getPosX() >= 384 && player.getPosX() <= 443 && player.getPosY() >= 649 && player.getPosY() <= 701) {
             if (player.getMouseNotNormal() == 0 && !player.getmouseClicked())
                 mouseNumber = mouseChange.render(2,mouseNumber);
@@ -368,17 +371,6 @@ public class MyGdxGame extends Game {
                 mouseNumber = mouseChange.render(1,mouseNumber);
             }
 
-
-
-
-
-
-
-
-
-
-
-
         } else if (player.getPosX() <= 699 && player.getPosX() >= 641 && player.getPosY() >= 649 && player.getPosY() <= 701 &&!slotBag.get(0).getName().equals("null.png")) {
             if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                 mouseNumber = mouseChange.render(2,mouseNumber);
@@ -427,9 +419,21 @@ public class MyGdxGame extends Game {
                 player.setMouseNotNormal(0);
                 mouseNumber = mouseChange.render(1,mouseNumber);
             }
+        } else if(player.getPosY()>=651 && player.getPosX()>=905 && player.getPosX()<=953 && player.getPosY()<=703){
+            weedList[4].getTexture().dispose();
+            weedList[4].setTexture(new Texture("howtopop/1.png"));
+            if (player.getmouseClicked()) {
+                statusHowto=0;
+                player.setMouseClicked(false);
+                player.setMouseNotNormal(0);
+            }
+
         } else {
             if (player.getMouseNotNormal() == 0)
                 mouseNumber = mouseChange.render(1,mouseNumber);
+            weedList[4].getTexture().dispose();
+            weedList[4].setTexture(new Texture("howtopop/2.png"));
+
         }
 
 
@@ -466,8 +470,11 @@ public class MyGdxGame extends Game {
             }
             else {
                 mouseNumber = mouseChange.render(1,mouseNumber);
-                player.setMouseNotNormal(0);;
-                player.setMouseClicked(false);
+                if(player.getmouseClicked()) {
+                    player.setMouseNotNormal(0);
+                    player.setMouseClicked(false);
+                    statusHowto++;
+                }
             }
         }
     }
@@ -514,6 +521,8 @@ public class MyGdxGame extends Game {
 
 
     public void zeroScreen() {
+        showImage.getTexture().dispose();
+        showImage.setTexture(new Texture("Home.png"));
         changeSound.openSound.setVolume(1);
             hudShowing();
             //GreenHouse First
@@ -558,6 +567,9 @@ public class MyGdxGame extends Game {
                         player.setMouseNotNormal(0);
                     }
                 } else if (player.getPosX() > 665 && player.getPosX() <= 1019 && player.getPosY() >= 0 && player.getPosY() <= 112 & statusHowto>3) {
+                    gotoMarket.getTexture().dispose();
+                    gotoMarket.setTexture(new Texture("arrow.png"));
+                    gotoMarket.setPosition(750, 6970);
                     if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                         mouseNumber = mouseChange.render(2,mouseNumber);
                     gotoMarket.draw(renderer.getBatch());
@@ -570,7 +582,7 @@ public class MyGdxGame extends Game {
                         player.setMouseNotNormal(0);
                     }
                 }
-                if(player.getPosY()>=650 ){
+                if(player.getPosY()>=650 && statusHowto>3 &&!(player.getPosY()>=651 && player.getPosX()>=905 && player.getPosX()<=953 && player.getPosY()<=703)){
                     //move.setPosition(camera.position.x-640,camera.position.y-360); //up
                     move.setPosition(camera.position.x-640,camera.position.y-368);
                     move.getTexture().dispose();
@@ -582,7 +594,7 @@ public class MyGdxGame extends Game {
                         player.setMouseNotNormal(0);
                     }
 
-                }else if(player.getPosX()>=1220){
+                }else if(player.getPosX()>=1220 &&statusHowto>3){
                     move.setPosition(camera.position.x-640,camera.position.y-360);
                     move.getTexture().dispose();
                     move.setTexture(new Texture("Move/right.png"));
@@ -650,9 +662,9 @@ public class MyGdxGame extends Game {
                         player.setMouseNotNormal(0);
                     }
 
-                }else if(player.getPosY()>=650 ){
+                }else if(player.getPosY()>=650 &&!(player.getPosY()>=651 && player.getPosX()>=905 && player.getPosX()<=953 && player.getPosY()<=703)){
                     //move.setPosition(camera.position.x-640,camera.position.y-360); //up
-                    move.setPosition(camera.position.x-640,camera.position.y-368);
+                    move.setPosition(camera.position.x-640,camera.position.y-368 );
                     move.getTexture().dispose();
                     move.setTexture(new Texture("Move/down.png"));
                     if (player.getmouseClicked()) {
@@ -710,6 +722,7 @@ public class MyGdxGame extends Game {
                 } else if(player.getmouseClicked()) {
                     player.setMouseClicked(false);
                     player.setMouseNotNormal(0);
+                    statusHowto++;
                 }else{
                     player.setMouseClicked(false);
                     move.setPosition(1000,10000);
@@ -743,6 +756,7 @@ public class MyGdxGame extends Game {
                 } else if(player.getmouseClicked()) {
                     player.setMouseClicked(false);
                     player.setMouseNotNormal(0);
+                    statusHowto++;
                 }else{
                     player.setMouseClicked(false);
                     move.setPosition(1000,10000);
@@ -776,10 +790,15 @@ public class MyGdxGame extends Game {
 
     }
     public void fiveScreen(){
+        hudShowing();
 
         if(showBuyWindowOpen == false) {
 
             if(player.getPosX()>=37 && player.getPosX() <= 194 && player.getPosY()>=30 &&player.getPosY() <= 219){
+                showImage.getTexture().dispose();
+                showImage.setTexture(new Texture("market/1.png"));
+                showImage.setPosition(camera.position.x-480,camera.position.y+250);
+                showImage.draw(renderer.getBatch());
                 if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                     mouseNumber = mouseChange.render(2,mouseNumber);
                 if (player.getmouseClicked()) {
@@ -789,6 +808,10 @@ public class MyGdxGame extends Game {
                     player.setMouseNotNormal(0);
                 }
             }else if(player.getPosX()>=501 && player.getPosX() <= 669 && player.getPosY()>=34 &&player.getPosY() <= 218){
+                showImage.getTexture().dispose();
+                showImage.setTexture(new Texture("market/2.png"));
+                showImage.setPosition(camera.position.x,camera.position.y+250);
+                showImage.draw(renderer.getBatch());
                 if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                     mouseNumber = mouseChange.render(2,mouseNumber);
                 if (player.getmouseClicked()) {
@@ -800,6 +823,10 @@ public class MyGdxGame extends Game {
                 }
             }
             else if(player.getPosX()>=992 && player.getPosX() <= 1111 && player.getPosY()>=47 &&player.getPosY() <= 202){
+                showImage.getTexture().dispose();
+                showImage.setTexture(new Texture("market/3.png"));
+                showImage.setPosition(camera.position.x+455,camera.position.y+250);
+                showImage.draw(renderer.getBatch());
                 if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                     mouseNumber = mouseChange.render(2,mouseNumber);
                 if (player.getmouseClicked()) {
@@ -810,6 +837,10 @@ public class MyGdxGame extends Game {
                     player.setMouseNotNormal(0);
                 }
             } else if(player.getPosX()>=39 && player.getPosX() <= 252 && player.getPosY()>=419 &&player.getPosY() <= 590){
+                showImage.getTexture().dispose();
+                showImage.setTexture(new Texture("market/4.png"));
+                showImage.setPosition(camera.position.x-480,camera.position.y-120);
+                showImage.draw(renderer.getBatch());
                 if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                     mouseNumber = mouseChange.render(2,mouseNumber);
                 if (player.getmouseClicked()) {
@@ -820,6 +851,10 @@ public class MyGdxGame extends Game {
                     player.setMouseNotNormal(0);
                 }
             }else if(player.getPosX()>=956 && player.getPosX() <= 1163 && player.getPosY()>=428 &&player.getPosY() <= 590){
+                showImage.getTexture().dispose();
+                showImage.setTexture(new Texture("market/5.png"));
+                showImage.setPosition(camera.position.x+455,camera.position.y-120);
+                showImage.draw(renderer.getBatch());
                 if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                     mouseNumber = mouseChange.render(2,mouseNumber);
                 if (player.getmouseClicked()) {
@@ -830,7 +865,11 @@ public class MyGdxGame extends Game {
                     player.setMouseNotNormal(0);
                 }
             }
-            else if(player.getPosX() >= 510 &&  player.getPosX()<= 686 && player.getPosY() >= 540 && player.getPosY()<= 618){
+            else if(player.getPosX() >= 499 &&  player.getPosX()<= 693 && player.getPosY() >= 503 && player.getPosY()<= 645){
+                gotoMarket.getTexture().dispose();
+                gotoMarket.setTexture(new Texture("arrow2.png"));
+                gotoMarket.setPosition(camera.position.x-140,camera.position.y-290);
+                gotoMarket.draw(renderer.getBatch());
                 if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                     mouseNumber = mouseChange.render(2,mouseNumber);
                 if (player.getmouseClicked()) {
@@ -841,19 +880,49 @@ public class MyGdxGame extends Game {
                     player.setMouseClicked(false);
                     player.setMouseNotNormal(0);
                 }
-            }else {
-                mouseNumber = mouseChange.render(1,mouseNumber);
-                player.setMouseClicked(false);
-            }
+            }else mouseNumber = mouseChange.render(1,mouseNumber);
+
         }
         else {
             windowBuy.getTexture().dispose();
             windowBuy.setPosition(camera.position.x-640,camera.position.y-355);
-            showBuyWindowOpen = showBuyWindow.showBuyWindow(store,renderer,camera,player);mouseNumber = mouseChange.render(1,mouseNumber);
+            showBuyWindowOpen = showBuyWindow.showBuyWindow(renderer,camera,player);
+            mouseNumber = mouseChange.render(1,mouseNumber);
             hudShowing();
             switch (store){
                 case 1:{
                     windowBuy.setTexture(new Texture("windowBuy/pumkin.png"));
+                    if(player.getPosX()>=850 &&player.getPosX()<=1095 && player.getPosY()>=420 && player.getPosY()<=494){
+                        if(player.getmouseClicked()) {
+                            boolean stateinbag = false;
+                            windowBuy.getTexture().dispose();
+                            windowBuy.setTexture(new Texture("windowBuy/pumkin2.png"));
+                            if(money-15 >=0 ) {
+                                for (int i = 0; i < slotBag.size(); i++) {
+                                    if (slotBag.get(i).getName().equals("tree/10/bag.png")) {
+                                        slotBag.get(i).setCoun(1);
+                                        System.out.println(slotBag.get(i).getCoun());
+                                        stateinbag = true;
+                                        money -= 15;
+                                    }
+                                }
+                                if (stateinbag == false) {
+                                    for (int i = 0; i < slotBag.size(); i++) {
+                                        if (slotBag.get(i).getName().equals("null2.png")) {
+                                            slotBag.get(i).setName("tree/10/bag.png");
+                                            System.out.println(slotBag.get(i).getName());
+                                            slotBag.get(i).setCoun(1);
+                                            money -= 15;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+
+                            player.setMouseClicked(false);
+                            player.setMouseNotNormal(0);
+                        }
+                    }
                     break;
 
                 }
@@ -876,7 +945,14 @@ public class MyGdxGame extends Game {
             }
             windowBuy.draw(renderer.getBatch());
         }
-
+        if(player.getmouseClicked()) {
+            player.setMouseClicked(false);
+            statusHowto++;
+        }
+    for(int i = 0;i<=3;i++){
+        weedList[i].getTexture().dispose();
+        weedList[i].setTexture(new Texture(slotBag.get(i).getName()));
+    }
     }
 
 
