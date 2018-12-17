@@ -39,6 +39,7 @@ public class MyGdxGame extends Game {
     private FarmAcivities farmAcivities;
     private SavingNextDay savingNextDay;
     private ArrayList<SlotBag> slotBag = new ArrayList<SlotBag>(4);
+    private TreeNextGrowth treeNextGrowth = new TreeNextGrowth();
     long id;
 
     private FloorRender
@@ -371,7 +372,7 @@ public class MyGdxGame extends Game {
                 mouseNumber = mouseChange.render(1,mouseNumber);
             }
 
-        } else if (player.getPosX() <= 699 && player.getPosX() >= 641 && player.getPosY() >= 649 && player.getPosY() <= 701 &&!slotBag.get(0).getName().equals("null.png")) {
+        } else if (player.getPosX() <= 699 && player.getPosX() >= 641 && player.getPosY() >= 649 && player.getPosY() <= 701 &&!slotBag.get(0).getName().equals("null2.png") && slotBag.get(0).getCoun()>0) {
             if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                 mouseNumber = mouseChange.render(2,mouseNumber);
             else if (player.getmouseClicked() == true && player.getMouseNotNormal() == 0) {
@@ -383,37 +384,37 @@ public class MyGdxGame extends Game {
                 player.setMouseNotNormal(0);
                 mouseNumber = mouseChange.render(1,mouseNumber);
             }
-        } else if (player.getPosX() <= 760 && player.getPosX() >= 704 && player.getPosY() >= 649 && player.getPosY() <= 701 &&!slotBag.get(1).getName().equals("null.png")) {
+        } else if (player.getPosX() <= 760 && player.getPosX() >= 704 && player.getPosY() >= 649 && player.getPosY() <= 701 &&!slotBag.get(1).getName().equals("null2.png")&& slotBag.get(1).getCoun()>0) {
             if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                 mouseNumber = mouseChange.render(2,mouseNumber);
             else if (player.getmouseClicked() == true && player.getMouseNotNormal() == 0) {
                 player.setMouseClicked(false);
                 player.setMouseNotNormal(1);
-                mouseNumber = mouseChange.render(7,mouseNumber);
+                mouseNumber = mouseChange.render(10,mouseNumber);
             } else if (player.getmouseClicked() == true && player.getMouseNotNormal() == 1) {
                 player.setMouseClicked(false);
                 player.setMouseNotNormal(0);
                 mouseNumber = mouseChange.render(1,mouseNumber);
             }
-        } else if (player.getPosX() <= 824 && player.getPosX() >= 766 && player.getPosY() >= 649 && player.getPosY() <= 701 &&!slotBag.get(2).getName().equals("null.png")) {
+        } else if (player.getPosX() <= 824 && player.getPosX() >= 766 && player.getPosY() >= 649 && player.getPosY() <= 701 &&!slotBag.get(2).getName().equals("null2.png") && slotBag.get(2).getCoun()>0) {
             if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                 mouseNumber = mouseChange.render(2,mouseNumber);
             else if (player.getmouseClicked() == true && player.getMouseNotNormal() == 0) {
                 player.setMouseClicked(false);
                 player.setMouseNotNormal(1);
-                mouseNumber = mouseChange.render(7,mouseNumber);
+                mouseNumber = mouseChange.render(11,mouseNumber);
             } else if (player.getmouseClicked() == true && player.getMouseNotNormal() == 1) {
                 player.setMouseClicked(false);
                 player.setMouseNotNormal(0);
                 mouseNumber = mouseChange.render(1,mouseNumber);
             }
-        } else if (player.getPosX() <= 890 && player.getPosX() >= 831 && player.getPosY() >= 649 && player.getPosY() <= 701 &&!slotBag.get(3).getName().equals("null.png")) {
+        } else if (player.getPosX() <= 890 && player.getPosX() >= 831 && player.getPosY() >= 649 && player.getPosY() <= 701 &&!slotBag.get(3).getName().equals("null2.png") && slotBag.get(3).getCoun()>0) {
             if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                 mouseNumber = mouseChange.render(2,mouseNumber);
             else if (player.getmouseClicked() == true && player.getMouseNotNormal() == 0) {
                 player.setMouseClicked(false);
                 player.setMouseNotNormal(1);
-                mouseNumber = mouseChange.render(7,mouseNumber);
+                mouseNumber = mouseChange.render(12,mouseNumber);
             } else if (player.getmouseClicked() == true && player.getMouseNotNormal() == 1) {
                 player.setMouseClicked(false);
                 player.setMouseNotNormal(0);
@@ -433,9 +434,17 @@ public class MyGdxGame extends Game {
                 mouseNumber = mouseChange.render(1,mouseNumber);
             weedList[4].getTexture().dispose();
             weedList[4].setTexture(new Texture("howtopop/2.png"));
-
         }
-
+        for (int i=0;i<=3;i++){
+            if(slotBag.get(i).getCoun()==0){
+                if(!slotBag.get(i).getName().equals("null2.png")) {
+                    player.setMouseClicked(false);
+                    player.setMouseNotNormal(0);
+                    mouseNumber = mouseChange.render(1,mouseNumber);
+                    slotBag.get(i).setName("null2.png");
+                }
+            }
+        }
 
 
     }
@@ -449,7 +458,7 @@ public class MyGdxGame extends Game {
     }
 
     public void farmActivities(FloorStatus[] floorMaps){
-        if(player.getMouseNotNormal()==1) money = farmAcivity.FarmAcivities(floorMaps,player,mouseNumber,mouseChange,money);
+        if(player.getMouseNotNormal()==1) money = farmAcivity.FarmAcivities(floorMaps,player,mouseNumber,mouseChange,money,slotBag);
         else{
             if(player.getPosX() >= 28 && player.getPosX()<=105 && player.getPosY() >=595  &&player.getPosY() <= 677){
                 mouseNumber = mouseChange.render(2,mouseNumber);
@@ -477,6 +486,11 @@ public class MyGdxGame extends Game {
                 }
             }
         }
+        for(int i = 0;i<=3;i++){
+            weedList[i].getTexture().dispose();
+            weedList[i].setTexture(new Texture(slotBag.get(i).getName()));
+        }
+
     }
     public void createFloor(){
         for (int i = 0 ; i<30;i++){
@@ -514,6 +528,7 @@ public class MyGdxGame extends Game {
             for (int i = 0 ; i<30;i++){
                 floorMap4[i].setName("normalfloor.png");
             }
+            treeNextGrowth.growth(floorMap,floorMap2,floorMap3,floorMap4,day);
             day++;
         }
 
@@ -897,9 +912,115 @@ public class MyGdxGame extends Game {
                             boolean stateinbag = false;
                             windowBuy.getTexture().dispose();
                             windowBuy.setTexture(new Texture("windowBuy/pumkin2.png"));
-                            if(money-15 >=0 ) {
+                            if(money-5 >=0 ) {
                                 for (int i = 0; i < slotBag.size(); i++) {
                                     if (slotBag.get(i).getName().equals("tree/10/bag.png")) {
+                                        slotBag.get(i).setCoun(1);
+                                        System.out.println(slotBag.get(i).getCoun());
+                                        stateinbag = true;
+                                        money -= 5;
+                                    }
+                                }
+                                if (stateinbag == false) {
+                                    for (int i = 0; i < slotBag.size(); i++) {
+                                        if (slotBag.get(i).getName().equals("null2.png")) {
+                                            slotBag.get(i).setName("tree/10/bag.png");
+                                            System.out.println(slotBag.get(i).getName());
+                                            slotBag.get(i).setCoun(1);
+                                            money -= 5;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+
+                            player.setMouseClicked(false);
+                            player.setMouseNotNormal(0);
+                        }
+                    }
+                    break;
+
+                }
+                case 2:{
+                    windowBuy.setTexture(new Texture("windowBuy/jastmine.png"));
+                    if(player.getPosX()>=850 &&player.getPosX()<=1095 && player.getPosY()>=420 && player.getPosY()<=494){
+                        if(player.getmouseClicked()) {
+                            boolean stateinbag = false;
+                            windowBuy.getTexture().dispose();
+                            windowBuy.setTexture(new Texture("windowBuy/jastmine1.png"));
+                            if(money-10 >=0 ) {
+                                for (int i = 0; i < slotBag.size(); i++) {
+                                    if (slotBag.get(i).getName().equals("tree/2/bag.png")) {
+                                        slotBag.get(i).setCoun(1);
+                                        System.out.println(slotBag.get(i).getCoun());
+                                        stateinbag = true;
+                                        money -= 10;
+                                    }
+                                }
+                                if (stateinbag == false) {
+                                    for (int i = 0; i < slotBag.size(); i++) {
+                                        if (slotBag.get(i).getName().equals("null2.png")) {
+                                            slotBag.get(i).setName("tree/2/bag.png");
+                                            slotBag.get(i).setCoun(1);
+                                            money -= 10;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+
+                            player.setMouseClicked(false);
+                            player.setMouseNotNormal(0);
+                        }
+                    }
+
+                    break;
+                }
+                case 3:{
+                    windowBuy.setTexture(new Texture("windowBuy/melon.png"));
+                    if(player.getPosX()>=850 &&player.getPosX()<=1095 && player.getPosY()>=420 && player.getPosY()<=494){
+                        if(player.getmouseClicked()) {
+                            boolean stateinbag = false;
+                            windowBuy.getTexture().dispose();
+                            windowBuy.setTexture(new Texture("windowBuy/melon2.png"));
+                            if(money-20 >=0 ) {
+                                for (int i = 0; i < slotBag.size(); i++) {
+                                    if (slotBag.get(i).getName().equals("tree/11/bag.png")) {
+                                        slotBag.get(i).setCoun(1);
+                                        System.out.println(slotBag.get(i).getCoun());
+                                        stateinbag = true;
+                                        money -= 20;
+                                    }
+                                }
+                                if (stateinbag == false) {
+                                    for (int i = 0; i < slotBag.size(); i++) {
+                                        if (slotBag.get(i).getName().equals("null2.png")) {
+                                            slotBag.get(i).setName("tree/11/bag.png");
+                                            slotBag.get(i).setCoun(1);
+                                            money -= 20;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+
+                            player.setMouseClicked(false);
+                            player.setMouseNotNormal(0);
+                        }
+                    }
+                    break;
+
+                }
+                case 4:{
+                    windowBuy.setTexture(new Texture("windowBuy/corn.png"));
+                    if(player.getPosX()>=850 &&player.getPosX()<=1095 && player.getPosY()>=420 && player.getPosY()<=494){
+                        if(player.getmouseClicked()) {
+                            boolean stateinbag = false;
+                            windowBuy.getTexture().dispose();
+                            windowBuy.setTexture(new Texture("windowBuy/corn2.png"));
+                            if(money-15 >=0 ) {
+                                for (int i = 0; i < slotBag.size(); i++) {
+                                    if (slotBag.get(i).getName().equals("tree/12/bag.png")) {
                                         slotBag.get(i).setCoun(1);
                                         System.out.println(slotBag.get(i).getCoun());
                                         stateinbag = true;
@@ -909,8 +1030,7 @@ public class MyGdxGame extends Game {
                                 if (stateinbag == false) {
                                     for (int i = 0; i < slotBag.size(); i++) {
                                         if (slotBag.get(i).getName().equals("null2.png")) {
-                                            slotBag.get(i).setName("tree/10/bag.png");
-                                            System.out.println(slotBag.get(i).getName());
+                                            slotBag.get(i).setName("tree/12/bag.png");
                                             slotBag.get(i).setCoun(1);
                                             money -= 15;
                                             break;
@@ -926,19 +1046,38 @@ public class MyGdxGame extends Game {
                     break;
 
                 }
-                case 2:{
-
-                    break;
-                }
-                case 3:{
-                    break;
-
-                }
-                case 4:{
-                    break;
-
-                }
                 case 5:{
+                    windowBuy.setTexture(new Texture("windowBuy/cabage.png"));
+                    if(player.getPosX()>=850 &&player.getPosX()<=1095 && player.getPosY()>=420 && player.getPosY()<=494){
+                        if(player.getmouseClicked()) {
+                            boolean stateinbag = false;
+                            windowBuy.getTexture().dispose();
+                            windowBuy.setTexture(new Texture("windowBuy/cabage2.png"));
+                            if(money-25 >=0 ) {
+                                for (int i = 0; i < slotBag.size(); i++) {
+                                    if (slotBag.get(i).getName().equals("tree/13/bag.png")) {
+                                        slotBag.get(i).setCoun(1);
+                                        System.out.println(slotBag.get(i).getCoun());
+                                        stateinbag = true;
+                                        money -= 25;
+                                    }
+                                }
+                                if (stateinbag == false) {
+                                    for (int i = 0; i < slotBag.size(); i++) {
+                                        if (slotBag.get(i).getName().equals("null2.png")) {
+                                            slotBag.get(i).setName("tree/13/bag.png");
+                                            slotBag.get(i).setCoun(1);
+                                            money -= 25;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+
+                            player.setMouseClicked(false);
+                            player.setMouseNotNormal(0);
+                        }
+                    }
                     break;
 
                 }

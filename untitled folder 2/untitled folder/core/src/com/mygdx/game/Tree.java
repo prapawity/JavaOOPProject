@@ -4,16 +4,10 @@ public class Tree {
     private String nameTree;
     private boolean statusWatering;
     private int growthStatus;
-
-    public int getGrowthState() {
-        return growthState;
+    public void addGrowth(int growthState){
+        this.growthStatus += growthState;
     }
 
-    public void setGrowthState(int growthState) {
-        this.growthState = growthState;
-    }
-
-    private int growthState;
 
     public int getDay() {
         return day;
@@ -21,6 +15,9 @@ public class Tree {
 
     public void setDay(int day) {
         this.day = day;
+    }
+    public void addDay(int day){
+        this.day += day;
     }
 
     private int day;
