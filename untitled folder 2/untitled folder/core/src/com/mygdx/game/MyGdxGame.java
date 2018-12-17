@@ -512,23 +512,26 @@ public class MyGdxGame extends Game {
     }
     public void nextDay(){
         screenState = savingNextDay.render(renderer,camera,screenState);
-        if(screenState==0){
+        if(screenState==0) {
             changeSound.openSound.dispose();
             changeSound.changeSound(1);
-            for (int i = 0 ; i<30;i++){
+            for (int i = 0; i < 30; i++) {
                 floorMap[i].setName("normalfloor.png");
+                floorMap[i].setStatus(0);
             }
-            for (int i = 0 ; i<30;i++){
-
+            for (int i = 0; i < 30; i++) {
                 floorMap2[i].setName("normalfloor.png");
+                floorMap2[i].setStatus(0);
             }
-            for (int i = 0 ; i<30;i++){
+            for (int i = 0; i < 30; i++) {
                 floorMap3[i].setName("normalfloor.png");
+                floorMap3[i].setStatus(0);
             }
-            for (int i = 0 ; i<30;i++){
+            for (int i = 0; i < 30; i++) {
                 floorMap4[i].setName("normalfloor.png");
+                floorMap4[i].setStatus(0);
             }
-            treeNextGrowth.growth(floorMap,floorMap2,floorMap3,floorMap4,day);
+            treeNextGrowth.growth(floorMap, floorMap2, floorMap3, floorMap4, day);
             day++;
         }
 

@@ -143,7 +143,7 @@ public class FarmAcivities {
                 }
                 else if(floorMaps[index].getStatus()==1){
                     floorMaps[index].setName("dickingwet.png");
-                    floorMaps[index].setStatus(3);
+                    floorMaps[index].setStatus(4);
                 }
                 if(!floorMaps[index].getTree().getNameTree().equals("null.png"))floorMaps[index].getTree().addGrowth(5);
             }
