@@ -323,6 +323,7 @@ public class MyGdxGame extends Game implements Serializable {
         farmAcivity.sound.dispose();
         farmAcivity.sound2.dispose();
         farmAcivity.sound3.dispose();
+        farmAcivity.sound4.dispose();
         savingNextDay.dispose();
         howTo.dispose();
         Gdx.app.exit();
@@ -929,6 +930,7 @@ public class MyGdxGame extends Game implements Serializable {
                     windowBuy.setTexture(new Texture("GenerateMap/windowBuy/pumkin.png"));
                     if (player.getPosX() >= 850 && player.getPosX() <= 1095 && player.getPosY() >= 420 && player.getPosY() <= 494) {
                         if (player.getmouseClicked()) {
+                            farmAcivity.sound4.play(20f);
                             boolean stateinbag = false;
                             windowBuy.getTexture().dispose();
                             windowBuy.setTexture(new Texture("GenerateMap/windowBuy/pumkin2.png"));
@@ -963,6 +965,7 @@ public class MyGdxGame extends Game implements Serializable {
                     windowBuy.setTexture(new Texture("GenerateMap/windowBuy/jastmine.png"));
                     if (player.getPosX() >= 850 && player.getPosX() <= 1095 && player.getPosY() >= 420 && player.getPosY() <= 494) {
                         if (player.getmouseClicked()) {
+                            farmAcivity.sound4.play();
                             boolean stateinbag = false;
                             windowBuy.getTexture().dispose();
                             windowBuy.setTexture(new Texture("GenerateMap/windowBuy/jastmine1.png"));
@@ -997,6 +1000,7 @@ public class MyGdxGame extends Game implements Serializable {
                     windowBuy.setTexture(new Texture(Gdx.files.internal("GenerateMap/windowBuy/melon.png")));
                     if (player.getPosX() >= 850 && player.getPosX() <= 1095 && player.getPosY() >= 420 && player.getPosY() <= 494) {
                         if (player.getmouseClicked()) {
+                            farmAcivity.sound4.play();
                             boolean stateinbag = false;
                             windowBuy.getTexture().dispose();
                             windowBuy.setTexture(new Texture("GenerateMap/windowBuy/melon2.png"));
@@ -1031,6 +1035,7 @@ public class MyGdxGame extends Game implements Serializable {
                     windowBuy.setTexture(new Texture(Gdx.files.internal("GenerateMap/windowBuy/corn.png")));
                     if (player.getPosX() >= 850 && player.getPosX() <= 1095 && player.getPosY() >= 420 && player.getPosY() <= 494) {
                         if (player.getmouseClicked()) {
+                            farmAcivity.sound4.play();
                             boolean stateinbag = false;
                             windowBuy.getTexture().dispose();
                             windowBuy.setTexture(new Texture("GenerateMap/windowBuy/corn2.png"));
@@ -1065,6 +1070,7 @@ public class MyGdxGame extends Game implements Serializable {
                     windowBuy.setTexture(new Texture(Gdx.files.internal("GenerateMap/windowBuy/cabage.png").toString()));
                     if (player.getPosX() >= 850 && player.getPosX() <= 1095 && player.getPosY() >= 420 && player.getPosY() <= 494) {
                         if (player.getmouseClicked()) {
+                            farmAcivity.sound4.play();
                             boolean stateinbag = false;
                             windowBuy.getTexture().dispose();
                             windowBuy.setTexture(new Texture("GenerateMap/windowBuy/cabage2.png"));

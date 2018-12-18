@@ -10,6 +10,7 @@ public class FarmAcivities {
      Sound sound = Gdx.audio.newSound(Gdx.files.internal("GenerateMap/SoundEffect/Dicking.mp3"));
      Sound sound2 = Gdx.audio.newSound(Gdx.files.internal("GenerateMap/SoundEffect/watering.mp3"));
      Sound sound3 = Gdx.audio.newSound(Gdx.files.internal("GenerateMap/SoundEffect/sand.mp3"));
+     Sound sound4 = Gdx.audio.newSound(Gdx.files.internal("GenerateMap/SoundEffect/blinking.mp3"));
      long id;
      int moneys;
 
@@ -22,7 +23,7 @@ public class FarmAcivities {
                 }else if(mouseNumber==7 || mouseNumber==10){
                     mouseChange.render(9,mouseNumber);
                 }
-                changeEffect(mouseNumber);
+                if(mouseNumber!=4||mouseNumber!=5) changeEffect(mouseNumber);
                 if(332<=player.getPosX() && player.getPosX()<=415 && player.getPosY()>=72 && player.getPosY()<=160){
                     activity(0,mouseNumber,floorMaps,slotBag,mouseChange);
                 }else if(437<=player.getPosX() && player.getPosX()<=518 && player.getPosY()>=72 && player.getPosY()<=160){
@@ -112,6 +113,20 @@ public class FarmAcivities {
                 sound3.setVolume(id,2f);
                 sound3.play();
                 break;
+            }
+            case 4:{
+                sound.stop();
+                sound2.stop();
+                sound3.stop();
+                sound4.setVolume(id,20f);
+                sound4.play();
+            }
+            case 5:{
+                sound.stop();
+                sound2.stop();
+                sound3.stop();
+                sound4.play();
+
             }
 
         }
@@ -251,6 +266,7 @@ public class FarmAcivities {
                     || floorMaps[index].getTree().getNameTree().equals("GenerateMap/tree/11/82.png") || floorMaps[index].getTree().getNameTree().equals("GenerateMap/tree/12/92.png")
                     || floorMaps[index].getTree().getNameTree().equals("GenerateMap/tree/13/72.png")){
                 if(mouseNumber==4||mouseNumber==5) {
+                    changeEffect(mouseNumber);
                     moneys += 15;
                     floorMaps[index].getTree().setNameTree("GenerateMap/deadtree.png");
                     floorMaps[index].getTree().setGrowthStatus(0);

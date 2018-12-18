@@ -576,7 +576,7 @@ public class TreeNextGrowth {
                         break;
                     }
                     case 10:{
-                        if (floorMaps.getTree().getGrowthStatus() < 40 || floorMaps.getTree().getGrowthStatus()>50) floorMaps.getTree().setNameTree("GenerateMap/deadtree.png");
+                        if (floorMaps.getTree().getGrowthStatus() < 40 || floorMaps.getTree().getGrowthStatus()>55) floorMaps.getTree().setNameTree("GenerateMap/deadtree.png");
                         else if (floorMaps.getTree().getGrowthStatus() >=40 && floorMaps.getTree().getGrowthStatus()<45){
                             floorMaps.getTree().setNameTree("GenerateMap/tree/13/4.png");
                             floorMaps.getTree().setGrowthStatus(40);
@@ -592,7 +592,7 @@ public class TreeNextGrowth {
                         break;
                     }
                     case 11:{
-                        if (floorMaps.getTree().getGrowthStatus() < 45 || floorMaps.getTree().getGrowthStatus()>55) floorMaps.getTree().setNameTree("GenerateMap/deadtree.png");
+                        if (floorMaps.getTree().getGrowthStatus() < 45 || floorMaps.getTree().getGrowthStatus()>60) floorMaps.getTree().setNameTree("GenerateMap/deadtree.png");
                         else if (floorMaps.getTree().getGrowthStatus() >=45 && floorMaps.getTree().getGrowthStatus()<50){
                             floorMaps.getTree().setNameTree("GenerateMap/tree/13/4.png");
                             floorMaps.getTree().setGrowthStatus(45);
@@ -608,7 +608,7 @@ public class TreeNextGrowth {
                         break;
                     }
                     case 12:{
-                        if (floorMaps.getTree().getGrowthStatus() < 45 || floorMaps.getTree().getGrowthStatus()>55) floorMaps.getTree().setNameTree("GenerateMap/deadtree.png");
+                        if (floorMaps.getTree().getGrowthStatus() < 45 || floorMaps.getTree().getGrowthStatus()>65) floorMaps.getTree().setNameTree("GenerateMap/deadtree.png");
                         else if (floorMaps.getTree().getGrowthStatus() >=50 && floorMaps.getTree().getGrowthStatus()<55){
                             floorMaps.getTree().setNameTree("GenerateMap/tree/13/4.png");
                             floorMaps.getTree().setGrowthStatus(50);
@@ -624,7 +624,7 @@ public class TreeNextGrowth {
                         break;
                     }
                     case 13:{
-                        if (floorMaps.getTree().getGrowthStatus() < 45 || floorMaps.getTree().getGrowthStatus()>55) floorMaps.getTree().setNameTree("GenerateMap/deadtree.png");
+                        if (floorMaps.getTree().getGrowthStatus() < 45 || floorMaps.getTree().getGrowthStatus()>70) floorMaps.getTree().setNameTree("GenerateMap/deadtree.png");
                         else if (floorMaps.getTree().getGrowthStatus() >=55 && floorMaps.getTree().getGrowthStatus()<60){
                             floorMaps.getTree().setNameTree("GenerateMap/tree/13/4.png");
                             floorMaps.getTree().setGrowthStatus(55);
