@@ -1,14 +1,15 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.Gdx;
-
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class SaveGame {
     static SaveObject saveObject;
     public static void write(SaveObject saveObject){
         try {
-            FileOutputStream fos = new FileOutputStream(Gdx.files.internal("GenerateMap/save/file.bat").toString());
+            FileOutputStream fos = new FileOutputStream("file.bat");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(saveObject);
             oos.close();
@@ -24,7 +25,7 @@ public class SaveGame {
     public static void read() throws Exception{
         FileInputStream fin;
         ObjectInputStream oin;
-        fin = new FileInputStream(Gdx.files.internal("GenerateMap/save/file.bat").toString());
+        fin = new FileInputStream("file.bat");
         oin = new ObjectInputStream(fin);
         saveObject = (SaveObject) oin.readObject();
         oin.close();

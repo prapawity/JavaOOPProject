@@ -235,12 +235,12 @@ public class TreeNextGrowth {
                         if (floorMaps.getTree().getGrowthStatus() < 15 || floorMaps.getTree().getGrowthStatus()>35) floorMaps.getTree().setNameTree("GenerateMap/deadtree.png");
                         else if (floorMaps.getTree().getGrowthStatus() <20 && floorMaps.getTree().getGrowthStatus()>=15){
                             floorMaps.getTree().setNameTree("GenerateMap/tree/11/4.png");
-                            floorMaps.getTree().setGrowthStatus(5);
+                            floorMaps.getTree().setGrowthStatus(15);
 
                         }
                         else if (floorMaps.getTree().getGrowthStatus() < 25 && floorMaps.getTree().getGrowthStatus()>=20){
                             floorMaps.getTree().setNameTree("GenerateMap/tree/11/4.png");
-                            floorMaps.getTree().setGrowthStatus(10);
+                            floorMaps.getTree().setGrowthStatus(20);
                         }
                         else if (floorMaps.getTree().getGrowthStatus() >= 25){
                             floorMaps.getTree().setNameTree("GenerateMap/tree/11/5.png");
@@ -252,12 +252,12 @@ public class TreeNextGrowth {
                         if (floorMaps.getTree().getGrowthStatus() < 20 || floorMaps.getTree().getGrowthStatus()>40) floorMaps.getTree().setNameTree("GenerateMap/deadtree.png");
                         else if (floorMaps.getTree().getGrowthStatus() <25 && floorMaps.getTree().getGrowthStatus()>=20){
                             floorMaps.getTree().setNameTree("GenerateMap/tree/11/4.png");
-                            floorMaps.getTree().setGrowthStatus(5);
+                            floorMaps.getTree().setGrowthStatus(20);
 
                         }
                         else if (floorMaps.getTree().getGrowthStatus() >= 25 && floorMaps.getTree().getGrowthStatus()<30){
                             floorMaps.getTree().setNameTree("GenerateMap/tree/11/5.png");
-                            floorMaps.getTree().setGrowthStatus(10);
+                            floorMaps.getTree().setGrowthStatus(25);
                         }
                         else if (floorMaps.getTree().getGrowthStatus() >= 30){
                             floorMaps.getTree().setNameTree("GenerateMap/tree/11/6.png");
@@ -269,29 +269,29 @@ public class TreeNextGrowth {
                         if (floorMaps.getTree().getGrowthStatus() < 20 || floorMaps.getTree().getGrowthStatus()>45) floorMaps.getTree().setNameTree("GenerateMap/deadtree.png");
                         else if (floorMaps.getTree().getGrowthStatus() <30 && floorMaps.getTree().getGrowthStatus()>=25){
                             floorMaps.getTree().setNameTree("GenerateMap/tree/11/5.png");
-                            floorMaps.getTree().setGrowthStatus(5);
+                            floorMaps.getTree().setGrowthStatus(20);
 
                         }
                         else if (floorMaps.getTree().getGrowthStatus() >= 30 && floorMaps.getTree().getGrowthStatus()<35){
                             floorMaps.getTree().setNameTree("GenerateMap/tree/11/6.png");
-                            floorMaps.getTree().setGrowthStatus(10);
+                            floorMaps.getTree().setGrowthStatus(30);
                         }
                         else if (floorMaps.getTree().getGrowthStatus() >= 35){
                             floorMaps.getTree().setNameTree("GenerateMap/tree/11/7.png");
-                            floorMaps.getTree().setGrowthStatus(30);
+                            floorMaps.getTree().setGrowthStatus(35);
                         }
                         break;
                     }
                     case 8:{
                         if (floorMaps.getTree().getGrowthStatus() < 20 || floorMaps.getTree().getGrowthStatus()>50) floorMaps.getTree().setNameTree("GenerateMap/deadtree.png");
-                        else if (floorMaps.getTree().getGrowthStatus() <25 && floorMaps.getTree().getGrowthStatus()>=20){
+                        else if (floorMaps.getTree().getGrowthStatus() <35 && floorMaps.getTree().getGrowthStatus()>=30){
                             floorMaps.getTree().setNameTree("GenerateMap/tree/11/6.png");
-                            floorMaps.getTree().setGrowthStatus(5);
+                            floorMaps.getTree().setGrowthStatus(30);
 
                         }
-                        else if (floorMaps.getTree().getGrowthStatus() >= 25 && floorMaps.getTree().getGrowthStatus()<40){
+                        else if (floorMaps.getTree().getGrowthStatus() >= 35 && floorMaps.getTree().getGrowthStatus()<45){
                             floorMaps.getTree().setNameTree("GenerateMap/tree/11/7.png");
-                            floorMaps.getTree().setGrowthStatus(10);
+                            floorMaps.getTree().setGrowthStatus(40);
                         }
                         break;
                     }
@@ -302,13 +302,13 @@ public class TreeNextGrowth {
                             floorMaps.getTree().setGrowthStatus(5);
 
                         }
-                        else if (floorMaps.getTree().getGrowthStatus() >= 25 && floorMaps.getTree().getGrowthStatus()<40){
+                        else if (floorMaps.getTree().getGrowthStatus() >= 35 && floorMaps.getTree().getGrowthStatus()<45){
                             floorMaps.getTree().setNameTree("GenerateMap/tree/11/7.png");
-                            floorMaps.getTree().setGrowthStatus(10);
+                            floorMaps.getTree().setGrowthStatus(40);
                         }
                         else if (floorMaps.getTree().getGrowthStatus() >= 45){
                             floorMaps.getTree().setNameTree("GenerateMap/tree/11/8.png");
-                            floorMaps.getTree().setGrowthStatus(30);
+                            floorMaps.getTree().setGrowthStatus(45);
                         }
                         break;
                     }

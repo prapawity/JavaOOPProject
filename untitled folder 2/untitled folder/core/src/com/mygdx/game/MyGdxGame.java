@@ -960,6 +960,7 @@ public class MyGdxGame extends Game implements Serializable {
 
                 }
                 case 2: {
+                    windowBuy.setTexture(new Texture("GenerateMap/windowBuy/jastmine.png"));
                     if (player.getPosX() >= 850 && player.getPosX() <= 1095 && player.getPosY() >= 420 && player.getPosY() <= 494) {
                         if (player.getmouseClicked()) {
                             boolean stateinbag = false;
@@ -998,7 +999,7 @@ public class MyGdxGame extends Game implements Serializable {
                         if (player.getmouseClicked()) {
                             boolean stateinbag = false;
                             windowBuy.getTexture().dispose();
-                            windowBuy.setTexture(new Texture(Gdx.files.internal("GenerateMap/windowBuy/melon2.png")));
+                            windowBuy.setTexture(new Texture("GenerateMap/windowBuy/melon2.png"));
                             if (money - 20 >= 0) {
                                 for (int i = 0; i < slotBag.size(); i++) {
                                     if (slotBag.get(i).getName().equals("GenerateMap/tree/11/bag.png")) {
@@ -1032,10 +1033,10 @@ public class MyGdxGame extends Game implements Serializable {
                         if (player.getmouseClicked()) {
                             boolean stateinbag = false;
                             windowBuy.getTexture().dispose();
-                            windowBuy.setTexture(new Texture(Gdx.files.internal("GenerateMap/windowBuy/corn2.png")));
+                            windowBuy.setTexture(new Texture("GenerateMap/windowBuy/corn2.png"));
                             if (money - 15 >= 0) {
                                 for (int i = 0; i < slotBag.size(); i++) {
-                                    if (slotBag.get(i).getName().equals("tree/12/bag.png")) {
+                                    if (slotBag.get(i).getName().equals("GenerateMap/tree/12/bag.png")) {
                                         slotBag.get(i).setCoun(1);
                                         stateinbag = true;
                                         money -= 15;
@@ -1066,7 +1067,7 @@ public class MyGdxGame extends Game implements Serializable {
                         if (player.getmouseClicked()) {
                             boolean stateinbag = false;
                             windowBuy.getTexture().dispose();
-                            windowBuy.setTexture(new Texture(Gdx.files.internal("GenerateMap/windowBuy/cabage2.png").toString()));
+                            windowBuy.setTexture(new Texture("GenerateMap/windowBuy/cabage2.png"));
                             if (money - 25 >= 0) {
                                 for (int i = 0; i < slotBag.size(); i++) {
                                     if (slotBag.get(i).getName().equals("GenerateMap/tree/13/bag.png")) {
@@ -1171,14 +1172,14 @@ public class MyGdxGame extends Game implements Serializable {
             case 7: {
                 Openpic.draw(renderer.getBatch());
                 if (player.getPosX() >= 261 && player.getPosX() <= 483 && player.getPosY() >= 449 && player.getPosY() <= 603) {
-                    newGame.setTexture(new Texture(Gdx.files.internal("GenerateMap/OpenPic/new2.png")));
+                    newGame.setTexture(new Texture("GenerateMap/OpenPic/new2.png"));
                     if (player.getmouseClicked()) {
                         logostate++;
                         player.setMouseClicked(false);
                         player.setMouseNotNormal(0);
                     }
                 } else if (player.getPosX() >= 561 && player.getPosX() <= 782 && player.getPosY() >= 465 && player.getPosY() <= 603) {
-                    loadGame.setTexture(new Texture(Gdx.files.internal("GenerateMap/OpenPic/load2.png")));
+                    loadGame.setTexture(new Texture("GenerateMap/OpenPic/load2.png"));
                     if (player.getmouseClicked()) {
                         try {
                             SaveGame.read();
@@ -1202,7 +1203,7 @@ public class MyGdxGame extends Game implements Serializable {
 
 
                 } else if (player.getPosX() >= 848 && player.getPosX() <= 1076 && player.getPosY() >= 466 && player.getPosY() <= 603) {
-                    exitGame.setTexture(new Texture(Gdx.files.internal("GenerateMap/OpenPic/exit2.png")));
+                    exitGame.setTexture(new Texture("GenerateMap/OpenPic/exit2.png"));
                     if (player.getmouseClicked()) {
                         dispose();
                     }
@@ -1210,9 +1211,9 @@ public class MyGdxGame extends Game implements Serializable {
                     newGame.getTexture().dispose();
                     loadGame.getTexture().dispose();
                     exitGame.getTexture().dispose();
-                    newGame.setTexture(new Texture(Gdx.files.internal("GenerateMap/OpenPic/new1.png")));
-                    loadGame.setTexture(new Texture(Gdx.files.internal("GenerateMap/OpenPic/load1.png")));
-                    exitGame.setTexture(new Texture(Gdx.files.internal("GenerateMap/OpenPic/exit1.png")));
+                    newGame.setTexture(new Texture("GenerateMap/OpenPic/new1.png"));
+                    loadGame.setTexture(new Texture("GenerateMap/OpenPic/load1.png"));
+                    exitGame.setTexture(new Texture("GenerateMap/OpenPic/exit1.png"));
                 }
                 player.setMouseNotNormal(0);
                 player.setMouseClicked(false);
