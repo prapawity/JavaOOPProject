@@ -7,9 +7,9 @@ import com.mygdx.game.entitirs.Player;
 import java.util.ArrayList;
 
 public class FarmAcivities {
-     Sound sound = Gdx.audio.newSound(Gdx.files.internal("SoundEffect/Dicking.mp3"));
-     Sound sound2 = Gdx.audio.newSound(Gdx.files.internal("SoundEffect/watering.mp3"));
-     Sound sound3 = Gdx.audio.newSound(Gdx.files.internal("SoundEffect/sand.mp3"));
+     Sound sound = Gdx.audio.newSound(Gdx.files.internal("GenerateMap/SoundEffect/Dicking.mp3"));
+     Sound sound2 = Gdx.audio.newSound(Gdx.files.internal("GenerateMap/SoundEffect/watering.mp3"));
+     Sound sound3 = Gdx.audio.newSound(Gdx.files.internal("GenerateMap/SoundEffect/sand.mp3"));
      long id;
      int moneys;
 
@@ -120,135 +120,135 @@ public class FarmAcivities {
         private void activity(int index,int mouseNumber,FloorStatus[] floorMaps,ArrayList<SlotBag> slotBags,MouseChange mouseChange){
             if (mouseNumber==3) {
                 if(floorMaps[index].getStatus()==0) {
-                    floorMaps[index].setName("dicking.png");
+                    floorMaps[index].setName(Gdx.files.internal("GenerateMap/dicking.png").toString());
                     floorMaps[index].setStatus(1);
                     floorMaps[index].getTree().addGrowth(2);
                 }
                 else if(floorMaps[index].getStatus()==2){
-                    floorMaps[index].setName("dickingwet.png");
+                    floorMaps[index].setName(Gdx.files.internal("GenerateMap/dickingwet.png").toString());
                     floorMaps[index].setStatus(4);
                 }
-                if(!floorMaps[index].getTree().getNameTree().equals("null.png") & !floorMaps[index].getTree().getNameTree().equals("deadtree.png")){
-                    floorMaps[index].getTree().setNameTree("deadtree.png");
+                if(!floorMaps[index].getTree().getNameTree().equals(Gdx.files.internal("GenerateMap/null.png").toString()) & !floorMaps[index].getTree().getNameTree().equals(Gdx.files.internal("GenerateMap/deadtree.png").toString())){
+                    floorMaps[index].getTree().setNameTree(Gdx.files.internal("GenerateMap/deadtree.png").toString());
                     floorMaps[index].getTree().setGrowthStatus(0);
                 }
-                else if(floorMaps[index].getTree().getNameTree().equals("deadtree.png")){
-                    floorMaps[index].getTree().setNameTree("null.png");
+                else if(floorMaps[index].getTree().getNameTree().equals(Gdx.files.internal("GenerateMap/deadtree.png").toString())){
+                    floorMaps[index].getTree().setNameTree(Gdx.files.internal("GenerateMap/null.png").toString());
                     floorMaps[index].getTree().setGrowthStatus(0);
                     floorMaps[index].getTree().setDay(0);
                 }
             }
             else if(mouseNumber==6){
                 if(floorMaps[index].getStatus()==0){
-                    floorMaps[index].setName("wetfloor.png");
+                    floorMaps[index].setName(Gdx.files.internal("GenerateMap/wetfloor.png").toString());
                     floorMaps[index].setStatus(2);
                 }
                 else if(floorMaps[index].getStatus()==1){
-                    floorMaps[index].setName("dickingwet.png");
+                    floorMaps[index].setName(Gdx.files.internal("GenerateMap/dickingwet.png").toString());
                     floorMaps[index].setStatus(4);
                 }
-                if(!floorMaps[index].getTree().getNameTree().equals("null.png"))floorMaps[index].getTree().addGrowth(5);
+                if(!floorMaps[index].getTree().getNameTree().equals(Gdx.files.internal("GenerateMap/null.png").toString()))floorMaps[index].getTree().addGrowth(5);
             }
-            else if(mouseNumber==7 && floorMaps[index].getTree().getNameTree().equals("null.png")){
-                if(slotBags.get(0).getName().equals("tree/10/bag.png")){
-                    floorMaps[index].getTree().setNameTree("tree/10/1.png");
+            else if(mouseNumber==7 && floorMaps[index].getTree().getNameTree().equals(Gdx.files.internal("GenerateMap/null.png").toString())){
+                if(slotBags.get(0).getName().equals(Gdx.files.internal("GenerateMap/tree/10/bag.png").toString())){
+                    floorMaps[index].getTree().setNameTree(Gdx.files.internal("GenerateMap/tree/10/1.png").toString());
                 }
-                else if(slotBags.get(0).getName().equals("tree/2/bag.png")){
-                    floorMaps[index].getTree().setNameTree("tree/2/1.png");
+                else if(slotBags.get(0).getName().equals(Gdx.files.internal("GenerateMap/tree/2/bag.png").toString())){
+                    floorMaps[index].getTree().setNameTree(Gdx.files.internal("GenerateMap/tree/2/1.png").toString());
                 }
-                else if(slotBags.get(0).getName().equals("tree/11/bag.png")){
-                    floorMaps[index].getTree().setNameTree("tree/11/1.png");
+                else if(slotBags.get(0).getName().equals(Gdx.files.internal("GenerateMap/tree/11/bag.png").toString())){
+                    floorMaps[index].getTree().setNameTree(Gdx.files.internal("GenerateMap/tree/11/1.png").toString());
                 }
-                else if(slotBags.get(0).getName().equals("tree/12/bag.png")){
-                    floorMaps[index].getTree().setNameTree("tree/12/1.png");
+                else if(slotBags.get(0).getName().equals(Gdx.files.internal("GenerateMap/tree/12/bag.png").toString())){
+                    floorMaps[index].getTree().setNameTree(Gdx.files.internal("GenerateMap/tree/12/1.png").toString());
                 }
-                else if(slotBags.get(0).getName().equals("tree/13/bag.png")){
-                    floorMaps[index].getTree().setNameTree("tree/13/1.png");
+                else if(slotBags.get(0).getName().equals(Gdx.files.internal("GenerateMap/tree/13/bag.png").toString())){
+                    floorMaps[index].getTree().setNameTree(Gdx.files.internal("GenerateMap/tree/13/1.png").toString());
                 }
                 if(floorMaps[index].getStatus()>2)floorMaps[index].getTree().setGrowthStatus(5);
                 slotBags.get(0).setCoun(-1);
                 if(slotBags.get(0).getCoun()==0)mouseChange.render(1,mouseNumber);
             }
-            else if(mouseNumber==10 && floorMaps[index].getTree().getNameTree().equals("null.png")){
-                if(slotBags.get(1).getName().equals("tree/10/bag.png")){
-                    floorMaps[index].getTree().setNameTree("tree/10/1.png");
+            else if(mouseNumber==10 && floorMaps[index].getTree().getNameTree().equals(Gdx.files.internal("GenerateMap/null.png").toString())){
+                if(slotBags.get(1).getName().equals(Gdx.files.internal("GenerateMap/tree/10/bag.png").toString())){
+                    floorMaps[index].getTree().setNameTree(Gdx.files.internal("GenerateMap/tree/10/1.png").toString());
                     floorMaps[index].getTree().setGrowthStatus(0);
                 }
-                else if(slotBags.get(1).getName().equals("tree/2/bag.png")){
-                    floorMaps[index].getTree().setNameTree("tree/2/1.png");
+                else if(slotBags.get(1).getName().equals(Gdx.files.internal("GenerateMap/tree/2/bag.png").toString())){
+                    floorMaps[index].getTree().setNameTree(Gdx.files.internal("GenerateMap/tree/2/1.png").toString());
                     floorMaps[index].getTree().setGrowthStatus(0);
                 }
-                else if(slotBags.get(1).getName().equals("tree/11/bag.png")){
-                    floorMaps[index].getTree().setNameTree("tree/11/1.png");
+                else if(slotBags.get(1).getName().equals(Gdx.files.internal("GenerateMap/tree/11/bag.png").toString())){
+                    floorMaps[index].getTree().setNameTree(Gdx.files.internal("GenerateMap/tree/11/1.png").toString());
                     floorMaps[index].getTree().setGrowthStatus(0);
                 }
-                else if(slotBags.get(1).getName().equals("tree/12/bag.png")){
-                    floorMaps[index].getTree().setNameTree("tree/12/1.png");
+                else if(slotBags.get(1).getName().equals(Gdx.files.internal("GenerateMap/tree/12/bag.png").toString())){
+                    floorMaps[index].getTree().setNameTree(Gdx.files.internal("GenerateMap/tree/12/1.png").toString());
                     floorMaps[index].getTree().setGrowthStatus(0);
                 }
-                else if(slotBags.get(1).getName().equals("tree/13/bag.png")){
-                    floorMaps[index].getTree().setNameTree("tree/13/1.png");
+                else if(slotBags.get(1).getName().equals(Gdx.files.internal("GenerateMap/tree/13/bag.png").toString())){
+                    floorMaps[index].getTree().setNameTree(Gdx.files.internal("GenerateMap/tree/13/1.png").toString());
                     floorMaps[index].getTree().setGrowthStatus(0);
                 }
                 if(floorMaps[index].getStatus()>2)floorMaps[index].getTree().setGrowthStatus(5);
                 slotBags.get(1).setCoun(-1);
                 if(slotBags.get(1).getCoun()==0)mouseChange.render(1,mouseNumber);
             }
-            else if(mouseNumber==11 && floorMaps[index].getTree().getNameTree().equals("null.png")){
-                if(slotBags.get(2).getName().equals("tree/10/bag.png")){
-                    floorMaps[index].getTree().setNameTree("tree/10/1.png");
+            else if(mouseNumber==11 && floorMaps[index].getTree().getNameTree().equals(Gdx.files.internal("GenerateMap/null.png").toString())){
+                if(slotBags.get(2).getName().equals(Gdx.files.internal("GenerateMap/tree/10/bag.png"))){
+                    floorMaps[index].getTree().setNameTree(Gdx.files.internal("GenerateMap/tree/10/1.png").toString());
                     floorMaps[index].getTree().setGrowthStatus(0);
                 }
-                else if(slotBags.get(2).getName().equals("tree/2/bag.png")){
-                    floorMaps[index].getTree().setNameTree("tree/2/1.png");
+                else if(slotBags.get(2).getName().equals(Gdx.files.internal("GenerateMap/tree/2/bag.png"))){
+                    floorMaps[index].getTree().setNameTree(Gdx.files.internal("GenerateMap/tree/2/1.png").toString());
                     floorMaps[index].getTree().setGrowthStatus(0);
                 }
-                else if(slotBags.get(2).getName().equals("tree/11/bag.png")){
-                    floorMaps[index].getTree().setNameTree("tree/11/1.png");
+                else if(slotBags.get(2).getName().equals(Gdx.files.internal("GenerateMap/tree/11/bag.png").toString())){
+                    floorMaps[index].getTree().setNameTree(Gdx.files.internal("GenerateMap/tree/11/1.png").toString());
                     floorMaps[index].getTree().setGrowthStatus(0);
                 }
-                else if(slotBags.get(2).getName().equals("tree/12/bag.png")){
-                    floorMaps[index].getTree().setNameTree("tree/12/1.png");
+                else if(slotBags.get(2).getName().equals(Gdx.files.internal("GenerateMap/tree/12/bag.png").toString())){
+                    floorMaps[index].getTree().setNameTree(Gdx.files.internal("GenerateMap/tree/12/1.png").toString());
                     floorMaps[index].getTree().setGrowthStatus(0);
                 }
-                else if(slotBags.get(2).getName().equals("tree/13/bag.png")){
-                    floorMaps[index].getTree().setNameTree("tree/13/1.png");
+                else if(slotBags.get(2).getName().equals(Gdx.files.internal("GenerateMap/tree/13/bag.png").toString())){
+                    floorMaps[index].getTree().setNameTree(Gdx.files.internal("GenerateMap/tree/13/1.png").toString());
                     floorMaps[index].getTree().setGrowthStatus(0);
                 }
                 if(floorMaps[index].getStatus()>2)floorMaps[index].getTree().setGrowthStatus(5);
                 slotBags.get(2).setCoun(-1);
                 if(slotBags.get(2).getCoun()==0)mouseChange.render(1,mouseNumber);
             }
-            else if(mouseNumber==12 && floorMaps[index].getTree().getNameTree().equals("null.png")){
-                if(slotBags.get(3).getName().equals("tree/10/bag.png")){
-                    floorMaps[index].getTree().setNameTree("tree/10/1.png");
+            else if(mouseNumber==12 && floorMaps[index].getTree().getNameTree().equals(Gdx.files.internal("GenerateMap/null.png"))){
+                if(slotBags.get(3).getName().equals(Gdx.files.internal("GenerateMap/tree/10/bag.png"))){
+                    floorMaps[index].getTree().setNameTree(Gdx.files.internal("GenerateMap/tree/10/1.png").toString());
                     floorMaps[index].getTree().setGrowthStatus(0);
                 }
-                else if(slotBags.get(3).getName().equals("tree/2/bag.png")){
-                    floorMaps[index].getTree().setNameTree("tree/2/1.png");
+                else if(slotBags.get(3).getName().equals(Gdx.files.internal("GenerateMap/tree/2/bag.png"))){
+                    floorMaps[index].getTree().setNameTree(Gdx.files.internal("GenerateMap/tree/2/1.png").toString());
                     floorMaps[index].getTree().setGrowthStatus(0);
                 }
-                else if(slotBags.get(3).getName().equals("tree/11/bag.png")){
-                    floorMaps[index].getTree().setNameTree("tree/11/1.png");
+                else if(slotBags.get(3).getName().equals(Gdx.files.internal("GenerateMap/tree/11/bag.png"))){
+                    floorMaps[index].getTree().setNameTree(Gdx.files.internal("GenerateMap/tree/11/1.png").toString());
                     floorMaps[index].getTree().setGrowthStatus(0);
                 }
-                else if(slotBags.get(3).getName().equals("tree/12/bag.png")){
-                    floorMaps[index].getTree().setNameTree("tree/12/1.png");
+                else if(slotBags.get(3).getName().equals(Gdx.files.internal("GenerateMap/tree/12/bag.png").toString())){
+                    floorMaps[index].getTree().setNameTree(Gdx.files.internal("GenerateMap/tree/12/1.png").toString());
                     floorMaps[index].getTree().setGrowthStatus(0);
                 }
-                else if(slotBags.get(3).getName().equals("tree/13/bag.png")){
-                    floorMaps[index].getTree().setNameTree("tree/13/1.png");
+                else if(slotBags.get(3).getName().equals(Gdx.files.internal("GenerateMap/tree/13/bag.png").toString())){
+                    floorMaps[index].getTree().setNameTree(Gdx.files.internal("GenerateMap/tree/13/1.png").toString());
                     floorMaps[index].getTree().setGrowthStatus(0);
                 }
                 if(floorMaps[index].getStatus()>2)floorMaps[index].getTree().setGrowthStatus(5);
                 slotBags.get(3).setCoun(-1);
                 if(slotBags.get(3).getCoun()==0)mouseChange.render(1,mouseNumber);
             }
-            else if(floorMaps[index].getTree().getNameTree().equals("tree/10/7.png") || floorMaps[index].getTree().getNameTree().equals("tree/2/8.png")
-                    || floorMaps[index].getTree().getNameTree().equals("tree/11/8.png")){
+            else if(floorMaps[index].getTree().getNameTree().equals(Gdx.files.internal("GenerateMap/tree/10/7.png")) || floorMaps[index].getTree().getNameTree().equals(Gdx.files.internal("GenerateMap/tree/2/8.png"))
+                    || floorMaps[index].getTree().getNameTree().equals(Gdx.files.internal("GenerateMap/tree/11/8.png"))){
                 if(mouseNumber==4||mouseNumber==5) {
                     moneys += 15;
-                    floorMaps[index].getTree().setNameTree("deadtree.png");
+                    floorMaps[index].getTree().setNameTree(Gdx.files.internal("GenerateMap/deadtree.png").toString());
                     floorMaps[index].getTree().setGrowthStatus(0);
                     floorMaps[index].getTree().setDay(0);
                 }

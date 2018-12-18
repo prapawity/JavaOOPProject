@@ -20,7 +20,7 @@ public class BuyWindow extends Game {
     private ImageButton button;
     public void create(){
 
-        myTexture = new Texture(Gdx.files.internal("wetfloor.png"));
+        myTexture = new Texture(Gdx.files.internal("GenerateMap/wetfloor.png"));
         myTextureRegion = new TextureRegion(myTexture);
         myTexRegionDrawable = new TextureRegionDrawable(myTextureRegion);
         button = new ImageButton(myTexRegionDrawable); //Set the button up

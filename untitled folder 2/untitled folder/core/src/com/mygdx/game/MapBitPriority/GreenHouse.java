@@ -49,8 +49,8 @@ public class GreenHouse extends Game {
     public void create () {
         // Map loading
         player = new Player();
-        Pixmap pm = new Pixmap(Gdx.files.internal("mouse.png"));
-        Cursor cursor = Gdx.graphics.newCursor(new Pixmap(Gdx.files.internal("mouse.png")),0,0);
+        Pixmap pm = new Pixmap(Gdx.files.internal("GenerateMap/mouse.png"));
+        Cursor cursor = Gdx.graphics.newCursor(new Pixmap(Gdx.files.internal("GenerateMap/mouse.png")),0,0);
         Gdx.graphics.setCursor(cursor);
         manager = new AssetManager();
         manager.setLoader(TiledMap.class, new TmxMapLoader());

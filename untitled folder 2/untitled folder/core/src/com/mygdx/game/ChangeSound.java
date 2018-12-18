@@ -12,11 +12,11 @@ public class ChangeSound {
 
     public void changeSound(int type){
         switch (type){
-            case 0:openSound = Gdx.audio.newMusic(Gdx.files.internal("Sparkle.mp3"));break;
-            case 1:openSound = Gdx.audio.newMusic(Gdx.files.internal("BaseMusic.mp3"));break;
-            case 2:openSound = Gdx.audio.newMusic(Gdx.files.internal("PelicianTown.mp3"));break;
-            case 3:openSound = Gdx.audio.newMusic(Gdx.files.internal("FunFest.mp3"));break;
-            case 4:openSound = Gdx.audio.newMusic(Gdx.files.internal("SoundEffect/nightsound.mp3"));break;
+            case 0:openSound = Gdx.audio.newMusic(Gdx.files.internal("GenerateMap/Sparkle.mp3"));break;
+            case 1:openSound = Gdx.audio.newMusic(Gdx.files.internal("GenerateMap/BaseMusic.mp3"));break;
+            case 2:openSound = Gdx.audio.newMusic(Gdx.files.internal("GenerateMap/PelicianTown.mp3"));break;
+            case 3:openSound = Gdx.audio.newMusic(Gdx.files.internal("GenerateMap/FunFest.mp3"));break;
+            case 4:openSound = Gdx.audio.newMusic(Gdx.files.internal("GenerateMap/SoundEffect/nightsound.mp3"));break;
 
         }
     }

@@ -1,5 +1,6 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -11,18 +12,18 @@ public class ShowingHudMoney {
     String moneyString;
 
     public void create(){
-        pos1 = new ShowImage(new Sprite(new Texture("number/num0.png")));
-        pos2 = new ShowImage(new Sprite(new Texture("number/num0.png")));
-        pos3 = new ShowImage(new Sprite(new Texture("number/num0.png")));
-        pos4 = new ShowImage(new Sprite(new Texture("number/num0.png")));
-        pos5 = new ShowImage(new Sprite(new Texture("number/num0.png")));
-        pos6 = new ShowImage(new Sprite(new Texture("number/num0.png")));
-        pos7 = new ShowImage(new Sprite(new Texture("number/num0.png")));
-        pos8 = new ShowImage(new Sprite(new Texture("number/num0.png")));
-        day = new ShowImage(new Sprite(new Texture("number/day.png")));
-        numDay = new ShowImage(new Sprite(new Texture("number/num1.png")));
-        numDay2 = new ShowImage(new Sprite(new Texture("number/num1.png")));
-        hudMoney = new ShowImage(new Sprite(new Texture("number/hudMoneyShowing.png")));
+        pos1 = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/number/num0.png"))));
+        pos2 = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/number/num0.png"))));
+        pos3 = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/number/num0.png"))));
+        pos4 = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/number/num0.png"))));
+        pos5 = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/number/num0.png"))));
+        pos6 = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/number/num0.png"))));
+        pos7 = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/number/num0.png"))));
+        pos8 = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/number/num0.png"))));
+        day = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/number/day.png"))));
+        numDay = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/number/num1.png"))));
+        numDay2 = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/number/num1.png"))));
+        hudMoney = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/number/hudMoneyShowing.png"))));
 
         pos1.scale(0.4f);
         pos2.scale(0.4f);
@@ -75,11 +76,11 @@ public class ShowingHudMoney {
         if(numday>9){
             if(numday>19&& numday<30){
                 numDay2.getTexture().dispose();
-                numDay2.setTexture(new Texture("number/num2.png"));
+                numDay2.setTexture(new Texture(Gdx.files.internal("GenerateMap/number/num2.png")));
             }
             else if(numday>39&& numday<40){
                 numDay2.getTexture().dispose();
-                numDay2.setTexture(new Texture("number/num3.png"));
+                numDay2.setTexture(new Texture(Gdx.files.internal("GenerateMap/number/num3.png")));
             }
             numDay2.draw(renderer.getBatch());
         }
@@ -103,16 +104,16 @@ public class ShowingHudMoney {
     public void switching(int eiei,ShowImage posN){
         posN.getTexture().dispose();
         switch (eiei){
-            case 0: posN.setTexture(new Texture("number/num0.png")); break;
-            case 1: posN.setTexture(new Texture("number/num1.png")); break;
-            case 2: posN.setTexture(new Texture("number/num2.png")); break;
-            case 3: posN.setTexture(new Texture("number/num3.png")); break;
-            case 4: posN.setTexture(new Texture("number/num4.png")); break;
-            case 5: posN.setTexture(new Texture("number/num5.png")); break;
-            case 6: posN.setTexture(new Texture("number/num6.png")); break;
-            case 7: posN.setTexture(new Texture("number/num7.png")); break;
-            case 8: posN.setTexture(new Texture("number/num8.png")); break;
-            case 9: posN.setTexture(new Texture("number/num9.png")); break;
+            case 0: posN.setTexture(new Texture(Gdx.files.internal("GenerateMap/number/num0.png"))); break;
+            case 1: posN.setTexture(new Texture(Gdx.files.internal("GenerateMap/number/num1.png"))); break;
+            case 2: posN.setTexture(new Texture(Gdx.files.internal("GenerateMap/number/num2.png"))); break;
+            case 3: posN.setTexture(new Texture(Gdx.files.internal("GenerateMap/number/num3.png"))); break;
+            case 4: posN.setTexture(new Texture(Gdx.files.internal("GenerateMap/number/num4.png"))); break;
+            case 5: posN.setTexture(new Texture(Gdx.files.internal("GenerateMap/number/num5.png"))); break;
+            case 6: posN.setTexture(new Texture(Gdx.files.internal("GenerateMap/number/num6.png"))); break;
+            case 7: posN.setTexture(new Texture(Gdx.files.internal("GenerateMap/number/num7.png"))); break;
+            case 8: posN.setTexture(new Texture(Gdx.files.internal("GenerateMap/number/num8.png"))); break;
+            case 9: posN.setTexture(new Texture(Gdx.files.internal("GenerateMap/number/num9.png"))); break;
 
         }
     }
