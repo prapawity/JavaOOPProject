@@ -245,7 +245,11 @@ public class FarmAcivities {
                 if(slotBags.get(3).getCoun()==0)mouseChange.render(1,mouseNumber);
             }
             else if(floorMaps[index].getTree().getNameTree().equals("GenerateMap/tree/10/7.png") || floorMaps[index].getTree().getNameTree().equals("GenerateMap/tree/2/8.png")
-                    || floorMaps[index].getTree().getNameTree().equals("GenerateMap/tree/11/8.png")){
+                    || floorMaps[index].getTree().getNameTree().equals("GenerateMap/tree/11/8.png") || floorMaps[index].getTree().getNameTree().equals("GenerateMap/tree/12/9.png")
+            || floorMaps[index].getTree().getNameTree().equals("GenerateMap/tree/13/7.png")||
+                    floorMaps[index].getTree().getNameTree().equals("GenerateMap/tree/10/72.png") || floorMaps[index].getTree().getNameTree().equals("GenerateMap/tree/2/82.png")
+                    || floorMaps[index].getTree().getNameTree().equals("GenerateMap/tree/11/82.png") || floorMaps[index].getTree().getNameTree().equals("GenerateMap/tree/12/92.png")
+                    || floorMaps[index].getTree().getNameTree().equals("GenerateMap/tree/13/72.png")){
                 if(mouseNumber==4||mouseNumber==5) {
                     moneys += 15;
                     floorMaps[index].getTree().setNameTree("GenerateMap/deadtree.png");
