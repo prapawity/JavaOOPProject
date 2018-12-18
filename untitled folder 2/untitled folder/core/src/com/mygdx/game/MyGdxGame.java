@@ -15,9 +15,10 @@ import com.mygdx.game.MapBitPriority.HUD;
 import com.mygdx.game.entitirs.Player;
 import com.mygdx.game.entitirs.ShowImage;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class MyGdxGame extends Game {
+public class MyGdxGame extends Game implements Serializable {
 	// Set Value
     private FarmAcivities farmAcivity;
     private CameraMove cameraMove = new CameraMove();
@@ -40,6 +41,8 @@ public class MyGdxGame extends Game {
     private SavingNextDay savingNextDay;
     private ArrayList<SlotBag> slotBag = new ArrayList<SlotBag>(4);
     private TreeNextGrowth treeNextGrowth = new TreeNextGrowth();
+    private SaveObject saveObject = new SaveObject();
+
     long id;
 
     private FloorRender
@@ -54,12 +57,12 @@ public class MyGdxGame extends Game {
     // Map properties
 	private int tileWidth, tileHeight,
 			mapWidthInTiles, mapHeightInTiles,
-			mapWidthInPixels, mapHeightInPixels,store;
+			mapWidthInPixels, mapHeightInPixels,store,timing;
 
 	// Camera and render
 	private OrthographicCamera camera;
 	private OrthogonalTiledMapRenderer renderer;
-	private int screenState=-2,time,money = 100,statusHowto = 0;
+	private int screenState=-2,time,money = 500,statusHowto = 0;
 	private HowTo howTo;
 
 
@@ -163,7 +166,7 @@ public class MyGdxGame extends Game {
             mouseSelect.setPosition(806, 469);
             mouseSelect.scale(10);
 
-            showImage.setPosition(215, 7620); // House1
+            showImage.setPosition(250, 7620); // House1
             //farm 836,7290
             // greenHouse1 3722,7059
             player.update();
@@ -180,7 +183,7 @@ public class MyGdxGame extends Game {
             blackScreen = new ShowImage(new Sprite(new Texture("blackScreen.png")));
             blackScreen.setPosition(camera.position.x-600,camera.position.y-370);
             blackScreen.scale(10);
-            Openpic = new ShowImage(new Sprite(new Texture("OpenPic.png")));
+            Openpic = new ShowImage(new Sprite(new Texture("OpenPic2.png")));
             Openpic.setPosition(camera.position.x-640,camera.position.y-358);
 
             logoPng = new String[3];
@@ -193,12 +196,12 @@ public class MyGdxGame extends Game {
             newGame = new ShowImage(new Sprite(new Texture("OpenPic/new1.png")));
             loadGame = new ShowImage(new Sprite(new Texture("OpenPic/load1.png")));
             exitGame = new ShowImage(new Sprite(new Texture("OpenPic/exit1.png")));
-            newGame.setPosition(camera.position.x-330,camera.position.y-260);
-            loadGame.setPosition(camera.position.x-30,camera.position.y-260);
-            exitGame.setPosition(camera.position.x+260,camera.position.y-260);
-            newGame.scale(2.5f);
-            loadGame.scale(2.5f);
-            exitGame.scale(2.5f);
+            newGame.setPosition(camera.position.x-330,camera.position.y-220);
+            loadGame.setPosition(camera.position.x-30,camera.position.y-220);
+            exitGame.setPosition(camera.position.x+260,camera.position.y-220);
+            newGame.scale(1.4f);
+            loadGame.scale(1.4f);
+            exitGame.scale(1.4f);
             showingHudMoney = new ShowingHudMoney();
             showingHudMoney.create();
             showBuyWindow = new ShowingBuyWindow();
@@ -458,6 +461,11 @@ public class MyGdxGame extends Game {
     }
 
     public void farmActivities(FloorStatus[] floorMaps){
+        blinkWeed(floorMap);
+        blinkWeed(floorMap2);
+        blinkWeed(floorMap3);
+        blinkWeed(floorMap4);
+        timing++;
         if(player.getMouseNotNormal()==1) money = farmAcivity.FarmAcivities(floorMaps,player,mouseNumber,mouseChange,money,slotBag);
         else{
             if(player.getPosX() >= 28 && player.getPosX()<=105 && player.getPosY() >=595  &&player.getPosY() <= 677){
@@ -533,6 +541,8 @@ public class MyGdxGame extends Game {
             }
             treeNextGrowth.growth(floorMap, floorMap2, floorMap3, floorMap4, day);
             day++;
+            saveObject = new SaveObject(day,money,floorMap,floorMap2,floorMap3,floorMap4,slotBag);
+            SaveGame.write(saveObject);
         }
 
     }
@@ -546,7 +556,7 @@ public class MyGdxGame extends Game {
             //GreenHouse First
             if (camera.position.x == 642 && camera.position.y == 6820) {
                 if (player.getPosX() <= 410 && player.getPosX() >= 189 && player.getPosY() >= 92 && player.getPosY() <= 245 & statusHowto>3) {
-                    showImage.setPosition(197,6970);
+                    showImage.setPosition(350,7050);
                     if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                         mouseNumber = mouseChange.render(2,mouseNumber);
                     showImage.draw(renderer.getBatch());
@@ -1172,7 +1182,7 @@ public class MyGdxGame extends Game {
             }
             case 7: {
                 Openpic.draw(renderer.getBatch());
-                if (player.getPosX()>=217 &&player.getPosX()<= 466&&player.getPosY()>=494&&player.getPosY()<=686) {
+                if (player.getPosX()>=261 &&player.getPosX()<= 483&&player.getPosY()>=449&&player.getPosY()<=603) {
                     newGame.setTexture(new Texture("OpenPic/new2.png"));
                     if (player.getmouseClicked()) {
                         logostate++;
@@ -1180,11 +1190,32 @@ public class MyGdxGame extends Game {
                         player.setMouseNotNormal(0);
                     }
                 }
-                else if(player.getPosX()>=520 &&player.getPosX()<= 772&&player.getPosY()>=495&&player.getPosY()<=686){
+                else if(player.getPosX()>=561 &&player.getPosX()<= 782&&player.getPosY()>=465&&player.getPosY()<=603){
                     loadGame.setTexture(new Texture("OpenPic/load2.png"));
+                    if (player.getmouseClicked()) {
+                        try {
+                            SaveGame.read();
+                            day = SaveGame.getSaveObject().getDay();
+                            money = SaveGame.getSaveObject().getMoney();
+                            for (int i=0;i<3;i++){
+                                slotBag.get(i).setCoun(SaveGame.getSaveObject().slotBags.get(i).getCoun());
+                                slotBag.get(i).setName(SaveGame.getSaveObject().slotBags.get(i).getName());
+                            }
+                            floorMap = SaveGame.getSaveObject().getFloormap();
+                            floorMap2 = SaveGame.getSaveObject().getFloormap2();
+                            floorMap3 = SaveGame.getSaveObject().getFloormap3();
+                            floorMap4 = SaveGame.getSaveObject().getFloormap4();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        logostate++;
+                        player.setMouseClicked(false);
+                        player.setMouseNotNormal(0);
+                    }
+
 
                 }
-                else if(player.getPosX()>=808 &&player.getPosX()<= 1059&&player.getPosY()>=494&&player.getPosY()<=686){
+                else if(player.getPosX()>=848 &&player.getPosX()<= 1076&&player.getPosY()>=466&&player.getPosY()<=603){
                     exitGame.setTexture(new Texture("OpenPic/exit2.png"));
                     if (player.getmouseClicked()) {
                         dispose();
@@ -1221,8 +1252,40 @@ public class MyGdxGame extends Game {
         }
         logo.draw(renderer.getBatch());
     }
-
-
+    public void blinkWeed(FloorStatus[] floorMaps){
+        for (int i = 0;i<30;i++){
+            if (floorMaps[i].getTree().getNameTree().equals("tree/10/7.png")) {
+                if(timing%10==0){
+                    floorMaps[i].getTree().setNameTree("tree/10/72.png");
+                }
+            }
+            else if(floorMaps[i].getTree().getNameTree().equals("tree/10/72.png")){
+                if(timing%10==0){
+                    floorMaps[i].getTree().setNameTree("tree/10/7.png");
+                }
+            }
+            else if (floorMaps[i].getTree().getNameTree().equals("tree/2/8.png")) {
+                if(timing%10==0){
+                    floorMaps[i].getTree().setNameTree("tree/2/82.png");
+                }
+            }
+            else if(floorMaps[i].getTree().getNameTree().equals("tree/2/82.png")){
+                if(timing%10==0){
+                    floorMaps[i].getTree().setNameTree("tree/2/8.png");
+                }
+            }
+            else if (floorMaps[i].getTree().getNameTree().equals("tree/11/8.png")) {
+                if(timing%10==0){
+                    floorMaps[i].getTree().setNameTree("tree/11/82.png");
+                }
+            }
+            else if(floorMaps[i].getTree().getNameTree().equals("tree/11/82.png")){
+                if(timing%10==0){
+                    floorMaps[i].getTree().setNameTree("tree/11/8.png");
+                }
+            }
+        }
+    }
 
 
 

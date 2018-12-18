@@ -11,8 +11,10 @@ public class FarmAcivities {
      Sound sound2 = Gdx.audio.newSound(Gdx.files.internal("SoundEffect/watering.mp3"));
      Sound sound3 = Gdx.audio.newSound(Gdx.files.internal("SoundEffect/sand.mp3"));
      long id;
+     int moneys;
 
     public int FarmAcivities(FloorStatus[] floorMaps, Player player, int mouseNumber, MouseChange mouseChange, int money, ArrayList<SlotBag> slotBag){
+        moneys = money;
         mouseChange.render(mouseNumber,mouseNumber);
             if (player.getmouseClicked() == true) {
                 if (mouseNumber==3){
@@ -79,14 +81,13 @@ public class FarmAcivities {
                     activity(27,mouseNumber,floorMaps,slotBag,mouseChange);
                 }else if(751<=player.getPosX() && player.getPosX()<=834 && player.getPosY()>=473 && player.getPosY()<=558){
                     activity(28,mouseNumber,floorMaps,slotBag,mouseChange);
-                }
-                else if(857<=player.getPosX() && player.getPosX()<=938 && player.getPosY()>=473 && player.getPosY()<=558){
+                }else if(857<=player.getPosX() && player.getPosX()<=938 && player.getPosY()>=473 && player.getPosY()<=558){
                     activity(29,mouseNumber,floorMaps,slotBag,mouseChange);
                 }
 
                 player.setMouseClicked(false);
             }
-            return money;
+        return moneys;
 
 
         }
@@ -117,23 +118,24 @@ public class FarmAcivities {
 
         }
         private void activity(int index,int mouseNumber,FloorStatus[] floorMaps,ArrayList<SlotBag> slotBags,MouseChange mouseChange){
-
             if (mouseNumber==3) {
                 if(floorMaps[index].getStatus()==0) {
                     floorMaps[index].setName("dicking.png");
                     floorMaps[index].setStatus(1);
+                    floorMaps[index].getTree().addGrowth(2);
                 }
                 else if(floorMaps[index].getStatus()==2){
                     floorMaps[index].setName("dickingwet.png");
                     floorMaps[index].setStatus(4);
                 }
-                if(!floorMaps[index].getTree().getNameTree().equals("null.png")){
+                if(!floorMaps[index].getTree().getNameTree().equals("null.png") & !floorMaps[index].getTree().getNameTree().equals("deadtree.png")){
                     floorMaps[index].getTree().setNameTree("deadtree.png");
                     floorMaps[index].getTree().setGrowthStatus(0);
                 }
                 else if(floorMaps[index].getTree().getNameTree().equals("deadtree.png")){
                     floorMaps[index].getTree().setNameTree("null.png");
                     floorMaps[index].getTree().setGrowthStatus(0);
+                    floorMaps[index].getTree().setDay(0);
                 }
             }
             else if(mouseNumber==6){
@@ -241,6 +243,15 @@ public class FarmAcivities {
                 if(floorMaps[index].getStatus()>2)floorMaps[index].getTree().setGrowthStatus(5);
                 slotBags.get(3).setCoun(-1);
                 if(slotBags.get(3).getCoun()==0)mouseChange.render(1,mouseNumber);
+            }
+            else if(floorMaps[index].getTree().getNameTree().equals("tree/10/7.png") || floorMaps[index].getTree().getNameTree().equals("tree/2/8.png")
+                    || floorMaps[index].getTree().getNameTree().equals("tree/11/8.png")){
+                if(mouseNumber==4||mouseNumber==5) {
+                    moneys += 15;
+                    floorMaps[index].getTree().setNameTree("deadtree.png");
+                    floorMaps[index].getTree().setGrowthStatus(0);
+                    floorMaps[index].getTree().setDay(0);
+                }
             }
 
         }

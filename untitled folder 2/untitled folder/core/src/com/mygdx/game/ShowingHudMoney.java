@@ -7,7 +7,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.mygdx.game.entitirs.ShowImage;
 
 public class ShowingHudMoney {
-    ShowImage pos1,pos2,pos3,pos4,pos5,pos6,pos7,pos8,hudMoney,day,numDay;
+    ShowImage pos1,pos2,pos3,pos4,pos5,pos6,pos7,pos8,hudMoney,day,numDay,numDay2;
     String moneyString;
 
     public void create(){
@@ -21,6 +21,7 @@ public class ShowingHudMoney {
         pos8 = new ShowImage(new Sprite(new Texture("number/num0.png")));
         day = new ShowImage(new Sprite(new Texture("number/day.png")));
         numDay = new ShowImage(new Sprite(new Texture("number/num1.png")));
+        numDay2 = new ShowImage(new Sprite(new Texture("number/num1.png")));
         hudMoney = new ShowImage(new Sprite(new Texture("number/hudMoneyShowing.png")));
 
         pos1.scale(0.4f);
@@ -34,11 +35,12 @@ public class ShowingHudMoney {
         day.scale(0.3f);
         numDay.scale(0.7f);
         hudMoney.scale(2);
+        numDay2.scale(0.7f);
 
     }
     public void showHudMoney(OrthogonalTiledMapRenderer renderer, Camera camera,int money,int numday){
         moneyString = Integer.toString(money);
-        switching(numday,numDay);
+        switching(numday%10,numDay);
         for (int i =moneyString.length();i>0;i--)
             if(moneyString.length() == i) switching(Character.getNumericValue(moneyString.charAt(i-1)),pos8);
             else if(moneyString.length()-1 == i) switching(Character.getNumericValue(moneyString.charAt(i-1)),pos7);
@@ -58,6 +60,7 @@ public class ShowingHudMoney {
         pos7.setPosition(camera.position.x-465,camera.position.y+236);
         pos8.setPosition(camera.position.x-443,camera.position.y+236);
         numDay.setPosition(camera.position.x-443,camera.position.y+307);
+        numDay2.setPosition(camera.position.x-465,camera.position.y+307);
         day.setPosition(camera.position.x-615,camera.position.y+295);
         hudMoney.draw(renderer.getBatch());
         if(money>=10000000) pos1.draw(renderer.getBatch());
@@ -69,6 +72,17 @@ public class ShowingHudMoney {
         if(money>=10) pos7.draw(renderer.getBatch());
         pos8.draw(renderer.getBatch());
         day.draw(renderer.getBatch());
+        if(numday>9){
+            if(numday>19&& numday<30){
+                numDay2.getTexture().dispose();
+                numDay2.setTexture(new Texture("number/num2.png"));
+            }
+            else if(numday>39&& numday<40){
+                numDay2.getTexture().dispose();
+                numDay2.setTexture(new Texture("number/num3.png"));
+            }
+            numDay2.draw(renderer.getBatch());
+        }
         numDay.draw(renderer.getBatch());
     }
 
@@ -83,6 +97,7 @@ public class ShowingHudMoney {
         pos8.getTexture().dispose();
         hudMoney.getTexture().dispose();
         day.getTexture().dispose();
+        numDay2.getTexture().dispose();
     }
 
     public void switching(int eiei,ShowImage posN){

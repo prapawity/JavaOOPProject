@@ -1,6 +1,8 @@
 package com.mygdx.game;
 
-public class Tree {
+import java.io.Serializable;
+
+public class Tree implements Serializable {
     private String nameTree;
     private boolean statusWatering;
     private int growthStatus;

@@ -1,6 +1,8 @@
 package com.mygdx.game;
 
-public class SlotBag {
+import java.io.Serializable;
+
+public class SlotBag implements Serializable {
     String name = "null2.png";
     int coun = 0;
 

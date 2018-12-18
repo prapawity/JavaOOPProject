@@ -1,6 +1,8 @@
 package com.mygdx.game;
 
-public class FloorStatus {
+import java.io.Serializable;
+
+public class FloorStatus implements Serializable {
     private String name;
     private int status;
     private Tree tree;
