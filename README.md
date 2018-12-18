@@ -30,23 +30,61 @@
 
 ## How To Play ❔ 
 
-:triangular_flag_on_post: <b>หน้าเริ่มเกม Home Garden</b>
-![home](link-to-image)
+:triangular_flag_on_post: <b>หน้าเริ่มเกม Home Garden</b><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•	ปุ่ม NEW – สำหรับเริ่มเกมใหม่ สร้างใหม่ทั้งหมด<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•	ปุ่ม LOAD – สำหรับโหลดเกมเดิมที่ได้มีการสร้างไว้ก่อนหน้ามาเล่นต่อ โดยไม่ต้องสร้างใหม่<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;•	ปุ่ม EXIT – สำหรับออกจากเกม
 
-:triangular_flag_on_post: <b>หน้าหลัก Main Game </b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+![home](https://user-images.githubusercontent.com/32834828/50149327-7a11c380-02ed-11e9-915f-eb42d005193c.png)
 
-:triangular_flag_on_post: <b>Home </b>
 
-:triangular_flag_on_post: <b>Green House </b>
+:triangular_flag_on_post: <b>หน้าหลัก Main Game </b><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;เป็นหน้าหลักที่ใช้ในการดำเนินการเล่นเกม ซึ่งจากหน้านี้จะสามารถเดินทางไปยังร้านค้าต่างๆในเมืองได้ <br />โดยคลิกตรงลูกศร to market  และเดินทางไปยัง Green House ได้
 
- :triangular_flag_on_post: <b> หน้าต่างภายใน Green House</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+![main](https://user-images.githubusercontent.com/32834828/50149640-51d69480-02ee-11e9-894a-d889435aa5d3.png)
+
+
+:triangular_flag_on_post: <b>Home </b><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;มีไว้สำหรับ save เกมที่เล่นอยู่ และสามารถคลิกเพื่อจะข้ามวันได้ (Next Day)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+![mainhome](https://user-images.githubusercontent.com/32834828/50150024-5a7b9a80-02ef-11e9-964a-10e42f34af4e.png)
+
+
+:triangular_flag_on_post: <b>Green House </b><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;มีทั้งหมด 4 หลัง เป็นที่ไว้สำหรับใช้ในการปลูกผัก เมื่อกดเข้าไปจะมีหน้าต่างภายใน ไว้ใช้สำหรับดำเนินการต่างๆในการปลูก/ขาย
+<br /><br />
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+![greenhouse](https://user-images.githubusercontent.com/32834828/50149886-f6f16d00-02ee-11e9-9d39-2e632968d77d.png)
+
+ :triangular_flag_on_post: <b> หน้าต่างภายใน Green House</b><br />
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; เป็นพื้นที่สำหรับการปลูกพืชจากเมล็ดต่างๆที่ซื้อมาจากร้านค้าในเมือง ซึ่งด้านล่างหน้าต่างจะมีเครื่องมือต่างๆไว้ใช้ดำเนินการ<br /> เมื่อคลิกเลือกเครื่องมือใดแล้ว <i>หากอยากเปลี่ยนเครื่องมือให้คลิกที่ช่องเครื่องมือนั้นอีกที เพื่อให้กลับไปเป็นลูกศรก่อนจะดำเนินการอย่างอื่นต่อไป</i> 
  
- :triangular_flag_on_post: <b>หน้าแผนที่เมือง </b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ ![garden](https://user-images.githubusercontent.com/32834828/50150086-8b5bcf80-02ef-11e9-94db-c8979d49667c.png)
 
-:triangular_flag_on_post: <b>หน้าต่างภายในร้านค้า</b>
+ 
+ :triangular_flag_on_post: <b>หน้าแผนที่เมือง </b><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; เป็นหน้าที่แสดงร้านค้าต่างๆภายในเมือง ซึ่งแต่ละร้านค้าจะขายเมล็ดแตกต่างกันไป เมื่อชี้ไปที่ร้านใดก็จะแสดงถึงสินค้าที่ขายภายในร้านนั้น และเมื่อกดเข้าไปจะมีหน้าต่างภายในให้ดำเนินการ
 
-:triangular_flag_on_post: <b>หน้าต่างแนะนำ</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+![map](https://user-images.githubusercontent.com/32834828/50150122-a595ad80-02ef-11e9-80f7-5e3b95def6a8.png)
 
+:triangular_flag_on_post: <b>หน้าต่างภายในร้านค้า</b><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; เป็นหน้าที่แสดงเมล็ดพืชที่ขาบภายในร้านนั้นๆที่กดเข้าไป ซึ่งทางผู้เล่นสามารถซื้อเมล็ดเพื่อไปปลูกใน Green House ของตนเองได้ โดยจะมีรายละเอียดของเมล็ดอยู่ทั้งราคาซื้อ/ขาย เวลาในการเก็บเกี่ยว ผู้เล่นสามารถซื้อได้โดยการกดปุ่ม BUY (ซื้อได้ครั้งละ 1 )
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+![shop](https://user-images.githubusercontent.com/32834828/50150309-281e6d00-02f0-11e9-8803-4acd492f6f97.png)
+
+
+:triangular_flag_on_post: <b>หน้าต่างแนะนำ</b><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; เป็นหน้าที่แสดงถึงวิธีการเล่นคร่าวๆ สำหรับผู้เริ่มเล่นเกม Home Garden หากผู้เล่นต้องการทราบวิธีการเล่นเกม สามารถคลิกไปที่ปุ่มเครื่องหมาย ? ที่อยู่ด้านล่างของหน้าจอได้ 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+![how](https://user-images.githubusercontent.com/32834828/50150140-acbcbb80-02ef-11e9-9d97-7967a060ba98.jpg)
 
 
 :heavy_minus_sign::heavy_minus_sign::heavy_minus_sign::heavy_minus_sign::heavy_minus_sign::heavy_minus_sign::heavy_minus_sign::heavy_minus_sign::heavy_minus_sign::heavy_minus_sign::heavy_minus_sign::heavy_minus_sign::heavy_minus_sign:
