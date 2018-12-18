@@ -21,7 +21,7 @@
     &nbsp;&nbsp;&nbsp;&nbsp;◽ การซื้อเมล็ดพันธุ์พืช<br />
     &nbsp;&nbsp;&nbsp;&nbsp;◽ การเจริญเติบโตของเมล็ดพันธุ์ที่ปลูก<br />
 
-⚫ รูปแบบของเกม จะเป็นในรูปแบบ 2มิติ มี สถานที่ให้เล่นทั้งหมด 3 สถานที่ คือ<br />
+⚫ รูปแบบของเกม จะเป็นในรูปแบบ 2มิติ มีสถานที่ให้เล่นทั้งหมด 3 สถานที่ คือ<br />
     &nbsp;&nbsp;&nbsp;&nbsp;◽ บ้าน ซึ่งเป็นสถานที่หลัก<br />
     &nbsp;&nbsp;&nbsp;&nbsp;◽ Green house ซึ่งเป็นสถานที่เพาะปลูก มี 4 โรงเพาะปลูก<br />
     &nbsp;&nbsp;&nbsp;&nbsp;◽ ร้านค้า ซึ่งเป็นสถานที่ซื้อเมล็ดพันธุ์พืช
@@ -78,7 +78,7 @@
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![1](https://user-images.githubusercontent.com/32834828/50153160-29ec2e80-02f8-11e9-96d8-55f6aae78b39.png) <b>จอบ</b>  เป็นเครื่องมือใช้สำหรับขุดดิน<br />
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![2](https://user-images.githubusercontent.com/32834828/50153161-29ec2e80-02f8-11e9-98a8-2fd52575daa8.png) <b>ขวาน</b>  เป็นเครื่องมือใช้สำหรับเก็บเกี่ยวพืชบางชนิด เมื่อเก็บเกี่ยวพืชใดจะได้เงินโดยทันที<br />
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![3](https://user-images.githubusercontent.com/32834828/50153162-29ec2e80-02f8-11e9-98d7-c3bb9e2a1770.png) <b>เคียว</b>  เป็นเครื่องมือใช้สำหรับเก็บเกี่ยวพืช เมื่อเก็บเกี่ยวพืชใดจะได้เงินโดยทันที<br />
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![4](https://user-images.githubusercontent.com/32834828/50153163-2a84c500-02f8-11e9-97f1-c987ab5e534d.png) <b>ที่รดน้ำ</b> เป็นเครื่องมือใช้สำหรับรดน้ำพืชพันธ์ต่างๆ ให้เจริญเติบโต<br />
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![4](https://user-images.githubusercontent.com/32834828/50153163-2a84c500-02f8-11e9-97f1-c987ab5e534d.png) <b>ที่รดน้ำ</b> เป็นเครื่องมือใช้สำหรับรดน้ำพืชพันธ์ุต่างๆ ให้เจริญเติบโต<br />
 
 
 
