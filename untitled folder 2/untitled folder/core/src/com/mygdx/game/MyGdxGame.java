@@ -363,7 +363,6 @@ public class MyGdxGame extends Game implements Serializable {
         for (int i = 0; i <= 3; i++) {
             if (slotBag.get(i).getCoun() == 0) {
                 if (!slotBag.get(i).getName().equals("GenerateMap/null2.png")) {
-                    System.out.println(slotBag.get(i).getName());
                     player.setMouseClicked(false);
                     player.setMouseNotNormal(0);
                     mouseNumber = mouseChange.render(1, mouseNumber);
@@ -1229,7 +1228,6 @@ public class MyGdxGame extends Game implements Serializable {
         camera.position.y = 10000f;
         // Instantiation of the render for the map object
         renderer = new OrthogonalTiledMapRenderer(map);
-
     }
     public void setScale(){
         for (int i = 0; i < 5; i++) {

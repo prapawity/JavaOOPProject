@@ -12,43 +12,24 @@ public class MouseChange {
         cursor = Gdx.graphics.newCursor(new Pixmap(Gdx.files.internal("GenerateMap/mouse.png")),0,0);
         pm1 = new Pixmap(Gdx.files.internal("GenerateMap/mouse.png"));
         cursor1 = Gdx.graphics.newCursor(new Pixmap(Gdx.files.internal("GenerateMap/mouse.png")),0,0);
-
         pm2 = new Pixmap(Gdx.files.internal("GenerateMap/hand.png"));
         cursor2 = Gdx.graphics.newCursor(new Pixmap(Gdx.files.internal("GenerateMap/hand.png")), 0, 0);
-
-
         pm3 = new Pixmap(Gdx.files.internal("GenerateMap/shovel.png"));
         cursor3 = Gdx.graphics.newCursor(new Pixmap(Gdx.files.internal("GenerateMap/shovel.png")), 0, 0);
         pm32 = new Pixmap(Gdx.files.internal("GenerateMap/shovelDown.png"));
         cursor32 = Gdx.graphics.newCursor(new Pixmap(Gdx.files.internal("GenerateMap/shovelDown.png")), 0, 0);
-
-
         pm4 = new Pixmap(Gdx.files.internal("GenerateMap/picaxe.png"));
         cursor4 = Gdx.graphics.newCursor(new Pixmap(Gdx.files.internal("GenerateMap/picaxe.png")), 0, 0);
-
-
         pm5 = new Pixmap(Gdx.files.internal("GenerateMap/axe.png"));
         cursor5 = Gdx.graphics.newCursor(new Pixmap(Gdx.files.internal("GenerateMap/axe.png")), 0, 0);
-
-
         pm6 = new Pixmap(Gdx.files.internal("GenerateMap/watering.png"));
         cursor6 = Gdx.graphics.newCursor(new Pixmap(Gdx.files.internal("GenerateMap/watering.png")), 0, 0);
-
-
         pm7 = new Pixmap(Gdx.files.internal("GenerateMap/mouseweedbag1.png"));
         cursor7 = Gdx.graphics.newCursor(new Pixmap(Gdx.files.internal("GenerateMap/mouseweedbag1.png")), 0, 0);
-
         pm72 = new Pixmap(Gdx.files.internal("GenerateMap/mouseBagDown.png"));
         cursor72 = Gdx.graphics.newCursor(new Pixmap(Gdx.files.internal("GenerateMap/mouseBagDown.png")), 0, 0);
-
-
-
         Gdx.graphics.setCursor(cursor);
-
-
-
     }
-
     public int render(int type,int mouseNumber){
         switch (type){
             case 1:{
@@ -116,7 +97,5 @@ public class MouseChange {
         }
         mouseNumber = type;
         return mouseNumber;
-
-
     }
 }
