@@ -1266,9 +1266,29 @@ public class MyGdxGame extends Game implements Serializable {
                 if (timing % 10 == 0) {
                     floorMaps[i].getTree().setNameTree("GenerateMap/tree/11/8.png");
                 }
+            }
+            else if (floorMaps[i].getTree().getNameTree().equals("GenerateMap/tree/12/9.png")) {
+                if (timing % 10 == 0) {
+                    floorMaps[i].getTree().setNameTree("GenerateMap/tree/12/92.png");
+                }
+            }
+            else if (floorMaps[i].getTree().getNameTree().equals("GenerateMap/tree/12/92.png")) {
+                if (timing % 10 == 0) {
+                    floorMaps[i].getTree().setNameTree("GenerateMap/tree/12/9.png");
+                }
+            }
+            else if (floorMaps[i].getTree().getNameTree().equals("GenerateMap/tree/13/82.png")) {
+                if (timing % 10 == 0) {
+                    floorMaps[i].getTree().setNameTree("GenerateMap/tree/13/8.png");
+                }
+            }
+            else if (floorMaps[i].getTree().getNameTree().equals("GenerateMap/tree/13/8.png")) {
+                if (timing % 10 == 0) {
+                    floorMaps[i].getTree().setNameTree("GenerateMap/tree/13/8.png");
                 }
             }
         }
-
-
     }
+
+
+}
