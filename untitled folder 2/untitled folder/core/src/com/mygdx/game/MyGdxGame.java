@@ -68,38 +68,12 @@ public class MyGdxGame extends Game implements Serializable {
 
     @Override
     public void create() {
-        // Map loading
-        player = new Player();
-        manager = new AssetManager();
-        manager.setLoader(TiledMap.class, new TmxMapLoader());
-        manager.load(Gdx.files.internal("GenerateMap/Genmap/Mainmap.tmx").toString(), TiledMap.class);
-        manager.finishLoading();
-        map = manager.get(Gdx.files.internal("GenerateMap/Genmap/Mainmap.tmx").toString(), TiledMap.class);
-        // Read properties
-        MapProperties properties = map.getProperties();
-        tileWidth = properties.get("tilewidth", Integer.class);
-        tileHeight = properties.get("tileheight", Integer.class);
-        mapWidthInTiles = properties.get("width", Integer.class);
-        mapHeightInTiles = properties.get("height", Integer.class);
-        mapWidthInPixels = mapWidthInTiles;
-        mapHeightInPixels = mapHeightInTiles;
-        camera = new OrthographicCamera(3f, 3f);
-        camera.position.x = 10000f;
-        camera.position.y = 10000f;
-        // Instantiation of the render for the map object
-        renderer = new OrthogonalTiledMapRenderer(map);
-
+        mapCreate();
         hud = new HUD();
-        // Set up the camera
-        // render Player
         showImage = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/Home.png"))));
-
-
         gotoMarket = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/arrow.png"))));
-
-        greenHouse1 = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/farm.png"))));
+        greenHouse1 = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/farm2.png"))));
         for (int i = 0; i < 4; i++) slotBag.add(new SlotBag());
-
         weedTest = new ShowImage(new Sprite(new Texture(slotBag.get(0).getName())));
         weedtest2 = new ShowImage(new Sprite(new Texture(slotBag.get(1).getName())));
         weedtest3 = new ShowImage(new Sprite(new Texture(slotBag.get(2).getName())));
@@ -107,10 +81,8 @@ public class MyGdxGame extends Game implements Serializable {
         weedtest5 = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/howtopop/2.png"))));
         base = new FloorRender(new Sprite(new Texture(Gdx.files.internal("GenerateMap/base.png"))));
         createFloor();
-
         floorrender = new FloorRender[5][6];
         weedrender = new FloorRender[5][6];
-
         weedList = new ShowImage[5];
         weedList[0] = weedTest;
         weedList[1] = weedtest2;
@@ -119,88 +91,28 @@ public class MyGdxGame extends Game implements Serializable {
         weedList[4] = weedtest5;
         for (int i = 0; i < 5; i++)
             for (int j = 0; j < 6; j++) {
-
-
                 floorrender[i][j] = new FloorRender(new Sprite(new Texture(floorMap[loop].getName())));
                 weedrender[i][j] = new FloorRender(new Sprite(new Texture(floorMap[loop].getTree().getNameTree())));
-
                 loop++;
-
             }
         loop = 0;
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 6; j++) {
-                floorrender[i][j].scale(8);
-                weedrender[i][j].scale(5);
-            }
-        }
-
-        for (int i = 0; i < 5; i++)
-            for (int j = 0; j < 6; j++) {
-                floorrender[i][j].setPosition(positionX[j], positionY[i]);
-                weedrender[i][j].setPosition(positionX[j], positionY[i]);
-            }
-
-
-        base.setPosition(3418, 6425);
-        base.scale(62.5f);
-
         backhome1 = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/backhome.png"))));
-        backhome1.setPosition(2820, 6080);
-        backhome1.scale(1f);
-
-
-        showImage.scale(2);
-        greenHouse1.scale(2);
-        for (int i = 0; i < weedList.length - 1; i++)
-            weedList[i].scale(2f);
-        weedList[4].scale(1.3f);
-
-//		weed.scale(8);
-//		weed.setPosition(3429,7149);
-//        weed2.scale(8);
-//        weed2.setPosition(3429,7240);
-        //greenHouse  6785 6876 6976, 7058 , 7149 7240 (3429, 3529,3629,3729,3829,3929,4029)
         mouseSelect = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/mouseselect.png"))));
-        mouseSelect.setPosition(806, 469);
-        mouseSelect.scale(10);
-
-        showImage.setPosition(250, 7620); // House1
-        //farm 836,7290
-        // greenHouse1 3722,7059
         player.update();
-
         mouseChange = new MouseChange();
         mouseChange.create();
         mouseNumber = mouseChange.render(1, mouseNumber);
-
-
         WhiteScreen = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/WhiteScreen.png"))));
-        WhiteScreen.setPosition(camera.position.x - 600, camera.position.y - 370);
-        WhiteScreen.scale(2);
-
         blackScreen = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/blackScreen.png"))));
-        blackScreen.setPosition(camera.position.x - 600, camera.position.y - 370);
-        blackScreen.scale(10);
         Openpic = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/OpenPic2.png"))));
-        Openpic.setPosition(camera.position.x - 640, camera.position.y - 358);
-
         logoPng = new String[3];
         logoPng[0] = Gdx.files.internal("GenerateMap/logoit1.png").toString();
         logoPng[1] = Gdx.files.internal("GenerateMap/logokmitl1.png").toString();
         logoPng[2] = Gdx.files.internal("GenerateMap/logoIlove.png").toString();
         logo = new ShowImage(new Sprite(new Texture(logoPng[0])));
-        logo.setPosition(camera.position.x - 250, camera.position.y - 220);
-
         newGame = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/OpenPic/new1.png"))));
         loadGame = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/OpenPic/load1.png"))));
         exitGame = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/OpenPic/exit1.png"))));
-        newGame.setPosition(camera.position.x - 330, camera.position.y - 220);
-        loadGame.setPosition(camera.position.x - 30, camera.position.y - 220);
-        exitGame.setPosition(camera.position.x + 260, camera.position.y - 220);
-        newGame.scale(1.4f);
-        loadGame.scale(1.4f);
-        exitGame.scale(1.4f);
         showingHudMoney = new ShowingHudMoney();
         showingHudMoney.create();
         showBuyWindow = new ShowingBuyWindow();
@@ -217,8 +129,8 @@ public class MyGdxGame extends Game implements Serializable {
         savingNextDay.create();
         move = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/Move/up.png"))));
         windowBuy = new ShowImage(new Sprite(new Texture(Gdx.files.internal("GenerateMap/windowBuy/pumkin.png"))));
-
-
+        setScale();
+        setPositionImg();
     }
 
     @Override
@@ -581,7 +493,7 @@ public class MyGdxGame extends Game implements Serializable {
                 }
 
             } else if (player.getPosX() >= 157 && player.getPosX() <= 431 && player.getPosY() >= 381 && player.getPosY() <= 576 & statusHowto > 3) {
-                greenHouse1.setPosition(215, 6637);
+                greenHouse1.setPosition(320, 6750);
                 if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                     mouseNumber = mouseChange.render(2, mouseNumber);
                 greenHouse1.draw(renderer.getBatch());
@@ -594,7 +506,7 @@ public class MyGdxGame extends Game implements Serializable {
                     player.setMouseNotNormal(0);
                 }
             } else if (player.getPosX() < 1250 && player.getPosX() >= 1073 && player.getPosY() >= 219 && player.getPosY() <= 405 & statusHowto > 3) {
-                greenHouse1.setPosition(1130, 6796); //greenHouse2
+                greenHouse1.setPosition(1175, 6950); //greenHouse2
                 if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                     mouseNumber = mouseChange.render(2, mouseNumber);
                 greenHouse1.draw(renderer.getBatch());
@@ -654,7 +566,7 @@ public class MyGdxGame extends Game implements Serializable {
             }
         } else if (camera.position.x == 1470 && camera.position.y == 6820) {
             if (player.getPosX() <= 516 && player.getPosX() >= 245 && player.getPosY() >= 221 && player.getPosY() <= 416) {
-                greenHouse1.setPosition(1130, 6796);
+                greenHouse1.setPosition(1225, 6925);
                 if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                     mouseNumber = mouseChange.render(2, mouseNumber);
                 greenHouse1.draw(renderer.getBatch());
@@ -667,7 +579,7 @@ public class MyGdxGame extends Game implements Serializable {
                     player.setMouseNotNormal(0);
                 }
             } else if (player.getPosX() >= 786 && player.getPosX() <= 1065 && player.getPosY() >= 225 && player.getPosY() <= 417) {
-                greenHouse1.setPosition(1676, 6796);
+                greenHouse1.setPosition(1775, 6925);
                 if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                     mouseNumber = mouseChange.render(2, mouseNumber);
                 greenHouse1.draw(renderer.getBatch());
@@ -723,7 +635,7 @@ public class MyGdxGame extends Game implements Serializable {
 
         } else if (camera.position.x == 642 && camera.position.y == 6349) {
             if (player.getPosX() >= 614 && player.getPosX() <= 887 && player.getPosY() >= 264 && player.getPosY() <= 455) {
-                greenHouse1.setPosition(672, 6285); // greenHouse1
+                greenHouse1.setPosition(775, 6420); // greenHouse1
                 if (player.getMouseNotNormal() == 0 && player.getmouseClicked() == false)
                     mouseNumber = mouseChange.render(2, mouseNumber);
                 greenHouse1.draw(renderer.getBatch());
@@ -1294,6 +1206,69 @@ public class MyGdxGame extends Game implements Serializable {
                 }
             }
         }
+    }
+
+    public void mapCreate(){
+        // Map loading
+        player = new Player();
+        manager = new AssetManager();
+        manager.setLoader(TiledMap.class, new TmxMapLoader());
+        manager.load(Gdx.files.internal("GenerateMap/Genmap/Mainmap.tmx").toString(), TiledMap.class);
+        manager.finishLoading();
+        map = manager.get(Gdx.files.internal("GenerateMap/Genmap/Mainmap.tmx").toString(), TiledMap.class);
+        // Read properties
+        MapProperties properties = map.getProperties();
+        tileWidth = properties.get("tilewidth", Integer.class);
+        tileHeight = properties.get("tileheight", Integer.class);
+        mapWidthInTiles = properties.get("width", Integer.class);
+        mapHeightInTiles = properties.get("height", Integer.class);
+        mapWidthInPixels = mapWidthInTiles;
+        mapHeightInPixels = mapHeightInTiles;
+        camera = new OrthographicCamera(3f, 3f);
+        camera.position.x = 10000f;
+        camera.position.y = 10000f;
+        // Instantiation of the render for the map object
+        renderer = new OrthogonalTiledMapRenderer(map);
+
+    }
+    public void setScale(){
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 6; j++) {
+                floorrender[i][j].scale(8);
+                weedrender[i][j].scale(5);
+            }
+        }
+        base.scale(62.5f);
+        backhome1.scale(1f);
+        showImage.scale(2);
+        greenHouse1.scale(1.5f);
+        for (int i = 0; i < weedList.length - 1; i++) weedList[i].scale(2f);
+        weedList[4].scale(1.3f);
+        mouseSelect.scale(10);
+        WhiteScreen.scale(2);
+        blackScreen.scale(10);
+        newGame.scale(1.4f);
+        loadGame.scale(1.4f);
+        exitGame.scale(1.4f);
+    }
+    public void setPositionImg(){
+        for (int i = 0; i < 5; i++)
+            for (int j = 0; j < 6; j++) {
+                floorrender[i][j].setPosition(positionX[j], positionY[i]);
+                weedrender[i][j].setPosition(positionX[j], positionY[i]);
+            }
+        base.setPosition(3418, 6425);
+        backhome1.setPosition(2820, 6080);
+        mouseSelect.setPosition(806, 469);
+        showImage.setPosition(250, 7620); // House1
+        WhiteScreen.setPosition(camera.position.x - 600, camera.position.y - 370);
+        blackScreen.setPosition(camera.position.x - 600, camera.position.y - 370);
+        Openpic.setPosition(camera.position.x - 640, camera.position.y - 358);
+        logo.setPosition(camera.position.x - 250, camera.position.y - 220);
+        newGame.setPosition(camera.position.x - 330, camera.position.y - 220);
+        loadGame.setPosition(camera.position.x - 30, camera.position.y - 220);
+        exitGame.setPosition(camera.position.x + 260, camera.position.y - 220);
+
     }
 
 
